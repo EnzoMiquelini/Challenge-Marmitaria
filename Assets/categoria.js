@@ -14,15 +14,16 @@ $('#cadastrar_categoria').click(function (e) {
             descricao: descricao,
         },
         dataType: "json",
-        success: function () {
-            $("#resposta").html("Enviando...")
-        }
-    }).done(function(e){
-        $("#resposta").html(
+        success: function (){
             Swal.fire({
                 title: "Criado com Sucesso!",
                 icon: "success",
             })
-        )
+        }
+    }).success(function(e){
+        Swal.fire({
+            title: "Criado com Sucesso!",
+            icon: "success",
+        })
     })
 });

@@ -53,7 +53,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                            <button type="submit" id="cadastrar_categoria" class="btn btn-primary">Criar</button>
+                            <button type="button" id="cadastrar_categoria" class="btn btn-primary" data-bs-dismiss="modal">Criar</button>
                         </div>
                     </form>
                 </div>
