@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json'); 
 
     include 'conecta.php';
 
@@ -6,7 +7,15 @@
     $descricao = $_POST['descricao'];
 
 
-    $sql = "INSERT INTO categorias_alimentos (`nome`, `descricao`)VALUE(\"$nome\", \"$descricao\")";
-    $exec = $pdo->query($sql);
+    $stmt = $pdo->prepare('INSERT INTO categorias_alimentos (`nome`, `descricao`)VALUE(:na, :de)');
+    $stmt->bindValue(':na', $nome);
+    $stmt->bindValue(':de', $descricao);
+    $stmt->execute();
+
+    if ($stmt->rowCount() >= 1){
+        echo json_encode('Categoria Salva com Sucesso');
+    }else{
+        echo json_encode('Falha ao Salvar Categoria');
+    }
     
 ?>
