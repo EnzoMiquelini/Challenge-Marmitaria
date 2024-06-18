@@ -1,5 +1,5 @@
-const buttonEdit = (botao = '#editar_categoria', texto = 'Editar') => `<button type="button" class="btn btn-primary" id="edit_categoria" data-bs-toggle="modal"  value="id_categoria" data-bs-target="${botao}" onclick="editarCategoria($id_categoria)">${texto}</button>`
-const buttonExcluir = (botao = '#excluir_categoria', texto = 'Excluir') => `<button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="${botao}">${texto}</button>`
+// const buttonEdit = (texto = 'Editar') => `<button type="button" class="btn btn-primary edit_categoria" id="${id_categoria}">${texto}</button>`
+// const buttonExcluir = (botao = '#excluir_categoria', texto = 'Excluir') => `<button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="${botao}">${texto}</button>`
 
 
 getCategoria();
@@ -31,6 +31,27 @@ $('#cadastrar_categoria').click(function (e) {
     }
 });
 
+function editarCategoria(id_categoria) {  
+
+
+    $.ajax({
+            method: "post",
+            url: "config/funcao_categoria.php",
+            data: {
+                action: 'ler',
+                id_categoria: id_categoria,
+            },
+            dataType: "json",
+        }).done(function(result){
+            console.log(result[0])
+            const editarCategorias = result.map(item =>  `
+                                                        <input type="text" id="nome" class="form-control" name="nome" value="${item.nome}" required>
+                                                    `)
+        $('#edit_nome_categoria').html(editarCategorias.join(''))
+        })
+    
+
+}
 
 function getCategoria(){
 
@@ -42,49 +63,63 @@ function getCategoria(){
         },
         dataType: "json",
     }).done(function(result){
-        const lerCategorias = result.map(item =>  `${$id_categoria = item.id_categoria}}
+        const lerCategorias = result.map(item =>  `
                                                     <tr>
+                                                        <td>${id_categoria = item.id_categoria}</td>
                                                         <td class="w-75"><p>${item.nome}</p></td>
-                                                        <td>${buttonEdit($id_categoria)} ${buttonExcluir()}</td>
-                                                    </tr> 
+                                                        <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button></td>
+                                                    </tr>
                                                     `)
         $('.lista_categoria').html(lerCategorias.join(''))
     })
 }
+// function getCategoria(){
+
+//     $.ajax({
+//         method: "post",
+//         url: "config/funcao_categoria.php",
+//         data: {
+//             action: 'ler'
+//         },
+//         dataType: "json",
+//     }).done(function(result){
+//         const lerCategorias = result.map(item =>  `
+//                                                     <tr>
+//                                                     <td>${id_categoria = item.id_categoria}</td>
+//                                                         <td class="w-75"><p>${item.nome}</p></td>
+//                                                         <td>${buttonEdit(item.id_categoria)} ${buttonExcluir()}</td>
+//                                                     </tr>
+//                                                     `)
+//         $('.lista_categoria').html(lerCategorias.join(''))
+//     })
+// }
 
 
-async function editarCategoria(id_categoria) {
-    console.log("Editar: " + id);
 
-    // const dados = await fetch('categoria_de_produtos.php?id=' + id);
-    // const resp = await dados.json();
-    // console.log(resp);
-
-}
-
-
-$('#edit_categoria').click(function (e) { 
+$('.edit_categoria').click(function (e) { 
     e.preventDefault();
-
-    var id = $('id_categoria').val()
+    
+    var id = $('id').val();
 
     $.ajax({
-        method: "post",
-        url: "config/funcao_categoria.php",
-        data: {
-            action: 'editar',
-            id: id,
-        },
-        dataType: "json",
-    }).done(function(result){
-        console.log(result)
+            method: "post",
+            url: "config/funcao_categoria.php",
+            data: {
+                action: 'editar',
+                id_categoria: id,
+            },
+            dataType: "json",
+        }).success(function(result){
+            console.log(result)
     })
 });
 
+
+            
 $('#excluir_categoria').click(function (e) { 
     e.preventDefault();
-
-    $id = $_POST['id_categoria']
+                
+    $id = $_POST['id_categoria'];
 
     $.ajax({
         method: "post",

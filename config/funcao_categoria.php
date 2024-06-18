@@ -37,10 +37,15 @@
     function lerCategoria(){
         
         include 'conecta.php';
-
+        if(isset($_POST['id_categoria'])){
+            $id_categoria = $_POST['id_categoria'];
+            $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos WHERE id_categoria =' . $id_categoria );
+            $stmt->execute();
+        }else{
+            
         $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos');
         $stmt->execute();
-
+        }
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
@@ -53,9 +58,8 @@
         
         include 'conecta.php';
 
-        $id = $_POST['id_categoia'];
-
-        $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome = '.$nome.', descricao = '.$descricao.' WHERE id_categoria = '.$id);
+        $id_categoria = $_POST['id_categoria'];
+        $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome = '.$nome.', descricao = '.$descricao.' WHERE id_categoria = '.$id_categoria);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){

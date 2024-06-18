@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
 
@@ -24,6 +24,7 @@
                 <tr>
                     <td colspan="2">
                         <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
+                        <button type="hidden"  id="editar" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#editar_categoria"></button>
                     </td>
                 </tr>
                 <tr>
@@ -66,7 +67,7 @@
 
         
         <!-- Modal -->
-        <div class="modal fade" id="editar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade editar" id="editar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -76,7 +77,9 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="Nome" class="form-label">Nome</label>
-                                <input type="text" id="nome" class="form-control" name="nome" required>
+                                <div class="edit_nome_categoria">
+                                    
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <label for="Descrição" class="form-label">Descrição</label>
