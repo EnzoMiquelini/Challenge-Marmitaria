@@ -17,11 +17,15 @@
         <h1 class="text-center mt-5">Categoria de Alimentos</h1>
         <div class="botoes mb-5">
             <a href="index.php" class="btn btn-primary" style="width: 15%">Voltar</a>
-            <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
             <a href="estoque.php" class="btn btn-outline-primary w-25">Estoque</a>
         </div>
         <table class="table table-striped table-hover col-sm-8 border">
             <thead>
+                <tr>
+                    <td colspan="2">
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
+                    </td>
+                </tr>
                 <tr>
                     <th colspan="2">Nome Categoria</th>
                 </tr>
@@ -60,14 +64,17 @@
             </div>
         </div>
 
-
-
+        <?php 
+            require 'conecta.php'
+            
+        ?>
+        
         <!-- Modal -->
         <div class="modal fade" id="editar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar</h1>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Categoria</h1>
                     </div>
                     <form method="post">
                         <div class="modal-body">
@@ -96,14 +103,14 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Categoria</h1>
                 </div>
                 <div class="modal-body">
                     <p>Deseja realmente excluir essa categoria ?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" class="btn btn-primary">Excluir</button>
+                    <button type="button" id="excluir_categoria" class="btn btn-danger">Excluir</button>
                 </div>
                 </div>
             </div>
