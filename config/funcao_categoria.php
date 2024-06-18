@@ -27,9 +27,9 @@
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
-            echo json_encode('Categoria Salva com Sucesso');
+            echo json_encode('Salvo com Sucesso');
         }else{
-            echo json_encode('Falha ao Salvar Categoria');
+            echo json_encode('Falha ao Salvar');
         }
     }
 

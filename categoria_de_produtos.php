@@ -64,10 +64,6 @@
             </div>
         </div>
 
-        <?php 
-            require 'conecta.php'
-            
-        ?>
         
         <!-- Modal -->
         <div class="modal fade" id="editar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
