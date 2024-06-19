@@ -3,17 +3,17 @@
 
     if(isset($_POST['action'])){
         if($_POST['action'] == 'inserir'){
-            cadastrarCategoria();
+            cadastrarProduto();
         }else if($_POST['action'] == 'ler'){
-            lerCategoria();
+            lerProduto();
         }else if($_POST['action'] == 'editar'){
-            editarCategoria();
+            editarProduto();
         }else if($_POST['action'] == 'excluir'){
-            excluirCategoria();
+            excluirProduto();
         }
     };
 
-    function cadastrarCategoria(){
+    function cadastrarProduto(){
 
         include 'conecta.php';
 
@@ -34,16 +34,17 @@
     }
 
 
-    function lerCategoria(){
+    function lerProduto(){
         
         include 'conecta.php';
-        if(isset($_POST['id_categoria'])){
-            $id_categoria = $_POST['id_categoria'];
-            $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos WHERE id_categoria =' . $id_categoria );
+        
+        if(isset($_POST['id_produto'])){
+            $id_produto = $_POST['id_produto'];
+            $stmt = $pdo->prepare('SELECT * FROM produto WHERE id_produto =' . $id_produto);
             $stmt->execute();
         }else{
             
-        $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos');
+        $stmt = $pdo->prepare('SELECT * FROM produto');
         $stmt->execute();
         }
         if ($stmt->rowCount() >= 1){
@@ -54,18 +55,22 @@
     }
 
 
-    function editarCategoria(){
+    function editarProduto(){
         
         include 'conecta.php';
 
-        $id_categoria = $_POST['id_categoria'];
+        $id_produto = $_POST['id_produto'];
         $nome = $_POST['nome'];
-        $descricao = $_POST['descricao'];
+        $categoria = $_POST['id_caegoria'];
+        $qnt_Estoque = $_POST['qnt_Add'];
+        $data_validade = $_POST['validade'];
+        $data_compra = $_POST['compra'];
 
-        var_dump($id_categoria, $nome, $descricao);
-        exit;
 
-        $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome = '.$nome.', descricao = '.$descricao.' WHERE id_categoria = '.$id_categoria);
+        // var_dump($id_categoria, $nome, $descricao);
+        // exit;
+
+        $stmt = $pdo->prepare('UPDATE produto SET nome = '.$nome.', categoria = '.$categoria.', qnt_Estoque = '.$qnt_Estoque.', data_validade = '.$data_validade.', data_compra = '.$data_compra.' WHERE id_produto = '.$id_produto);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
@@ -76,13 +81,13 @@
     }
 
 
-    function excluirCategoria(){
+    function excluirProduto(){
         
         include 'conecta.php'; 
 
-        $id_categoria = $_POST['id_categoria'];
+        $id_produto = $_POST['id_produto'];
         
-        $stmt = $pdo->prepare('DELETE FROM categorias_alimentos WHERE id_categoria = '.$id_categoria);
+        $stmt = $pdo->prepare('DELETE FROM produto WHERE id_produto = '.$id_produto);
         $stmt->execute();
     }
 ?>

@@ -85,7 +85,7 @@
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Cliente</h1>
                     </div>
-                    <form method="post" id="formClientes">
+                    <form method="post">
                         <div class="modal-body">
                             <div class="formulario mt-5 edit_values_cliente">
 
@@ -107,7 +107,7 @@
                 <div class="modal-content">
                     <div id="confirmar_exclusao">
                         <div class="modal-header">
-                            <h1>Excluir cliente</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Cliente</h1>
                         </div>
                         <form method="post">
                             <div class="modal-body">

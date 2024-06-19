@@ -15,30 +15,123 @@
 
     <div class="container">
 
+        <!-- Lista -->
+        <h1 class="text-center mt-5">Estoque</h1>
         
-    <div class="botoes mt-5">
-            <a href="index.php" class="btn btn-primary" style="width: 15%">Voltar</a>
+        <div class="botoes mt-5">
+            <a href="index.php" class="btn btn-primary w-25">Voltar</a>
         </div>
         <table class="table table-striped table-hover col-sm-8 border mt-5">
             <thead>
                 <tr>
-                    <td colspan="6" class="text-center"><a href="produto.php" class="text-decoration-none">Adicionar Produto +</a></td>
+                    <td colspan="6" class="text-center">
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto">Adicionar Produto +</button>
+                    </td>
                 </tr>
                 <tr>
                     <th>Nome Produto</th>
                     <th>Categoria</th>
                     <th>Quantidade</th>
                     <th>Data da Compra</th>
-                    <th>Data de Validade</th>
+                    <th colspan="2">Data de Validade</th>
                 </tr>
             </thead>
-            <tbody class="lista_produtos">
+            <tbody class="lista_estoque">
 
             </tbody>
             
         </table>
 
+            <!-- Modal Adicionar -->
+        <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Produto</h1>
+                    </div>
+                    <form method="post" id="formClientes">
+                        <div class="modal-body">
+                            <div class="formulario mt-5">
+                                    <div class="mb-3">
+                                        <label for="nome" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="nome_produto" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="categoria" class="form-label">Categoria</label>
+                                        <input type="text" class="form-control" id="sobrenome"required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
+                                        <input type="tel" class="form-control" id="qnt_Add" required>
+                                    </div>
+                                    <div class="mb-3 d-flex justify-content-around">
+                                        <div class="w-25">
+                                            <label for="validade" class="form-label">Data de validade</label>
+                                            <input type="date" class="form-control" id="validade" required>
+                                        </div>
+                                        <div class="w-25">
+                                            <label for="compra" class="form-label">Data de compra</label>
+                                        <input type="date" class="form-control" id="compra"  required>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="submit" id="cadastrar_produto" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
+
+        <!-- Modal Editar -->
+        <div class="modal fade w-15" id="editar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Produto</h1>
+                    </div>
+                    <form method="post">
+                        <div class="modal-body">
+                            <div class="formulario mt-5 edit_values_produto">
+
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="submit" id="salvar_edicao_produto" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal Excluir -->
+        <div class="modal fade w-15" id="excluir_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div id="confirmar_exclusao">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Produto</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="formulario mt-5">
+                                <div class="exluir_values_produto">
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" id="excluir_produto" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
     </div>
@@ -57,6 +150,6 @@
     
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="Assets/cliente.js"></script>
+    <script src="Assets/estoque.js"></script>
 </body>
 </html>

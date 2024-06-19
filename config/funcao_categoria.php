@@ -37,6 +37,7 @@
     function lerCategoria(){
         
         include 'conecta.php';
+        
         if(isset($_POST['id_categoria'])){
             $id_categoria = $_POST['id_categoria'];
             $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos WHERE id_categoria =' . $id_categoria );

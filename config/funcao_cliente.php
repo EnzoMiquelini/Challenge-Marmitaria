@@ -40,6 +40,7 @@
     function lerCliente(){
         
         include 'conecta.php';
+        
         if(isset($_POST['id_cliente'])){
             $id_cliente = $_POST['id_cliente'];
             $stmt = $pdo->prepare('SELECT * FROM cliente WHERE id_cliente =' . $id_cliente );

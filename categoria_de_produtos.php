@@ -37,7 +37,7 @@
 
         
 
-        <!-- Modal -->
+        <!-- Modal Cadastrar -->
         <div class="modal fade" id="criar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
@@ -65,7 +65,7 @@
         </div>
 
         
-        <!-- Modal -->
+        <!-- Modal Editar -->
         <div class="modal fade editar" id="editar_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
@@ -89,7 +89,7 @@
 
 
 
-        <!-- Modal -->
+        <!-- Modal Excluir -->
         <div class="modal fade" id="excluir_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">

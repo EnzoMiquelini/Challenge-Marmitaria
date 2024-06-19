@@ -49,7 +49,6 @@ function getCliente(){
     }).done(function(result){
         const lerClientes = result.map(item =>  `
                                                     <tr>
-                                                        <td>${item.id_cliente}</td>
                                                         <td>${item.nome}</td>
                                                         <td>${item.sobrenome}</td>
                                                         <td>${item.telefone}</td>
