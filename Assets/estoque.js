@@ -2,16 +2,33 @@ getEstoque();
 
 
 
+function adicionarProduto(){
+
+    $.ajax({
+        method: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'ler',
+        },
+        dataType: "json",
+    }).done (function (result){
+        const lerCategoria = result.map(item => `
+                                                    <option value="${item.id_categoria}">${item.nome}</option>
+                                                `);
+        $('.categoria_listar').append(lerCategoria)
+    })
+}
+
 $('#cadastrar_produto').click(function (e) { 
     e.preventDefault();
 
     var nome = $('#nome').val();
     var categoria = $('#categoria').val();
-    var qnt_add = $('#qnt_Add').val();
+    var qnt_add = $('#qnt_add').val();
     var validade = $('#validade').val();
     var compra = $('#compra').val();
     
-    if(nome != ('') && categoria != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
+    if(nome != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
         $.ajax({
             method: "post",
             url: "config/funcao_estoque.php",
@@ -19,7 +36,7 @@ $('#cadastrar_produto').click(function (e) {
                 action: 'inserir',
                 nome: nome,
                 categoria: categoria,
-                qnt_Add: qnt_add,
+                qnt_add: qnt_add,
                 validade: validade,
                 compra: compra,
             },
@@ -27,7 +44,7 @@ $('#cadastrar_produto').click(function (e) {
         }).done(function(result){
             $('#nome').val('');
             $('#categoria').val('');
-            $('#qnt_Add').val();
+            $('#qnt_add').val();
             $('#validade').val();
             $('#compra').val();
             console.log(result);
@@ -50,10 +67,10 @@ function getEstoque(){
         },
         dataType: "json",
     }).done(function(result){
-        const lerCategorias = result.map(item =>  `
+        const lerProduto = result.map(item =>  `
                                                     <tr>
                                                         <td><p>${item.nome}</p></td>
-                                                        <td><p>${item.categoria}</p></td>
+                                                        <td><p>${item.id_categoria}</p></td>
                                                         <td><p>${item.qnt_Estoque}</p></td>
                                                         <td><p>${item.data_validade}</p></td>
                                                         <td><p>${item.data_compra}</p></td>
@@ -61,7 +78,7 @@ function getEstoque(){
                                                             <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_produto" onclick="excluirProduto(${item.id_produto})">Excluir</button></td>
                                                     </tr>
                                                     `)
-        $('.lista_estoque').html(lerCategorias.join(''))
+        $('.lista_estoque').html(lerProduto.join(''))
     })
 }
 
@@ -88,7 +105,12 @@ function editarProduto(id_produto) {
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="categoria" class="form-label">Categoria</label>
-                                                                <input type="text" class="form-control" id="sobrenome" value="${item.categoria}" required>
+                                                                <select class="form-select" id="categoria" required>
+                                                                    <option selected></option>
+                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
+                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
+                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
+                                                                </select>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>

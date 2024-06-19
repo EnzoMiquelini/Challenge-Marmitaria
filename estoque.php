@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <td colspan="6" class="text-center">
-                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto">Adicionar Produto +</button>
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto" onclick="adicionarProduto()">Adicionar Produto +</button>
                     </td>
                 </tr>
                 <tr>
@@ -54,15 +54,17 @@
                             <div class="formulario mt-5">
                                     <div class="mb-3">
                                         <label for="nome" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="nome_produto" required>
+                                        <input type="text" class="form-control" id="nome" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="categoria" class="form-label">Categoria</label>
-                                        <input type="text" class="form-control" id="sobrenome"required>
+                                        <select class="form-select categoria_listar" id="categoria" required>
+                                            <option></option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
-                                        <input type="tel" class="form-control" id="qnt_Add" required>
+                                        <input type="tel" class="form-control" id="qnt_add" required>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-around">
                                         <div class="w-25">

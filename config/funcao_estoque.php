@@ -16,14 +16,20 @@
     function cadastrarProduto(){
 
         include 'conecta.php';
-
+        
         $nome = $_POST['nome'];
-        $descricao = $_POST['descricao'];
+        $categoria= $_POST['categoria'];
+        $qnt_Estoque= $_POST['qnt_add'];
+        $validade= $_POST['validade'];
+        $compra= $_POST['compra'];
 
-
-        $stmt = $pdo->prepare('INSERT INTO categorias_alimentos (`nome`, `descricao`)VALUE(:na, :de)');
+        
+        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`)VALUE(:ca, :na, :es, :va :co)');
+        $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
-        $stmt->bindValue(':de', $descricao);
+        $stmt->bindValue(':es', $qnt_Estoque);
+        $stmt->bindValue(':va', $validade);
+        $stmt->bindValue(':co', $compra);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
