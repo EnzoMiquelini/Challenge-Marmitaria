@@ -22,19 +22,21 @@
             <a href="index.php" class="btn btn-primary w-25">Voltar</a>
         </div>
             <table class="table table-striped table-hover col border mt-5 rounded-3">
-                <tr>
-                    <td colspan="5" class="text-center">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Adicionar Cliente +</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th colspan="2">telefone</th>
-                </tr>
-                <tr class="lista_clientes">
+                <thead>
+                    <tr>
+                        <td colspan="5" class="text-center">
+                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Adicionar Cliente +</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th colspan="2">telefone</th>
+                    </tr>
+                </thead>
+                <tbody class="lista_clientes">
 
-                </tr>
+                </tbody>
             </table>
 
         <!-- Modal Adicionar -->
