@@ -13,9 +13,23 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container  d-flex justify-content-between h-100%">
 
+    <!-- <aside> -->
+        <div class="card bg-black text-white align-items-center justify-content-between mt-3" style="width: 20%; height: 96vh; border-right:10px position-fixed ">
+            <div class="d-flex flex-column gap-3 mt-3" style="width: 80%;">
+            <a href="index.php" class="btn btn-secondary enable mt-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
+            <a href="#" class="btn btn-secondary enable" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</a>
+        </div>
+        <div style="width: 80%;">
+                <a href="index.php" class="btn btn-secondary enable mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+        </div>
+        </div>
+        <div class="container mt-5">
+        
+    <!-- </aside> -->
 
+    <h1 class="text-center">Pedido</h1>
 
 
 
