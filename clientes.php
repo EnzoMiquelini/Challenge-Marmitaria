@@ -21,23 +21,24 @@
         <div class="botoes">
             <a href="index.php" class="btn btn-primary w-25">Voltar</a>
         </div>
-            <table class="table table-striped table-hover col border mt-5 rounded-3">
-                <thead>
-                    <tr>
-                        <td colspan="5" class="text-center">
-                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Adicionar Cliente +</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Sobrenome</th>
-                        <th colspan="2">telefone</th>
-                    </tr>
-                </thead>
-                <tbody class="lista_clientes">
+        <table class="table table-striped table-hover col border mt-5 rounded-3">
+            <thead>
+                <tr>
+                    <td colspan="5" class="text-center">
+                    <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Adicionar Cliente +</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th colspan="2">telefone</th>
+                </tr>
+            </thead>
+            <tbody class="lista_clientes">
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
+
 
         <!-- Modal Adicionar -->
         <div class="modal fade w-15" id="adicionar_cliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
@@ -86,7 +87,7 @@
                     </div>
                     <form method="post" id="formClientes">
                         <div class="modal-body">
-                            <div class="formulario mt-5 edit_values_categoria ">
+                            <div class="formulario mt-5 edit_values_cliente">
 
                             </div>
                         </div>
@@ -98,6 +99,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Modal Excluir -->
         <div class="modal fade w-15" id="excluir_cliente" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
@@ -124,9 +126,6 @@
                 </div>
             </div>
         </div>
-
-
-
 
 
     </div>

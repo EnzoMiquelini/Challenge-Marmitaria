@@ -84,10 +84,9 @@
         include 'conecta.php'; 
 
         $id_cliente = $_POST['id_cliente'];
-        var_dump($id_cliente);
-        exit;
-        
+
         $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
         $stmt->execute();
+
     }
 ?>

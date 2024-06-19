@@ -49,6 +49,7 @@ function getCliente(){
     }).done(function(result){
         const lerClientes = result.map(item =>  `
                                                     <tr>
+                                                        <td>${item.id_cliente}</td>
                                                         <td>${item.nome}</td>
                                                         <td>${item.sobrenome}</td>
                                                         <td>${item.telefone}</td>
@@ -77,7 +78,7 @@ function editarCliente(id_cliente) {
             const editarNomeCliente = result.map(item =>  `
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
-                                                                <input type="text" class="form-control" id="nome_cliente" aria-describedby="emailHelp" value="${item.nome}" required>
+                                                                <input type="text" class="form-control" id="nome_cliente" value="${item.nome}" required>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="sobrenome" class="form-label">Sobrenome</label>
@@ -92,7 +93,7 @@ function editarCliente(id_cliente) {
                                                                 <input type="numb" class="form-control" id="CPF-cliente" value="${item.CPF}" required>
                                                             </div>
                                                     `)
-        $('.edit_values_categoria').html(editarNomeCliente.join(''))
+        $('.edit_values_cliente').html(editarNomeCliente.join(''))
     })
 
 
@@ -131,7 +132,7 @@ function editarCliente(id_cliente) {
 function excluirCliente(id_cliente){
     $.ajax({
         method: "post",
-        url: "config/funcao_categoria.php",
+        url: "config/funcao_cliente.php",
         data: {
             action: 'ler',
             id_cliente: id_cliente,
@@ -148,15 +149,17 @@ function excluirCliente(id_cliente){
     
     $('#excluir_cliente').click(function (e) { 
         e.preventDefault();
-                    
+
         $.ajax({
             method: "post",
-            url: "config/funcao_categoria.php",
+            url: "config/funcao_cliente.php",
             data: {
                 action: 'excluir',
                 id_cliente: id_cliente,
             },
             dataType: "json",  
+        }).done (function ( ) {
+            getCliente();
         });
         getCliente();
     });

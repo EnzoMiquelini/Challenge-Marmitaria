@@ -20,16 +20,21 @@
             <a href="index.php" class="btn btn-primary" style="width: 15%">Voltar</a>
         </div>
         <table class="table table-striped table-hover col-sm-8 border mt-5">
-            <tr>
-                <td colspan="6" class="text-center"><a href="cadastro-produto.php" class="text-decoration-none">Adicionar Produto +</a></td>
-            </tr>
-            <tr>
-                <th>Nome Produto</th>
-                <th>Categoria</th>
-                <th>Quantidade</th>
-                <th>Data da Compra</th>
-                <th>Data de Validade</th>
-            </tr>
+            <thead>
+                <tr>
+                    <td colspan="6" class="text-center"><a href="produto.php" class="text-decoration-none">Adicionar Produto +</a></td>
+                </tr>
+                <tr>
+                    <th>Nome Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Data da Compra</th>
+                    <th>Data de Validade</th>
+                </tr>
+            </thead>
+            <tbody class="lista_produtos">
+
+            </tbody>
             
         </table>
 
