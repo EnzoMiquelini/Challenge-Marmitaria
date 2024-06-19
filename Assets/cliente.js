@@ -6,8 +6,8 @@ $('#cadastrar_cliente').click(function (e) {
     e.preventDefault();
 
     var nome = $('#nome').val();
-    var descricao = $('#sobrenome').val();
-    var sobrenome = $('#telefone').val();
+    var sobrenome = $('#sobrenome').val();
+    var telefone = $('#telefone').val();
     var CPF = $('#CPF').val();
     
     if(nome != ('') && sobrenome != ('') && telefone != ('') && CPF != ('')){
@@ -30,7 +30,7 @@ $('#cadastrar_cliente').click(function (e) {
             console.log(result);
             getCliente();
         })
-    }if(nome == ('') || descricao == ('')){
+    }if(nome == ('') || sobrenome == ('') || telefone == ('') || CPF == ('')){
         console.log("Error...")
     }
 });
@@ -138,11 +138,13 @@ function excluirCliente(id_cliente){
         dataType: "json",
         
     }).done (function (result) {
-        const excluirValuesCategoria = result.map(item => `
+        const excluirValuesCliente = result.map(item => `
                                                             <p>Você deseja realmente excluir ${item.nome} ?</p>
                                                         `);
-        $('.excluir_values_cliente').html(excluirValuesCategoria.join(''))
+        $('.excluir_values_cliente').html(excluirValuesCliente.join(''))
     })
+
+    
     $('#excluir_cliente').click(function (e) { 
         e.preventDefault();
                     
@@ -151,7 +153,7 @@ function excluirCliente(id_cliente){
             url: "config/funcao_categoria.php",
             data: {
                 action: 'excluir',
-                id_categoria: id_categoria,
+                id_cliente: id_cliente,
             },
             dataType: "json",  
         });

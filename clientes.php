@@ -14,6 +14,8 @@
 <body>
 
     <div class="container">
+
+
     <!-- Lista -->
         <h1 class="text-center mt-5">Histórico de Clientes</h1>
         <div class="botoes">
@@ -46,20 +48,20 @@
                         <div class="modal-body">
                             <div class="formulario mt-5">
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" aria-describedby="emailHelp" required>
+                                        <label for="nome" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="nome" name="nome" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Sobrenome</label>
-                                        <input type="text" class="form-control" id="sobrenome" name="sobrenome" aria-describedby="emailHelp" required>
+                                        <label for="sobrenome" class="form-label">Sobrenome</label>
+                                        <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Telefone</label>
-                                        <input type="tel" class="form-control" id="tel" name="telefone" aria-describedby="emailHelp" required>
+                                        <label for="telefone" class="form-label">Telefone</label>
+                                        <input type="tel" class="form-control" id="telefone" name="tel" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">CPF</label>
-                                        <input type="numb" class="form-control" id="cpf" name="CPF" aria-describedby="emailHelp" required>
+                                        <label for="CPF" class="form-label">CPF</label>
+                                        <input type="numb" class="form-control" id="CPF" name="cpf" required>
                                     </div>
                             </div>
                         </div>
@@ -106,13 +108,13 @@
                         <form method="post">
                             <div class="modal-body">
                                 <div class="formulario mt-5">
-                                    <div class="excluir_values_clientes">
+                                    <div class="excluir_values_cliente">
 
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" id="excluir_cliente" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button></a>
+                                    <button type="submit" id="excluir_cliente" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                                 </div>
                             </div>
                         </form>
@@ -139,6 +141,10 @@
     
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+      $('#telefone').mask('(00)00000-0000');
+      $('#CPF').mask('000.000.000-00');
+    </script>
     <script src="Assets/cliente.js"></script>
 </body>
 </html>

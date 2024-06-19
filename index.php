@@ -14,12 +14,8 @@
     <div class="container d-flex">
         <aside class="row bg-black text-white align-items-center w-25 rounded-3 mt-3" style=" height: 96vh; ">
             <div class="col d-flex flex-column gap-3" >
-                <a href="novo-pedido.php" class="btn btn-secondary w-100 ">Novo Pedido</a>
-                <!-- <a href="cadastro-produto.php" class="btn btn-secondary w-100 ">Adicionar Produto</a> -->
-                <!-- <a href="cadastro-cliente.php" class="btn btn-secondary w-100 ">Criar Cadastro</a> -->
-                <!-- <a href="" class="btn btn-secondary w-100 ">Adicionar Funcionario</a> -->
+                <a href="pedido.php" class="btn btn-secondary w-100 ">Novo Pedido</a>
                 <a href="Categoria_de_produtos.php" class="btn btn-secondary w-100 ">Categoria de Produtos</a>
-                <a href="historico-estoque-produtos.php" class="btn btn-secondary w-100 ">Estoque</a>
                 <a href="" class="btn btn-secondary w-100 ">Histórico Pedidos</a>
                 <a href="clientes.php" class="btn btn-secondary w-100 ">Histórico Clientes</a>
             </div>

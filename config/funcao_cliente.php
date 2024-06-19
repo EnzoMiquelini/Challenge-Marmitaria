@@ -16,10 +16,10 @@
     function cadastrarCliente(){
 
         include 'conecta.php';
-
+        
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
-        $telefone = $_POST['descricao'];
+        $telefone = $_POST['telefone'];
         $CPF = $_POST['CPF'];
 
         $stmt = $pdo->prepare('INSERT INTO cliente (`nome`, `sobrenome`,`telefone`, `CPF`)VALUE(:na, :so, :te, :cp)');
@@ -27,7 +27,6 @@
         $stmt->bindValue(':so', $sobrenome);
         $stmt->bindValue(':te', $telefone);
         $stmt->bindValue(':cp', $CPF);
-        $stmt->bindValue(':de', $sobrenome);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
@@ -85,6 +84,8 @@
         include 'conecta.php'; 
 
         $id_cliente = $_POST['id_cliente'];
+        var_dump($id_cliente);
+        exit;
         
         $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
         $stmt->execute();
