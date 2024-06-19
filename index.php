@@ -21,7 +21,7 @@
                 <a href="Categoria_de_produtos.php" class="btn btn-secondary w-100 ">Categoria de Produtos</a>
                 <a href="historico-estoque-produtos.php" class="btn btn-secondary w-100 ">Estoque</a>
                 <a href="" class="btn btn-secondary w-100 ">Histórico Pedidos</a>
-                <a href="historico-clientes.php" class="btn btn-secondary w-100 ">Histórico Clientes</a>
+                <a href="clientes.php" class="btn btn-secondary w-100 ">Histórico Clientes</a>
             </div>
             <div>
             </div>

@@ -15,14 +15,14 @@
     <div class="container">
         <!-- Lista -->
         <h1 class="text-center mt-5">Categoria de Alimentos</h1>
-        <div class="botoes mb-5">
-            <a href="index.php" class="btn btn-primary" style="width: 15%">Voltar</a>
+        <div class="d-flex botoes mb-5 mt-5 justify-content-between w-100">
+            <a href="index.php" class="btn btn-primary w-25">Voltar</a>
             <a href="estoque.php" class="btn btn-outline-primary w-25">Estoque</a>
         </div>
         <table class="table table-striped table-hover col-sm-8 border">
             <thead>
                 <tr>
-                    <td colspan="3">
+                    <td colspan="3" class="text-center">
                         <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
                     </td>
                 </tr>
@@ -96,8 +96,10 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Categoria</h1>
                 </div>
-                <div class="exluir_values_categoria">
-                    
+                <div class="modal-body">
+                    <div class="exluir_values_categoria">
+                        
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
