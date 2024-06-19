@@ -59,6 +59,12 @@
         include 'conecta.php';
 
         $id_categoria = $_POST['id_categoria'];
+        $nome = $_POST['nome'];
+        $descricao = $_POST['descricao'];
+
+        var_dump($id_categoria, $nome, $descricao);
+        exit;
+
         $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome = '.$nome.', descricao = '.$descricao.' WHERE id_categoria = '.$id_categoria);
         $stmt->execute();
 
@@ -71,12 +77,12 @@
 
 
     function excluirCategoria(){
+        
+        include 'conecta.php'; 
 
-        include 'conecta.php';
-
-        $id = $_POST['id_categoria'];
-
-        $stmt = $pdo->prepare('DELETE categorias_alimentos WHERE id_categoria = '.$id);
+        $id_categoria = $_POST['id_categoria'];
+        
+        $stmt = $pdo->prepare('DELETE FROM categorias_alimentos WHERE id_categoria = '.$id_categoria);
         $stmt->execute();
     }
 ?>

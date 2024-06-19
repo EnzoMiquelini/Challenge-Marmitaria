@@ -22,13 +22,12 @@
         <table class="table table-striped table-hover col-sm-8 border">
             <thead>
                 <tr>
-                    <td colspan="2">
+                    <td colspan="3">
                         <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
-                        <button type="hidden"  id="editar" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#editar_categoria"></button>
                     </td>
                 </tr>
                 <tr>
-                    <th colspan="2">Nome Categoria</th>
+                    <th colspan="3">Nome Categoria</th>
                 </tr>
             </thead>
             <tbody class="lista_categoria">
@@ -75,20 +74,13 @@
                     </div>
                     <form method="post">
                         <div class="modal-body">
-                            <div class="mb-3">
-                                <label for="Nome" class="form-label">Nome</label>
-                                <div class="edit_nome_categoria">
-                                    
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="Descrição" class="form-label">Descrição</label>
-                                <textarea class="form-control" id="descricao" style="height: 100px" name="descricao" required></textarea>
+                            <div class="edit_values_categoria">
+
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                            <button type="button" id="cadastrar_categoria" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                            <button type="button" id="salvar_edicao_categoria" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
                         </div>
                     </form>
                 </div>
@@ -104,12 +96,12 @@
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Categoria</h1>
                 </div>
-                <div class="modal-body">
-                    <p>Deseja realmente excluir essa categoria ?</p>
+                <div class="exluir_values_categoria">
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" id="excluir_categoria" class="btn btn-danger">Excluir</button>
+                    <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
                 </div>
                 </div>
             </div>
