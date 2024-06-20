@@ -43,7 +43,6 @@ function getCategoria(){
     }).done(function(result){
         const lerCategorias = result.map(item =>  `
                                                     <tr>
-                                                        <td>${id_categoria = item.id_categoria}</td>
                                                         <td class="w-75"><p>${item.nome}</p></td>
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button></td>

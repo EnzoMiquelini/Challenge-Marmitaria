@@ -27,8 +27,8 @@ $('#cadastrar_produto').click(function (e) {
     var qnt_add = $('#qnt_add').val();
     var validade = $('#validade').val();
     var compra = $('#compra').val();
-    
-    if(nome != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
+
+    if(nome != ('') && categoria != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
         $.ajax({
             method: "post",
             url: "config/funcao_estoque.php",
@@ -42,12 +42,14 @@ $('#cadastrar_produto').click(function (e) {
             },
             dataType: "json",
         }).done(function(result){
+            console.log(result);
+            return;
             $('#nome').val('');
             $('#categoria').val('');
-            $('#qnt_add').val();
-            $('#validade').val();
-            $('#compra').val();
-            console.log(result);
+            $('#qnt_add').val('');
+            $('#validade').val('');
+            $('#compra').val('');
+            // console.log(result);
             getEstoque();
         })
     }if(nome == ('') || categoria == ('') || qnt_add == ('') || validade == ('') || compra == ('')){
@@ -96,7 +98,7 @@ function editarProduto(id_produto) {
             },
             dataType: "json",
         }).done(function(result){
-            console.log(result);
+            // console.log(result);
             result; 
             const editarNomeProduto = result.map(item =>  `
                                                             <div class="mb-3">
@@ -148,7 +150,7 @@ function editarProduto(id_produto) {
                     },
                     dataType: "json",
             }).done(function(result){
-                console.log(result[0]);
+                // console.log(result[0]);
                 getEstoque();
             })
         });

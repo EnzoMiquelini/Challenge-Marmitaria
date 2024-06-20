@@ -22,7 +22,6 @@
         $qnt_Estoque= $_POST['qnt_add'];
         $validade= $_POST['validade'];
         $compra= $_POST['compra'];
-
         
         $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`)VALUE(:ca, :na, :es, :va :co)');
         $stmt->bindValue(':ca', $categoria);
@@ -31,7 +30,7 @@
         $stmt->bindValue(':va', $validade);
         $stmt->bindValue(':co', $compra);
         $stmt->execute();
-
+        
         if ($stmt->rowCount() >= 1){
             echo json_encode('Salvo com Sucesso');
         }else{

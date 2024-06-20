@@ -27,10 +27,10 @@
             <div class="row text-center mt-5 gap-3" >
                 <div class="h1">Sabores do Bem</div>
                     <form class="col gap-3" role="search">
-                        <div class="d-flex gap-3 justify-content-center">
-                            <input class="form-control w-50" type="search" placeholder="Pesquisar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Enviar</button>
-                        </div>
+                        <!-- <div class="d-flex gap-3 justify-content-center"> -->
+                            <!-- <input class="form-control w-50" type="search" placeholder="Pesquisar" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Enviar</button> -->
+                        <!-- </div> -->
                     </form>
                 </div>
             <div class="mt-5">

@@ -19,7 +19,7 @@
         <h1 class="text-center mt-5">Estoque</h1>
         
         <div class="botoes mt-5">
-            <a href="index.php" class="btn btn-primary w-25">Voltar</a>
+            <a href="categoria_de_produtos.php" class="btn btn-primary w-25">Voltar</a>
         </div>
         <table class="table table-striped table-hover col-sm-8 border mt-5">
             <thead>
