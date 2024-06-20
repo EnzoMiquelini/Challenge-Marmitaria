@@ -32,7 +32,7 @@
             </thead>
             <tbody class="lista_categoria">
 
-            </tbpdy>
+            </tbody>
         </table>
 
         
@@ -56,7 +56,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                             <button type="button" id="cadastrar_categoria" class="btn btn-primary" data-bs-dismiss="modal">Criar</button>
                         </div>
                     </form>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                             <button type="button" id="salvar_edicao_categoria" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
                         </div>
                     </form>
@@ -102,7 +102,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <a class="btn btn-secondary" data-bs-dismiss="modal">Voltar</a>
                     <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
                 </div>
                 </div>
@@ -125,7 +125,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     
     <script src="Assets/jQuery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="Assets/categoria.js"></script>
 </body>
 </html>

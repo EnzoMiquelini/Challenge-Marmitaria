@@ -3,17 +3,17 @@
 
     if(isset($_POST['action'])){
         if($_POST['action'] == 'inserir'){
-            cadastrarProduto();
+            cadastrarPedido();
         }else if($_POST['action'] == 'ler'){
-            lerProduto();
-        }else if($_POST['action'] == 'editar'){
-            editarProduto();
+            lerPedido();
         }else if($_POST['action'] == 'excluir'){
-            excluirProduto();
+            excluirPedido();
         }
     };
 
-    function cadastrarProduto(){
+
+    
+    function cadastrarPedido(){
 
         include 'conecta.php';
         
@@ -39,7 +39,8 @@
     }
 
 
-    function lerProduto(){
+
+    function lerPedido(){
         
         include 'conecta.php';
         
@@ -60,38 +61,8 @@
     }
 
 
-    function editarProduto(){
-        
-        include 'conecta.php';
 
-        $id_produto = $_POST['id_produto'];
-        $categoria = $_POST['id_caegoria'];
-        $nome = $_POST['nome'];
-        $qnt_Estoque = $_POST['qnt_Add'];
-        $data_validade = $_POST['validade'];
-        $data_compra = $_POST['compra'];
-
-
-        // var_dump($id_categoria, $nome, $descricao);
-        // exit;
-
-        $stmt = $pdo->prepare('UPDATE produto SET categoria = :ca, nome = :na, qnt_Estoque = :es, data_validade = :va, data_compra = :co WHERE id_produto = '.$id_produto);
-        $stmt->bindValue(':ca', $categoria);
-        $stmt->bindValue(':na', $nome);
-        $stmt->bindValue(':es', $qnt_Estoque);
-        $stmt->bindValue(':va', $data_validade);
-        $stmt->bindValue(':co', $data_compra);
-        $stmt->execute();
-
-        if ($stmt->rowCount() >= 1){
-            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-        }else{
-            echo json_encode('Não Encontrado!');
-        }
-    }
-
-
-    function excluirProduto(){
+    function excluirPedido(){
         
         include 'conecta.php'; 
 

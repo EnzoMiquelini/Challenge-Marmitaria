@@ -2,63 +2,6 @@ getEstoque();
 
 
 
-function adicionarProduto(){
-
-    $.ajax({
-        method: "post",
-        url: "config/funcao_categoria.php",
-        data: {
-            action: 'ler',
-        },
-        dataType: "json",
-    }).done (function (result){
-        const lerCategoria = result.map(item => `
-                                                    <option value="${item.id_categoria}">${item.nome}</option>
-                                                `);
-        $('.categoria_listar').append(lerCategoria)
-    })
-}
-
-$('#cadastrar_produto').click(function (e) { 
-    e.preventDefault();
-
-    var nome = $('#nome').val();
-    var categoria = $('#categoria').val();
-    var qnt_add = $('#qnt_add').val();
-    var validade = $('#validade').val();
-    var compra = $('#compra').val();
-
-    if(nome != ('') && categoria != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
-        $.ajax({
-            method: "post",
-            url: "config/funcao_estoque.php",
-            data: {
-                action: 'inserir',
-                nome: nome,
-                categoria: categoria,
-                qnt_add: qnt_add,
-                validade: validade,
-                compra: compra,
-            },
-            dataType: "json",
-        }).done(function(result){
-            console.log(result);
-            return;
-            $('#nome').val('');
-            $('#categoria').val('');
-            $('#qnt_add').val('');
-            $('#validade').val('');
-            $('#compra').val('');
-            // console.log(result);
-            getEstoque();
-        })
-    }if(nome == ('') || categoria == ('') || qnt_add == ('') || validade == ('') || compra == ('')){
-        console.log("Error...")
-    }
-});
-
-
-
 function getEstoque(){
 
     $.ajax({
@@ -83,6 +26,64 @@ function getEstoque(){
         $('.lista_estoque').html(lerProduto.join(''))
     })
 }
+
+
+
+function adicionarProduto(){
+
+    $.ajax({
+        method: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'ler',
+        },
+        dataType: "json",
+    }).done (function (result){
+        const lerCategoria = result.map(item => `
+                                                    <option value="${item.id_categoria}">${item.nome}</option>
+                                                `);
+        $('.categoria_listar').append(lerCategoria)
+    })
+}
+
+
+$('#cadastrar_produto').click(function (e) { 
+    e.preventDefault();
+
+    var nome = $('#nome').val();
+    var categoria = $('#categoria').val();
+    var qnt_add = $('#qnt_add').val();
+    var validade = $('#validade').val();
+    var compra = $('#compra').val();
+
+    if(nome != ('') && categoria != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
+        $.ajax({
+            method: "post",
+            url: "config/funcao_estoque.php",
+            data: {
+                action: 'inserir',
+                nome: nome,
+                categoria: categoria,
+                qnt_add: qnt_add,
+                validade: validade,
+                compra: compra,
+            },
+            dataType: "json",
+        }).done(function(result){
+            // console.log(result);
+            // return;
+            $('#nome').val('');
+            $('#categoria').val('');
+            $('#qnt_add').val('');
+            $('#validade').val('');
+            $('#compra').val('');
+            // console.log(result);
+            getEstoque();
+        })
+    }if(nome == ('') || categoria == ('') || qnt_add == ('') || validade == ('') || compra == ('')){
+        console.log("Error...")
+    }
+});
 
 
 
@@ -138,13 +139,15 @@ function editarProduto(id_produto) {
             
             var nome = $('#nome_produto').val();
             var descricao = $('#descricao_produto').val();
+            var categoria = $('#categoria').val();
         
             $.ajax({
                     method: "post",
                     url: "config/funcao_estoque.php",
                     data: {
                         action: 'editar',
-                        id_categoria: id_categoria,
+                        id_produto: id_produto,
+                        id_categoria: categoria,
                         nome: nome,
                         descicao: descricao,
                     },

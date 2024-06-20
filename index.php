@@ -80,55 +80,20 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-8 mt-4">
-                        <table class="table table-striped table-hover col-sm-8 border rounded-3">
-                            <tr>
-                                <td>ID</td>
-                                <td>Nome Cliente</td>
-                                <td>Data</td>
-                                <td>Hora</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                                <td>5</td>
-                            </tr>
+                        <table class="table table-striped table-hover col-sm-8 border">
+                            <thead>
+                                <tr class="text-center">
+                                    <th colspan="3">Pedidos</th>
+                                </tr>
+                                <tr>
+                                    <th>Nome Cliente</th>
+                                    <th>Data</th>
+                                    <th>Hora</th>
+                                </tr>
+                            </thead>
+                            <tbody id="listar_clientes">
+
+                            </tbody>
                         </table>
                     </div>
                     <div class="col-sm-4 mt-4">
@@ -136,8 +101,8 @@
                             <div class="card-header text-center">
                                 Categorias
                             </div>
-                            <ul class="list-group list-group-flush text-center overflow-y-auto p-0">
-                                <!-- <?=$resCategoria?> -->
+                            <ul class="list-group list-group-flush text-center overflow-y-auto p-0" id="listar_categorias">
+                               
                             </ul>
                         </div>
                     </div>
@@ -159,8 +124,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
-    <script src="js/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="Assets/jquery.js"></script>
+    <script src="Assets/index.js"></script>
   </body>
 </html>

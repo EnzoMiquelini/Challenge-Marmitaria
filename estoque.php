@@ -43,7 +43,7 @@
         </table>
 
             <!-- Modal Adicionar -->
-        <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" id="modalCliente">
+        <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                             <button type="submit" id="cadastrar_produto" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
                         </div>
                     </form>
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                             <button type="submit" id="salvar_edicao_produto" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
                         </div>
                     </form>
@@ -126,7 +126,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                 <button type="submit" id="excluir_produto" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                             </div>
                         </div>
@@ -151,7 +151,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     
     <script src="Assets/jQuery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="Assets/estoque.js"></script>
 </body>
 </html>

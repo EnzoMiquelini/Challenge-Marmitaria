@@ -13,53 +13,72 @@
 </head>
 <body>
 
-    <div class="container  d-flex justify-content-between h-100%">
-
-    <!-- <aside> -->
-        <div class="card bg-black text-white align-items-center justify-content-between mt-3" style="width: 20%; height: 96vh; border-right:10px position-fixed ">
-            <div class="d-flex flex-column gap-3 mt-3" style="width: 80%;">
-            <a href="index.php" class="btn btn-secondary enable mt-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
-            <a href="#" class="btn btn-secondary enable" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</a>
-        </div>
-        <div style="width: 80%;">
-                <a href="index.php" class="btn btn-secondary enable mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
-        </div>
-        </div>
-        <div class="container mt-5">
+    <div class="container">
+        <div class="pedido">
+            <div class="d-flex justify-content-between">
+                <div class="card bg-black text-white align-items-center justify-content-between mt-3" style="width: 20%; height: 96vh; border-right:10px position-fixed ">
+                    <div class="d-flex flex-column gap-3 mt-3" style="width: 80%;">
+                        <button onclick="window.history.back()" class="btn btn-secondary enable mt-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
+                        <button id="continuar_cadastro" class="btn btn-secondary enable" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                    </div>
+                    <div style="width: 80%;">
+                        <a href="index.php" class="btn btn-secondary enable mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                    </div>
+                </div>
+                <div class="container mt-5">
         
-    <!-- </aside> -->
-
-    <h1 class="text-center">Pedido</h1>
-
-    <table class="table table-striped">
-        <thead>
-            <tr>
-            <th scope="col">Nome do Produto</th>
-            <th scope="col" colspan="3">Quantidade</th>
-            </tr>
-        </thead>
-        <tbody class="table-group-divider">
-            <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            </tr>
-            <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            </tr>
-            <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-            </tr>
-        </tbody>
-    </table>
-
+                <h1 class="text-center">Pedido</h1>
+                <div class="text-center">
+                    <button type="button" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto">Adicionar Produto +</button>
+                </div>
+                <table class="table table-striped w-75 mt-5">
+                    <thead>
+                        <tr>
+                        <th scope="col">Nome do Produto</th>
+                        <th scope="col">Quantidade</th>
+                        </tr>
+                    </thead>
+                    <tbody class="lista_produtos">
+        
+                    </tbody>
+                </table>
+                <!-- Modal Adicionar -->
+                <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Produto</h1>
+                            </div>
+                            <form method="post" id="formClientes">
+                                <div class="modal-body">
+                                    <div class="formulario mt-5">
+                                            <div class="mb-3">
+                                                <label for="nome" class="form-label">Nome</label>
+                                                <input type="text" class="form-control" id="nome" required>
+                                            </div>
+                                            <div class="mb-3 content-center">
+                                                <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
+                                                <div class="d-flex w-25 justify-content-between">
+                                                    <button type="button" class="btn btn-primary">+</button>
+                                                    <input type="numb" class="form-control w-50" id="qnt_add" required>
+                                                    <button type="button" class="btn btn-danger">-</button>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                    <button type="submit" id="cadastrar_produto" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     </div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -73,6 +92,10 @@
     
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
-    <script src="Assets/cliente.js"></script>
+    <script>
+      $('#telefone').mask('(00)00000-0000');
+      $('#CPF').mask('000.000.000-00');
+    </script>
+    <script src="Assets/pedido.js"></script>
 </body>
 </html>
