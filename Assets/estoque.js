@@ -1,21 +1,18 @@
 getEstoque();
-
-
-
 function getEstoque(){
 
     $.ajax({
         method: "post",
         url: "config/funcao_estoque.php",
         data: {
-            action: 'ler'
+            action: 'lerProdutoCategoria'
         },
         dataType: "json",
     }).done(function(result){
         const lerProduto = result.map(item =>  `
                                                     <tr>
                                                         <td><p>${item.nome}</p></td>
-                                                        <td><p>${item.id_categoria}</p></td>
+                                                        <td><p>${item.nome_categoria}<p></td>
                                                         <td><p>${item.qnt_Estoque}</p></td>
                                                         <td><p>${item.data_validade}</p></td>
                                                         <td><p>${item.data_compra}</p></td>
@@ -25,6 +22,7 @@ function getEstoque(){
                                                     `)
         $('.lista_estoque').html(lerProduto.join(''))
     })
+    
 }
 
 
@@ -40,7 +38,7 @@ function adicionarProduto(){
         dataType: "json",
     }).done (function (result){
         const lerCategoria = result.map(item => `
-                                                    <option value="${item.id_categoria}">${item.nome}</option>
+                                                    <option value="${item.id_categoria}">${item.nome_categoria}</option>
                                                 `);
         $('.categoria_listar').append(lerCategoria)
     })
@@ -70,14 +68,12 @@ $('#cadastrar_produto').click(function (e) {
             },
             dataType: "json",
         }).done(function(result){
-            // console.log(result);
-            // return;
             $('#nome').val('');
             $('#categoria').val('');
             $('#qnt_add').val('');
             $('#validade').val('');
             $('#compra').val('');
-            // console.log(result);
+            console.log(result);
             getEstoque();
         })
     }if(nome == ('') || categoria == ('') || qnt_add == ('') || validade == ('') || compra == ('')){
@@ -99,8 +95,6 @@ function editarProduto(id_produto) {
             },
             dataType: "json",
         }).done(function(result){
-            // console.log(result);
-            result; 
             const editarNomeProduto = result.map(item =>  `
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
@@ -108,25 +102,23 @@ function editarProduto(id_produto) {
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="categoria" class="form-label">Categoria</label>
-                                                                <select class="form-select" id="categoria" required>
+                                                                <select class="form-select " id="categoria_editar_produto" value="${item.id_categoria}" required>
                                                                     <option selected></option>
-                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
-                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
-                                                                    <option value="${item.id_categoria}">${item.id_categoria}</option>
+                                                                    <option>${item.id_categoria}</option>
                                                                 </select>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
-                                                                <input type="tel" class="form-control" id="qnt_Add" value="${item.qnt_Estoque}" required>
+                                                                <input type="tel" class="form-control" id="qnt_add_edit" value="${item.qnt_Estoque}" required>
                                                             </div>
                                                             <div class="mb-3 d-flex justify-content-around">
                                                                 <div class="w-25">
                                                                     <label for="validade" class="form-label">Data de validade</label>
-                                                                    <input type="date" class="form-control" id="validade" value="${item.data_validade}" required>
+                                                                    <input type="date" class="form-control" id="validade_editar" value="${item.data_validade}" required>
                                                                 </div>
                                                                 <div class="w-25">
                                                                     <label for="compra" class="form-label">Data de compra</label>
-                                                                <input type="date" class="form-control" id="compra" value="${item.data_compra}" required>
+                                                                <input type="date" class="form-control" id="compra_editar" value="${item.data_compra}" required>
                                                                 </div>
                                                             </div>
                                                     `)
@@ -137,9 +129,11 @@ function editarProduto(id_produto) {
         $('#salvar_edicao_produto').click(function (e) { 
             e.preventDefault();
             
+            var id_categoria = $('#categoria_editar_produto').val();
             var nome = $('#nome_produto').val();
-            var descricao = $('#descricao_produto').val();
-            var categoria = $('#categoria').val();
+            var qnt_add = $('#qnt_add_edit').val();
+            var validade = $('#validade_editar').val();
+            var compra = $('#compra_editar').val();
         
             $.ajax({
                     method: "post",
@@ -147,13 +141,20 @@ function editarProduto(id_produto) {
                     data: {
                         action: 'editar',
                         id_produto: id_produto,
-                        id_categoria: categoria,
+                        id_categoria: id_categoria,
                         nome: nome,
-                        descicao: descricao,
+                        qnt_add: qnt_add,
+                        validade: validade,
+                        compra: compra,
                     },
                     dataType: "json",
-            }).done(function(result){
-                // console.log(result[0]);
+            }).done(function(){
+                Swal.fire({
+                    icon: "success",
+                    title: "Salvo Com Sucesso",
+                    showConfirmButton: false,
+                    timer: 2000
+                  });
                 getEstoque();
             })
         });
@@ -194,12 +195,10 @@ function excluirProduto(id_produto){
             },
             dataType: "json",
         }).done (function () { 
+            getCategoriaEstoque();
             getEstoque();
         });
-
         getEstoque();
        
     });
 };
-            
-

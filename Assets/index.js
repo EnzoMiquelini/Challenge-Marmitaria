@@ -12,10 +12,8 @@ function getIndex(){
         },
         dataType: "json",
     }).done (function (result){
-        // console.log(result);
-        // return;
         const lerCategoriaIndex = result.map(item => `
-                                                        <li>${item.nome}</li>
+                                                        <li>${item.nome_categoria}</li>
                                                     `);
         $('#listar_categorias').html(lerCategoriaIndex.join(''));
     });
@@ -34,7 +32,7 @@ function getIndex(){
                                                             <td>${item.data}</td>
                                                             <td>${item.hora}</td>
         `);
-        $('#listar_clientes').html(lerClientesIndex.join(''));
+        $('#listar_pedidos').html(lerClientesIndex.join(''));
     });
     
 }

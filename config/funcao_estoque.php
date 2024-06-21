@@ -6,6 +6,8 @@
             cadastrarProduto();
         }else if($_POST['action'] == 'ler'){
             lerProduto();
+        }else if($_POST['action'] == 'lerProdutoCategoria'){
+        lerProdutoCategoria();
         }else if($_POST['action'] == 'editar'){
             editarProduto();
         }else if($_POST['action'] == 'excluir'){
@@ -23,7 +25,7 @@
         $validade= $_POST['validade'];
         $compra= $_POST['compra'];
         
-        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`)VALUE(:ca, :na, :es, :va :co)');
+        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`) VALUES (:ca, :na, :es, :va, :co)');
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
@@ -32,9 +34,9 @@
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){
-            echo json_encode('Salvo com Sucesso');
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Falha ao Salvar');
+            echo json_encode('Nao Salvo!');
         }
     }
 
@@ -55,7 +57,22 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Não Encontrado!');
+            echo json_encode('Nao Encontrado!');
+        }
+    }
+
+    function lerProdutoCategoria(){
+        
+        include 'conecta.php';
+        
+            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`, `nome_categoria` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria');
+            $stmt->execute();
+            
+        
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrado!');
         }
     }
 
@@ -65,17 +82,14 @@
         include 'conecta.php';
 
         $id_produto = $_POST['id_produto'];
-        $categoria = $_POST['id_caegoria'];
+        $categoria = $_POST['id_categoria'];
         $nome = $_POST['nome'];
-        $qnt_Estoque = $_POST['qnt_Add'];
+        $qnt_Estoque = $_POST['qnt_add'];
         $data_validade = $_POST['validade'];
         $data_compra = $_POST['compra'];
 
 
-        // var_dump($id_categoria, $nome, $descricao);
-        // exit;
-
-        $stmt = $pdo->prepare('UPDATE produto SET categoria = :ca, nome = :na, qnt_Estoque = :es, data_validade = :va, data_compra = :co WHERE id_produto = '.$id_produto);
+        $stmt = $pdo->prepare('UPDATE produto SET id_categoria = :ca, nome = :na, qnt_Estoque = :es, data_validade = :va, data_compra = :co WHERE id_produto = '.$id_produto);
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
@@ -86,7 +100,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Não Encontrado!');
+            echo json_encode('Nao Encontrado!');
         }
     }
 

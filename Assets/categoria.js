@@ -43,7 +43,7 @@ function getCategoria(){
     }).done(function(result){
         const lerCategorias = result.map(item =>  `
                                                     <tr>
-                                                        <td class="w-75"><p>${item.nome}</p></td>
+                                                        <td class="w-75"><p>${item.nome_categoria}</p></td>
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button></td>
                                                     </tr>
@@ -69,7 +69,7 @@ function editarCategoria(id_categoria) {
             const editarNomeCategorias = result.map(item =>  `
                                                         <div class="mb-3">
                                                             <label for="Nome" class="form-label">Nome</label>
-                                                            <input type="text" id="nome_categoria" class="form-control" name="nome" value="${item.nome}" required>
+                                                            <input type="text" id="nome_categoria" class="form-control" name="nome" value="${item.nome_categoria}" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="Descrição" class="form-label">Descrição</label>

@@ -32,9 +32,9 @@
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){
-            echo json_encode('Salvo com Sucesso');
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Falha ao Salvar');
+            echo json_encode('Nao Salvou!');
         }
     }
 
@@ -56,7 +56,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Não Encontrado!');
+            echo json_encode('Nao Encontrado!');
         }
     }
 

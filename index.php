@@ -91,7 +91,7 @@
                                     <th>Hora</th>
                                 </tr>
                             </thead>
-                            <tbody id="listar_clientes">
+                            <tbody id="listar_pedidos">
 
                             </tbody>
                         </table>

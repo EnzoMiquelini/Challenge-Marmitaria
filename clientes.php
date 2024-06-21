@@ -143,7 +143,7 @@
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
-      $('#telefone').mask('(00)00000-0000');
+      $('#telefone').mask('(00) 00000-0000');
       $('#CPF').mask('000.000.000-00');
     </script>
     <script src="Assets/cliente.js"></script>

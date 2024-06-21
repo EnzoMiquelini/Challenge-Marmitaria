@@ -25,23 +25,29 @@
                         <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
                     </div>
                 </div>
-                <div class="container mt-5  justify-content-center">
+                <div class="container mt-5 ">
         
                     <h1 class="text-center">Pedido</h1>
                     <div class="text-center">
                         <button type="button" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto">Adicionar Produto +</button>
                     </div>
-                    <table class="table table-striped w-75 mt-5">
-                        <thead>
-                            <tr>
-                            <th scope="col">Nome do Produto</th>
-                            <th scope="col">Quantidade</th>
-                            </tr>
-                        </thead>
-                        <tbody class="lista_produtos">
-            
-                        </tbody>
-                    </table>
+                    <div class="d-flex justify-content-center">
+                        <table class="table table-striped w-75 mt-5">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nome do Produto</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="lista_produtos">
+                            </tbody>
+                            <tfoot>
+                                <th colspan="3">Valor Total:</th>
+                                <th>5</th>
+                            </tfoot>
+                        </table>
+                    </div>
                     <!-- Modal Adicionar -->
                     <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -59,9 +65,7 @@
                                             <div class="mb-3 content-center">
                                                 <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
                                                 <div class="d-flex w-25 justify-content-between">
-                                                    <button type="button" class="btn btn-primary">+</button>
                                                     <input type="numb" class="form-control w-50" id="qnt_add" value="1" required>
-                                                    <button type="button" class="btn btn-danger">-</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,7 +89,7 @@
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
                     <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
                         <button id="pedido_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="continuar_cadastro" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                        <button id="confirmar_cadastro" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
                     <div style="width: 80%;">
                         <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
@@ -120,6 +124,48 @@
 
         </div>
 
+
+
+
+        <div class="confirm-pedido">
+            <div class="d-flex justify-content-between">
+                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
+                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
+                        <button id="cadastro_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
+                        <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                    </div>
+                    <div style="width: 80%;">
+                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                    </div>
+                </div>
+                <div class="container mt-5">
+                    <h1 class="text-center">Confirmar Pedido</h1>
+
+                    <form method="post" id="formClientes" class="d-flex justify-content-center">
+                            <div class="formulario mt-5 w-75">
+                                <div class="mb-3">
+                                    <label for="nome" class="form-label">Nome</label>
+                                    <input type="text" class="form-control" id="nome" name="nome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sobrenome" class="form-label">Sobrenome</label>
+                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="telefone" class="form-label">Telefone</label>
+                                    <input type="tel" class="form-control" id="telefone" name="tel" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="CPF" class="form-label">CPF</label>
+                                    <input type="numb" class="form-control" id="CPF" name="cpf" required>
+                                </div>
+                            </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
     </div>
 
 
