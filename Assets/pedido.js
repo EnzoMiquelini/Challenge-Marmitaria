@@ -1,29 +1,17 @@
-// $('.pedido').show();
-// $('.cadastro').hide();
+$('.pedido').show();
+$('.cadastro').hide();
 
 
 $('#continuar_cadastro').click(function (e) { 
     e.preventDefault();
     
     
-    $('.pedido').load('cadastro.php')
+    $('.pedido').hide();
+    $('.cadastro').show();
 });
 
 $('#pedido_voltar').click(function (e) { 
     
-    $('.cadastro').load('pedido.php')
+    $('.pedido').show();
+    $('.cadastro').hide();
 });
-
-
-// $('#')
-//     $.ajax({
-//         method: "post",
-//         url: "config/funcao_produtos.php",
-//         data: {
-//             action: 'ler',
-//         },
-//         dataType: "json",
-//     }).done (function (result){
-//         console.log(result);
-//         result;
-//     })
