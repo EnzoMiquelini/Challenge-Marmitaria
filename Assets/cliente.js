@@ -125,9 +125,6 @@ function editarCliente(id_cliente) {
 
 
 
-
-
-
 function excluirCliente(id_cliente){
     $.ajax({
         method: "post",

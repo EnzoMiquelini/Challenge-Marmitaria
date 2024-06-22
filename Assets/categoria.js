@@ -73,7 +73,7 @@ function editarCategoria(id_categoria) {
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="Descrição" class="form-label">Descrição</label>
-                                                            <textarea class="form-control" id="descricao-categoria" style="height: 100px" name="descricao" placeholder="${item.descricao}" value="${item.descicao}" required></textarea>
+                                                            <textarea class="form-control" id="descricao-categoria" style="height: 100px" name="descricao" required>${item.descricao}</textarea>
                                                         </div>
                                                     `)
             $('.edit_values_categoria').html(editarNomeCategorias.join(''))
