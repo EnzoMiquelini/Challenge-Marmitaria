@@ -65,15 +65,15 @@
                                     <div class="mb-3">
                                         <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
                                         <input type="tel" class="form-control" id="qnt_add" required>
-                                    </div>
+                                    </div> 
                                     <div class="mb-3 d-flex justify-content-around">
                                         <div class="w-25">
                                             <label for="validade" class="form-label">Data de validade</label>
-                                            <input type="date" class="form-control" id="validade" required>
+                                            <input type="number" id="data-pagamento" name="data_pagamento" placeholder="(00/00/00)" class="form-control"/>
                                         </div>
-                                        <div class="w-25">
-                                            <label for="compra" class="form-label">Data de compra</label>
-                                        <input type="date" class="form-control" id="compra"  required>
+                                        <div class="w-25 data_Compra_Produto">
+                                            
+                                            <input type="date" class="form-control" id="compra" value="new Date()" required>
                                         </div>
                                     </div>
                             </div>

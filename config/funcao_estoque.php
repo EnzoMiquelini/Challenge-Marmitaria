@@ -36,7 +36,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Salvo!');
+            echo json_encode('Nao Cadastrado');
         }
     }
 
@@ -57,7 +57,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Encontrado');
         }
     }
 
@@ -65,14 +65,14 @@
         
         include 'conecta.php';
         
-            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`, `nome_categoria` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria');
+            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `nome_categoria`, `qnt_Estoque`, `data_validade`, `data_compra` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria');
             $stmt->execute();
             
         
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Encontrado');
         }
     }
 
@@ -100,7 +100,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Editado');
         }
     }
 

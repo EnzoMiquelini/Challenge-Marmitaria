@@ -2,6 +2,29 @@ getCategoria();
 
 
 
+function getCategoria(){
+
+    $.ajax({
+        method: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'ler'
+        },
+        dataType: "json",
+    }).done(function(result){
+        const lerCategorias = result.map(item =>  `
+                                                    <tr>
+                                                        <td class="w-75"><p>${item.nome_categoria}</p></td>
+                                                        <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
+                                                        <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button></td>
+                                                    </tr>
+                                                    `)
+        $('.lista_categoria').html(lerCategorias.join(''))
+    })
+}
+
+
+
 $('#cadastrar_categoria').click(function (e) { 
     e.preventDefault();
 
@@ -31,26 +54,6 @@ $('#cadastrar_categoria').click(function (e) {
 
 
 
-function getCategoria(){
-
-    $.ajax({
-        method: "post",
-        url: "config/funcao_categoria.php",
-        data: {
-            action: 'ler'
-        },
-        dataType: "json",
-    }).done(function(result){
-        const lerCategorias = result.map(item =>  `
-                                                    <tr>
-                                                        <td class="w-75"><p>${item.nome_categoria}</p></td>
-                                                        <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
-                                                        <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button></td>
-                                                    </tr>
-                                                    `)
-        $('.lista_categoria').html(lerCategorias.join(''))
-    })
-}
 
 
 
@@ -93,11 +96,16 @@ function editarCategoria(id_categoria) {
                         action: 'editar',
                         id_categoria: id_categoria,
                         nome: nome,
-                        descicao: descricao,
+                        descricao: descricao,
                     },
                     dataType: "json",
-            }).done(function(result){
-                console.log(result[0]);
+            }).done(function(){
+                Swal.fire({
+                    icon: "success",
+                    title: "Salvo Com Sucesso",
+                    showConfirmButton: false,
+                    timer: 2000
+                });
                 getCategoria();
             })
         });

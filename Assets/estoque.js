@@ -1,4 +1,7 @@
 getEstoque();
+
+
+
 function getEstoque(){
 
     $.ajax({
@@ -20,10 +23,9 @@ function getEstoque(){
                                                             <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_produto" onclick="excluirProduto(${item.id_produto})">Excluir</button></td>
                                                     </tr>
                                                     `)
-        $('.lista_estoque').html(lerProduto.join(''))
-    })
-    
-}
+        $('.lista_estoque').html(lerProduto.join(''));
+    });
+};
 
 
 
@@ -33,16 +35,22 @@ function adicionarProduto(){
         method: "post",
         url: "config/funcao_categoria.php",
         data: {
-            action: 'ler',
+            action: 'ler'
         },
         dataType: "json",
     }).done (function (result){
         const lerCategoria = result.map(item => `
                                                     <option value="${item.id_categoria}">${item.nome_categoria}</option>
                                                 `);
-        $('.categoria_listar').append(lerCategoria)
-    })
-}
+        $('.categoria_listar').append(lerCategoria);
+    });
+
+    const data = new Date();
+    const dia = data.getDate();
+    const mes = data.getMonth();
+    const ano = data.getFullYear();
+    $('.data_Compra_Produto').html('<label for="compra" class="form-label">Data de compra</label> <input type="number" id="data-pagamento" name="data_pagamento" class="form-control" value="' + dia + '/' + mes + '/' + ano + '" required>')
+};
 
 
 $('#cadastrar_produto').click(function (e) { 
@@ -64,7 +72,7 @@ $('#cadastrar_produto').click(function (e) {
                 categoria: categoria,
                 qnt_add: qnt_add,
                 validade: validade,
-                compra: compra,
+                compra: compra
             },
             dataType: "json",
         }).done(function(result){
@@ -73,11 +81,31 @@ $('#cadastrar_produto').click(function (e) {
             $('#qnt_add').val('');
             $('#validade').val('');
             $('#compra').val('');
-            console.log(result);
+            if(result != ('Nao Cadastrado')){
+                Swal.fire({
+                    icon: "success",
+                    title: "Produto Cadastrado Com Sucesso",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Falha ao Adicionar Produto",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
             getEstoque();
-        })
+        });
     }if(nome == ('') || categoria == ('') || qnt_add == ('') || validade == ('') || compra == ('')){
         console.log("Error...")
+        Swal.fire({
+            icon: "error",
+            title: "Falha ao Adicionar Produto",
+            showConfirmButton: false,
+            timer: 1500
+        });
     }
 });
 
@@ -91,7 +119,7 @@ function editarProduto(id_produto) {
             url: "config/funcao_estoque.php",
             data: {
                 action: 'ler',
-                id_produto: id_produto,
+                id_produto: id_produto
             },
             dataType: "json",
         }).done(function(result){
@@ -145,16 +173,25 @@ function editarProduto(id_produto) {
                         nome: nome,
                         qnt_add: qnt_add,
                         validade: validade,
-                        compra: compra,
+                        compra: compra
                     },
                     dataType: "json",
-            }).done(function(){
-                Swal.fire({
-                    icon: "success",
-                    title: "Salvo Com Sucesso",
-                    showConfirmButton: false,
-                    timer: 2000
-                  });
+            }).done(function(result){
+                if(result != ('Nao Editado')){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Editado Com Sucesso",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Falha ao Editar",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
                 getEstoque();
             })
         });
@@ -173,7 +210,7 @@ function excluirProduto(id_produto){
         url: "config/funcao_estoque.php",
         data: {
             action: 'ler',
-            id_produto: id_produto,
+            id_produto: id_produto
         },
         dataType: "json",
         
@@ -191,7 +228,7 @@ function excluirProduto(id_produto){
             url: "config/funcao_estoque.php",
             data: {
                 action: 'excluir',
-                id_produto: id_produto,
+                id_produto: id_produto
             },
             dataType: "json",
         }).done (function () { 
