@@ -21,7 +21,7 @@
         $descricao = $_POST['descricao'];
 
 
-        $stmt = $pdo->prepare('INSERT INTO categorias_alimentos (`nome`, `descricao`)VALUE(:na, :de)');
+        $stmt = $pdo->prepare('INSERT INTO categorias_alimentos (`nome_categoria`, `descricao`)VALUE(:na, :de)');
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':de', $descricao);
         $stmt->execute();
@@ -29,7 +29,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Salvou!');
+            echo json_encode('Nao Cadastrou');
         }
     }
 
@@ -50,7 +50,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Encontrado');
         }
     }
 
@@ -63,7 +63,8 @@
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
 
-
+        var_dump($_POST);
+        exit;
         $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome_categoria = :na, descricao = :de WHERE id_categoria = '.$id_categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':de', $descricao);
@@ -72,7 +73,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Editado');
         }
     }
 

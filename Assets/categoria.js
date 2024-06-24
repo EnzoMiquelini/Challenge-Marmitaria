@@ -44,10 +44,30 @@ $('#cadastrar_categoria').click(function (e) {
         }).done(function(result){
             $('#nome').val('');
             $('#descricao').val('');
-            console.log(result);
+            if(result != ('Nao Cadastrou')){
+                Swal.fire({
+                    icon: "success",
+                    title: "Cadastrado Com Sucesso",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }else{
+                Swal.fire({
+                    icon: "error",
+                    title: "Falha ao Cadastrar",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
             getCategoria();
         })
     }if(nome == ('') || descricao == ('')){
+        Swal.fire({
+            icon: "error",
+            title: "Falha ao Cadastrar",
+            showConfirmButton: false,
+            timer: 1500
+        })
         console.log("Error...")
     }
 });
@@ -65,7 +85,7 @@ function editarCategoria(id_categoria) {
             url: "config/funcao_categoria.php",
             data: {
                 action: 'ler',
-                id_categoria: id_categoria,
+                id_categoria: id_categoria
             },
             dataType: "json",
         }).done(function(result){
@@ -76,7 +96,7 @@ function editarCategoria(id_categoria) {
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="Descrição" class="form-label">Descrição</label>
-                                                            <textarea class="form-control" id="descricao-categoria" style="height: 100px" name="descricao" required>${item.descricao}</textarea>
+                                                            <textarea class="form-control" id="descricao_categoria" style="height: 100px" name="descricao" required>${item.descricao}</textarea>
                                                         </div>
                                                     `)
             $('.edit_values_categoria').html(editarNomeCategorias.join(''))
@@ -87,7 +107,7 @@ function editarCategoria(id_categoria) {
             e.preventDefault();
             
             var nome = $('#nome_categoria').val();
-            var descricao = $('#descricao-categoria').val();
+            var descricao = $('#descricao_categoria').val();
         
             $.ajax({
                     method: "post",
@@ -96,18 +116,28 @@ function editarCategoria(id_categoria) {
                         action: 'editar',
                         id_categoria: id_categoria,
                         nome: nome,
-                        descricao: descricao,
+                        descricao: descricao
                     },
                     dataType: "json",
-            }).done(function(){
-                Swal.fire({
-                    icon: "success",
-                    title: "Salvo Com Sucesso",
-                    showConfirmButton: false,
-                    timer: 2000
-                });
+            }).done(function(result){
+                console.log(result)
+                if(result == ('')){
+                    Swal.fire({
+                        icon: "success",
+                        title: "Editado Com Sucesso",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }else{
+                    Swal.fire({
+                        icon: "error",
+                        title: "Falha ao Editar",
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
                 getCategoria();
-            })
+            });
         });
 }
 
@@ -122,7 +152,7 @@ function excluirCategoria(id_categoria){
         url: "config/funcao_categoria.php",
         data: {
             action: 'ler',
-            id_categoria: id_categoria,
+            id_categoria: id_categoria
         },
         dataType: "json",
         
@@ -140,10 +170,17 @@ function excluirCategoria(id_categoria){
             url: "config/funcao_categoria.php",
             data: {
                 action: 'excluir',
-                id_categoria: id_categoria,
+                id_categoria: id_categoria
             },
             dataType: "json",  
-        });
+        }).done (function () {
+            Swal.fire({
+                icon: "success",
+                title: "Cadastrado Com Sucesso",
+                showConfirmButton: false,
+                timer: 1500
+            })
+         })
         getCategoria();
     });
 };

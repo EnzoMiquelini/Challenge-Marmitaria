@@ -68,12 +68,12 @@
                                     </div> 
                                     <div class="mb-3 d-flex justify-content-around">
                                         <div class="w-25">
-                                            <label for="validade" class="form-label">Data de validade</label>
-                                            <input type="number" id="data-pagamento" name="data_pagamento" placeholder="(00/00/00)" class="form-control"/>
+                                            <label for="validade" class="form-label date">Data de validade</label>
+                                            <input type="number" id="validade" name="validade" placeholder="00/00/0000" class="form-control"/>
                                         </div>
                                         <div class="w-25 data_Compra_Produto">
                                             
-                                            <input type="date" class="form-control" id="compra" value="new Date()" required>
+                                            
                                         </div>
                                     </div>
                             </div>
@@ -152,6 +152,11 @@
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Assets/jQuery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+      $('#validade').mask('99/99/9999');
+      $('#compra').mask('99/99/9999');
+    </script>
     <script src="Assets/estoque.js"></script>
 </body>
 </html>

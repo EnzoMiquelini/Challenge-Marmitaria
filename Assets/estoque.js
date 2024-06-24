@@ -49,7 +49,7 @@ function adicionarProduto(){
     const dia = data.getDate();
     const mes = data.getMonth();
     const ano = data.getFullYear();
-    $('.data_Compra_Produto').html('<label for="compra" class="form-label">Data de compra</label> <input type="number" id="data-pagamento" name="data_pagamento" class="form-control" value="' + dia + '/' + mes + '/' + ano + '" required>')
+    $('.data_Compra_Produto').html('<label for="compra" class="form-label">Data de compra</label> <input type="number" id="compra" nome="data" class="form-control" value="' + dia + '/' + mes + '/' + ano + '" placeholder="' + dia + '/'  + mes + '/' + ano + '" required>')
 };
 
 
@@ -61,6 +61,9 @@ $('#cadastrar_produto').click(function (e) {
     var qnt_add = $('#qnt_add').val();
     var validade = $('#validade').val();
     var compra = $('#compra').val();
+
+    console.log(nome, categoria, qnt_add, validade, compra)
+    return
 
     if(nome != ('') && categoria != ('') && qnt_add != ('') && validade != ('') && compra != ('')){
         $.ajax({
