@@ -18,6 +18,7 @@
     function cadastrarProduto(){
 
         include 'conecta.php';
+
         
         $nome = $_POST['nome'];
         $categoria= $_POST['categoria'];
@@ -100,7 +101,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Editado');
+            echo json_encode('Editado');
         }
     }
 

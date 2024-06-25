@@ -64,12 +64,12 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
-                                        <input type="tel" class="form-control" id="qnt_add" required>
+                                        <input type="number" class="form-control" id="qnt_add" required>
                                     </div> 
                                     <div class="mb-3 d-flex justify-content-around">
                                         <div class="w-25">
                                             <label for="validade" class="form-label date">Data de validade</label>
-                                            <input type="number" id="validade" name="validade" placeholder="00/00/0000" class="form-control"/>
+                                            <input type="text" id="validade" name="validade" placeholder="00/00/0000" class="form-control"/>
                                         </div>
                                         <div class="w-25 data_Compra_Produto">
                                             
