@@ -23,15 +23,17 @@
         $nome = $_POST['nome'];
         $categoria= $_POST['categoria'];
         $qnt_Estoque= $_POST['qnt_add'];
-        $validade= $_POST['validade'];
-        $compra= $_POST['compra'];
+        $validade= new DateTime(strtotime($_POST['validade']));
+        $compra= new DateTime(strtotime($_POST['compra']));
+        // var_dump($validade, $compra);
+        // exit;
         
         $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`) VALUES (:ca, :na, :es, :va, :co)');
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
-        $stmt->bindValue(':va', $validade);
-        $stmt->bindValue(':co', $compra);
+        $stmt->bindValue(':va', $validade->format('Y-m-d'));
+        $stmt->bindValue(':co', $compra->format('Y-m-d'));
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){
@@ -56,7 +58,13 @@
         $stmt->execute();
         }
         if ($stmt->rowCount() >= 1){
-            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            // $Jaozin = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // foreach ($Jaozin as $Jaozin){
+            //     // var_dump($Jaozin['data_validade']);
+                
+            // }
+            echo json_encode ($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
             echo json_encode('Nao Encontrado');
         }
@@ -89,7 +97,7 @@
         $data_validade = $_POST['validade'];
         $data_compra = $_POST['compra'];
 
-
+        var_dump($id_produto);
         $stmt = $pdo->prepare('UPDATE produto SET id_categoria = :ca, nome = :na, qnt_Estoque = :es, data_validade = :va, data_compra = :co WHERE id_produto = '.$id_produto);
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);

@@ -1,7 +1,3 @@
-getCategoria();
-
-
-
 function getCategoria(){
 
     $.ajax({
@@ -23,6 +19,8 @@ function getCategoria(){
     })
 }
 
+getCategoria();
+
 
 
 $('#cadastrar_categoria').click(function (e) { 
@@ -31,54 +29,49 @@ $('#cadastrar_categoria').click(function (e) {
     var nome = $('#nome').val();
     var descricao = $('#descricao').val();
     
-    if(nome != ('') && descricao != ('')){
-        $.ajax({
-            method: "post",
-            url: "config/funcao_categoria.php",
-            data: {
-                action: 'inserir',
-                nome: nome,
-                descricao: descricao,
-            },
-            dataType: "json",
-        }).done(function(result){
-            $('#nome').val('');
-            $('#descricao').val('');
-            if(result != ('Nao Cadastrou')){
-                Swal.fire({
-                    icon: "success",
-                    title: "Cadastrado Com Sucesso",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }else{
-                Swal.fire({
-                    icon: "error",
-                    title: "Falha ao Cadastrar",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-            }
-            getCategoria();
-        })
-    }if(nome == ('') || descricao == ('')){
+    if(nome == ('') || descricao == ('')){
         Swal.fire({
             icon: "error",
             title: "Falha ao Cadastrar",
             showConfirmButton: false,
             timer: 1500
         })
-        console.log("Error...")
+        return;
     }
+    $.ajax({
+        method: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'inserir',
+            nome: nome,
+            descricao: descricao,
+        },
+        dataType: "json",
+    }).done(function(result){
+        $('#nome').val('');
+        $('#descricao').val('');
+        if(result != ('Nao Cadastrou')){
+            Swal.fire({
+                icon: "success",
+                title: "Cadastrado Com Sucesso",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Falha ao Cadastrar",
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+        getCategoria();
+    })
 });
 
 
 
-
-
-
 function editarCategoria(id_categoria) {  
-
 
     $.ajax({
             method: "post",
@@ -90,6 +83,7 @@ function editarCategoria(id_categoria) {
             dataType: "json",
         }).done(function(result){
             const editarNomeCategorias = result.map(item =>  `
+                                                        <input type="hidden" value="${item.id_categoria}" id="id_categoria"></input>
                                                         <div class="mb-3">
                                                             <label for="Nome" class="form-label">Nome</label>
                                                             <input type="text" id="nome_categoria" class="form-control" name="nome" value="${item.nome_categoria}" required>
@@ -102,46 +96,46 @@ function editarCategoria(id_categoria) {
             $('.edit_values_categoria').html(editarNomeCategorias.join(''))
         })
 
-
-        $('#salvar_edicao_categoria').click(function (e) { 
-            e.preventDefault();
-            
-            var nome = $('#nome_categoria').val();
-            var descricao = $('#descricao_categoria').val();
-        
-            $.ajax({
-                    method: "post",
-                    url: "config/funcao_categoria.php",
-                    data: {
-                        action: 'editar',
-                        id_categoria: id_categoria,
-                        nome: nome,
-                        descricao: descricao
-                    },
-                    dataType: "json",
-            }).done(function(result){
-                console.log(result)
-                if(result == ('')){
-                    Swal.fire({
-                        icon: "success",
-                        title: "Editado Com Sucesso",
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }else{
-                    Swal.fire({
-                        icon: "error",
-                        title: "Falha ao Editar",
-                        showConfirmButton: false,
-                        timer: 1500
-                    })
-                }
-                getCategoria();
-            });
-        });
 }
+    
+    
+$('#salvar_edicao_categoria').click(function (e) { 
+    e.preventDefault();
+    
+    var id_categoria = $('#id_categoria').val();
+    var nome = $('#nome_categoria').val();
+    var descricao = $('#descricao_categoria').val();
 
-
+    $.ajax({
+            method: "post",
+            url: "config/funcao_categoria.php",
+            data: {
+                action: 'editar',
+                id_categoria: id_categoria,
+                nome: nome,
+                descricao: descricao
+            },
+            dataType: "json",
+    }).done(function(result){
+        console.log(result)
+        if(result == ('Nao Editado')){
+            Swal.fire({
+                icon: "error",
+                title: "Falha ao Editar",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        }
+        Swal.fire({
+            icon: "success",
+            title: "Editado Com Sucesso",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        getCategoria();
+    });
+});
 
 
 
@@ -158,31 +152,34 @@ function excluirCategoria(id_categoria){
         
     }).done (function (result) {
         const excluirValuesCategoria = result.map(item => `
-                                                            <p class="id_values_categoria">Deseja realmente excluir a categoria ${item.nome}?</p>
+                                                            <input type="hidden" id="id_categoria" value="${item.id_categoria}"
+                                                            <p class="id_values_categoria">Deseja realmente excluir a categoria ${item.nome_categoria}?</p>
                                                         `);
         $('.exluir_values_categoria').html(excluirValuesCategoria.join(''))
     })
-    $('#excluir_categoria').click(function (e) { 
-        e.preventDefault();
-                    
-        $.ajax({
-            method: "post",
-            url: "config/funcao_categoria.php",
-            data: {
-                action: 'excluir',
-                id_categoria: id_categoria
-            },
-            dataType: "json",  
-        }).done (function () {
-            Swal.fire({
-                icon: "success",
-                title: "Cadastrado Com Sucesso",
-                showConfirmButton: false,
-                timer: 1500
-            })
-         })
-        getCategoria();
-    });
 };
-            
 
+
+$('#excluir_categoria').click(function (e) { 
+    e.preventDefault();
+
+    var id_categoria = $('#id_categoria').val();
+                
+    $.ajax({
+        method: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'excluir',
+            id_categoria: id_categoria
+        },
+        dataType: "json",  
+    }).done (function ( result ) {
+        Swal.fire({
+            icon: "success",
+            title: "Cadastrado Com Sucesso",
+            showConfirmButton: false,
+            timer: 1500
+        })
+     })
+    getCategoria();
+});

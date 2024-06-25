@@ -50,8 +50,8 @@
             $stmt->execute();
         }else{
             
-        $stmt = $pdo->prepare('SELECT * FROM produto');
-        $stmt->execute();
+        // $stmt = $pdo->prepare('SELECT * FROM produto');
+        // $stmt->execute();
         }
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));

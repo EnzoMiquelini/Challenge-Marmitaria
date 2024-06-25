@@ -77,8 +77,8 @@ $('#cadastrar_produto').click(function (e) {
             },
             dataType: "json",
         }).done(function(result){
-            console.log(result)
-            result
+            // console.log(result)
+            // return 
             $('#nome').val('');
             $('#categoria').val('');
             $('#qnt_add').val('');
@@ -126,7 +126,9 @@ function editarProduto(id_produto) {
             },
             dataType: "json",
         }).done(function(result){
+            console.log(result)
             const editarNomeProduto = result.map(item =>  `
+                                                            <input id="produto_editar" type="hidden" value="${item.id_produto}"></input>
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
                                                                 <input type="text" class="form-control" id="nome_produto" value="${item.nome}" required>
@@ -157,51 +159,52 @@ function editarProduto(id_produto) {
         })
 
 
-        $('#salvar_edicao_produto').click(function (e) { 
-            e.preventDefault();
-            
-            var id_categoria = $('#categoria_editar_produto').val();
-            var nome = $('#nome_produto').val();
-            var qnt_add = $('#qnt_add_edit').val();
-            var validade = $('#validade_editar').val();
-            var compra = $('#compra_editar').val();
-        
-            $.ajax({
-                    method: "post",
-                    url: "config/funcao_estoque.php",
-                    data: {
-                        action: 'editar',
-                        id_produto: id_produto,
-                        id_categoria: id_categoria,
-                        nome: nome,
-                        qnt_add: qnt_add,
-                        validade: validade,
-                        compra: compra
-                    },
-                    dataType: "json",
-            }).done(function(result){
-                if(result == ('Editado')){
-                    Swal.fire({
-                        icon: "success",
-                        title: "Editado Com Sucesso",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }else{
-                    Swal.fire({
-                        icon: "error",
-                        title: "Falha ao Editar",
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-                getEstoque();
-            })
-        });
-}
+    }
+    
+    
+    
+$('#salvar_edicao_produto').click(function (e) { 
+    e.preventDefault();
+    
+    var id_produto = $('#produto_editar').val();
+    var id_categoria = $('#categoria_editar_produto').val();
+    var nome = $('#nome_produto').val();
+    var qnt_add = $('#qnt_add_edit').val();
+    var validade = $('#validade_editar').val();
+    var compra = $('#compra_editar').val();
 
-
-
+    $.ajax({
+            method: "post",
+            url: "config/funcao_estoque.php",
+            data: {
+                action: 'editar',
+                id_produto: id_produto,
+                id_categoria: id_categoria,
+                nome: nome,
+                qnt_add: qnt_add,
+                validade: validade,
+                compra: compra
+            },
+            dataType: "json",
+    }).done(function(result){
+        if(result == ('Editado')){
+            Swal.fire({
+                icon: "success",
+                title: "Editado Com Sucesso",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Falha ao Editar",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        getEstoque();
+    })
+});
 
 
 
@@ -219,26 +222,32 @@ function excluirProduto(id_produto){
         
     }).done (function (result) {
         const excluirValuesProduto = result.map(item => `
+                                                            <input type="hidden" id="id_cliente" value="${item.id_produto}"></input>
                                                             <p>Deseja realmente excluir o produto ${item.nome}?</p>
                                                         `);
         $('.exluir_values_produto').html(excluirValuesProduto.join(''))
     })
-    $('#excluir_produto').click(function (e) { 
-        e.preventDefault();
-                    
-        $.ajax({
-            method: "post",
-            url: "config/funcao_estoque.php",
-            data: {
-                action: 'excluir',
-                id_produto: id_produto
-            },
-            dataType: "json",
-        }).done (function ( result ) { 
-
-            getEstoque();
-        });
-        getEstoque();
-       
-    });
 };
+
+
+
+$('#excluir_produto').click(function (e) { 
+    e.preventDefault();
+
+    var id_produto = $('#id_produto').val();
+                
+    $.ajax({
+        method: "post",
+        url: "config/funcao_estoque.php",
+        data: {
+            action: 'excluir',
+            id_produto: id_produto
+        },
+        dataType: "json",
+    }).done (function ( result ) { 
+
+        getEstoque();
+    });
+    getEstoque();
+   
+});

@@ -63,8 +63,7 @@
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
 
-        var_dump($_POST);
-        exit;
+       
         $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome_categoria = :na, descricao = :de WHERE id_categoria = '.$id_categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':de', $descricao);

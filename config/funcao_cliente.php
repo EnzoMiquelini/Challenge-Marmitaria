@@ -32,7 +32,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Salvou!');
+            echo json_encode('Nao Cadastrou');
         }
     }
 
@@ -52,7 +52,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Encontrado');
         }
     }
 
@@ -61,19 +61,24 @@
         
         include 'conecta.php';
 
+
+
         $id_cliente = $_POST['id_cliente'];
         $nome = $_POST['nome'];
         $sobrenome = $_POST['sobrenome'];
-        $telefone = $_POST['descricao'];
+        $telefone = $_POST['telefone'];
 
 
-        $stmt = $pdo->prepare('UPDATE cliente SET nome = '.$nome.', descricao = '.$sobrenome.', telefone = '.$telefone.' WHERE id_cliente = '.$id_cliente);
+        $stmt = $pdo->prepare('UPDATE cliente SET nome = :na , sobrenome = :so, telefone = :te WHERE id_cliente = '.$id_cliente);
+        $stmt->bindValue(':na', $nome);
+        $stmt->bindValue(':so', $sobrenome);
+        $stmt->bindValue(':te', $telefone);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Encontrado!');
+            echo json_encode('Nao Editado');
         }
     }
 
@@ -84,8 +89,14 @@
 
         $id_cliente = $_POST['id_cliente'];
 
-        $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
-        $stmt->execute();
-
+            if($id_cliente == ('')){
+                echo json_encode('Error');
+                return;
+            }
+            $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
+            $stmt->execute();
+    
+            echo json_encode('Excluido');
+            return;
     }
 ?>
