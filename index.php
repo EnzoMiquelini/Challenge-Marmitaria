@@ -25,20 +25,22 @@
         
         <div class="container px-5" >
             <div class="row text-center mt-5 gap-3" >
-                <div class="h1">Sabores do Bem</div>
-                    <form class="col gap-3" role="search">
-                        <!-- <div class="d-flex gap-3 justify-content-center"> -->
-                            <!-- <input class="form-control w-50" type="search" placeholder="Pesquisar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Enviar</button> -->
-                        <!-- </div> -->
-                    </form>
+                <div class="h1 mb-5">
+                    Sabores do Bem
                 </div>
+                    <!-- <form class="col gap-3" role="search">
+                        <div class="d-flex gap-3 justify-content-center">
+                            <input class="form-control w-50" type="search" placeholder="Pesquisar" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Enviar</button>
+                        </div>
+                    </form> -->
+            </div>
             <div class="mt-5">
                 <div class="row">
                     <div class="col-sm">
                         <div class="card">
                             <div class="card-header text-center">
-                                Produtos Acabando
+                                <strong>Produtos Acabando</strong>
                             </div>
                             <ul class="list-group list-group-flush" style="padding: 0;">
                                 <li class="list-group-item">An item</li>
@@ -52,7 +54,7 @@
                     <div class="col-sm">
                         <div class="card">
                             <div class="card-header text-center">
-                                Produtos a Vencer
+                                <strong>Produtos a Vencer</strong>
                             </div>
                             <ul class="list-group list-group-flush" style="padding: 0;">
                                 <li class="list-group-item">An item</li>
@@ -66,7 +68,7 @@
                     <div class="col-sm">
                         <div class="card">
                             <div class="card-header text-center">
-                                Pedidos em Aberto
+                                <Strong>Pedidos em Aberto</Strong>
                             </div>
                             <ul class="list-group list-group-flush" style="padding: 0;">
                                 <li class="list-group-item">An item</li>
@@ -99,7 +101,7 @@
                     <div class="col-sm-4 mt-4">
                         <div class="card" >
                             <div class="card-header text-center">
-                                Categorias
+                                <strong>Categorias</strong>
                             </div>
                             <ul class="list-group list-group-flush text-center overflow-y-auto p-0" id="listar_categorias">
                                
