@@ -20,7 +20,10 @@
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
 
-
+        if($nome == ('') || $descricao ==('')){
+            echo json_encode('Nao Cadastrou');
+            return;
+        }
         $stmt = $pdo->prepare('INSERT INTO categorias_alimentos (`nome_categoria`, `descricao`)VALUE(:na, :de)');
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':de', $descricao);
@@ -43,7 +46,6 @@
             $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos WHERE id_categoria =' . $id_categoria );
             $stmt->execute();
         }else{
-            
         $stmt = $pdo->prepare('SELECT * FROM categorias_alimentos');
         $stmt->execute();
         }
@@ -63,7 +65,10 @@
         $nome = $_POST['nome'];
         $descricao = $_POST['descricao'];
 
-       
+        if($id_categoria == ('') || $nome == ('') || $descricao == ('')){
+            echo json_encode('Nao Editado');
+            return;
+        }
         $stmt = $pdo->prepare('UPDATE categorias_alimentos SET nome_categoria = :na, descricao = :de WHERE id_categoria = '.$id_categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':de', $descricao);
@@ -83,7 +88,14 @@
 
         $id_categoria = $_POST['id_categoria'];
         
+        if($id_categoria == ('')){
+            echo json_encode('Nao Excluido');
+            return;
+        }
         $stmt = $pdo->prepare('DELETE FROM categorias_alimentos WHERE id_categoria = '.$id_categoria);
         $stmt->execute();
+
+        echo json_encode('Excluido');
+          
     }
 ?>
