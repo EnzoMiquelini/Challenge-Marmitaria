@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <td colspan="5" class="text-center">
-                    <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Adicionar Cliente +</button>
+                    <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Cadastrar Cliente +</button>
                     </td>
                 </tr>
                 <tr>
@@ -45,26 +45,26 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Cliente</h1>
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cadastrar Cliente</h1>
                     </div>
                     <form method="post" id="formClientes">
                         <div class="modal-body">
                             <div class="formulario mt-5">
                                     <div class="mb-3">
                                         <label for="nome" class="form-label">Nome</label>
-                                        <input type="text" class="form-control" id="nome" name="nome" required>
+                                        <input type="text" class="form-control" id="nome" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="sobrenome" class="form-label">Sobrenome</label>
-                                        <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
+                                        <input type="text" class="form-control" id="sobrenome" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="telefone" class="form-label">Telefone</label>
-                                        <input type="tel" class="form-control" id="telefone" name="tel" required>
+                                        <input type="tel" class="form-control" id="telefone_cliente_adicionar" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="CPF" class="form-label">CPF</label>
-                                        <input type="numb" class="form-control" id="CPF" name="cpf" required>
+                                        <input type="numb" class="form-control" id="CPF" required>
                                     </div>
                             </div>
                         </div>
@@ -118,6 +118,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    </form>
                                     <button type="submit" id="excluir_cliente" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                                 </div>
                             </div>
@@ -144,7 +145,8 @@
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
-      $('#telefone').mask('(00) 00000-0000');
+      $('#telefone_cliente_adicionar').mask('(00) 00000-0000');
+    //   $('#telefone_cliente_editar').mask('(00) 00000-0000');
       $('#CPF').mask('000.000.000-00');
     </script>
     <script src="Assets/cliente.js"></script>

@@ -17,8 +17,9 @@ function getCliente(){
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button></td>
                                                     </tr>
                                                     `)
-        $('.lista_clientes').html(lerClientes.join(''))
+        $('.lista_clientes').html(lerClientes.join(''));
     })
+
 }
 
 getCliente();
@@ -30,52 +31,43 @@ $('#cadastrar_cliente').click(function (e) {
 
     var nome = $('#nome').val();
     var sobrenome = $('#sobrenome').val();
-    var telefone = $('#telefone').val();
+    var telefone = $('#telefone_cliente_adicionar').val();
     var CPF = $('#CPF').val();
     
-    if(nome == ('') || sobrenome == ('') || telefone == ('') || CPF == ('')){
-        console.log("Error...")
-        Swal.fire({
-            icon: "error",
-            title: "Falha ao Cadastrar",
-            showConfirmButton: false,
-            timer: 1500
-        })
-        return
-    }
-        $.ajax({
-            method: "post",
-            url: "config/funcao_cliente.php",
-            data: {
-                action: 'inserir',
-                nome: nome,
-                sobrenome: sobrenome,
-                telefone: telefone,
-                CPF: CPF,
-            },
-            dataType: "json",
-        }).done(function( result ) {
-            $('#nome').val('');
-            $('#sobrenome').val('');
-            $('#telefone').val('');
-            $('#CPF').val('');
-            if(result == ('Nao Cadastrou')){
-                Swal.fire({
-                    icon: "error",
-                    title: "Falha ao Cadastrar",
-                    showConfirmButton: false,
-                    timer: 1500
-                })
-                return
-            }
+    $.ajax({
+        method: "post",
+        url: "config/funcao_cliente.php",
+        data: {
+            action: 'inserir',
+            nome: nome,
+            sobrenome: sobrenome,
+            telefone: telefone,
+            CPF: CPF,
+        },
+        dataType: "json",
+    }).done(function(result){
+        $('#nome').val('');
+        $('#sobrenome').val('');
+        $('#telefone_cliente_adicionar').val('');
+        $('#CPF').val('');
+        if(result == ('Nao Cadastrou')){
             Swal.fire({
-                icon: "success",
-                title: "Cadastrado Com Sucesso",
+                icon: "error",
+                title: "Falha ao Cadastrar",
                 showConfirmButton: false,
                 timer: 1500
             })
-            getCliente();
+            return;
+        }
+        Swal.fire({
+            icon: "success",
+            title: "Cadastrado Com Sucesso",
+            showConfirmButton: false,
+            timer: 1500
         })
+        getCliente();
+    })
+
 });
 
 
@@ -92,6 +84,7 @@ function editarCliente(id_cliente) {
             dataType: "json",
         }).done(function(result){
             const editarNomeCliente = result.map(item =>  `
+                                                            <form>
                                                             <input type="hidden" id="id_cliente" value="${item.id_cliente}"></input>
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
@@ -99,14 +92,15 @@ function editarCliente(id_cliente) {
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="sobrenome" class="form-label">Sobrenome</label>
-                                                                <input type="text" class="form-control" id="sobrenome-cliente" value="${item.sobrenome}" required>
+                                                                <input type="text" class="form-control" class="telefone_cliente" id="sobrenome_cliente" value="${item.sobrenome}" required>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="telefone" class="form-label">Telefone</label>
-                                                                <input type="tel" class="form-control" id="telefone-cliente" value="${item.telefone}" required>
+                                                                <input type="tel" class="form-control" id="telefone_cliente_editar" value="${item.telefone}" required>
                                                             </div>
+                                                            
                                                     `)
-        $('.edit_values_cliente').html(editarNomeCliente.join(''))
+        $('.edit_values_cliente').html(editarNomeCliente.join(''));
     })
 
 }
@@ -118,9 +112,8 @@ $('#salvar_edicao_cliente').click(function (e) {
     
     var id_cliente = $('#id_cliente').val();
     var nome = $('#nome_cliente').val();
-    var sobrenome = $('#sobrenome-cliente').val();
-    var telefone = $('#telefone-cliente').val();
-    
+    var sobrenome = $('#sobrenome_cliente').val();
+    var telefone = $('#telefone_cliente_editar').val();
 
     $.ajax({
             method: "post",
@@ -135,14 +128,14 @@ $('#salvar_edicao_cliente').click(function (e) {
             dataType: "json",
     }).done(function(result){
         console.log(result);
-        if(result == ('Nao Editado')){
+        if(result == ('Nao Editou')){
             Swal.fire({
                 icon: "error",
                 title: "Falha ao Editar",
                 showConfirmButton: false,
                 timer: 1500
             })
-            return
+            return;
         }
         Swal.fire({
             icon: "success",
@@ -173,7 +166,7 @@ function excluirCliente(id_cliente){
                                                             <input type="hidden" id="id_cliente" value="${item.id_cliente}"></input>
                                                             <p>Você deseja realmente excluir ${item.nome} ?</p>
                                                         `);
-        $('.excluir_values_cliente').html(excluirValuesCliente.join(''))
+        $('.excluir_values_cliente').html(excluirValuesCliente.join(''));
     })
 
 };
@@ -192,8 +185,9 @@ $('#excluir_cliente').click(function (e) {
             id_cliente: id_cliente,
         },
         dataType: "json",  
-    }).done (function ( result ) {
-        if(result == ('Error')){
+    }).done (function(result){
+        console.log(result)
+        if(result == ('Nao Excluido')){
             Swal.fire({
                 icon: "error",
                 title: "Falha ao Excluir",

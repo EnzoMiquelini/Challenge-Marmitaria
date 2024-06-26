@@ -22,6 +22,10 @@
         $telefone = $_POST['telefone'];
         $CPF = $_POST['CPF'];
 
+        if($nome == ('') || $sobrenome == ('') || $telefone == ('') || $CPF == ('')){
+            echo json_encode('Nao Cadastrou');
+            return;
+        }
         $stmt = $pdo->prepare('INSERT INTO cliente (`nome`, `sobrenome`,`telefone`, `CPF`)VALUE(:na, :so, :te, :cp)');
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':so', $sobrenome);
@@ -67,6 +71,10 @@
         $telefone = $_POST['telefone'];
 
 
+        if($id_cliente == ('') || $nome == ('') || $sobrenome == ('') || $telefone == ('')){
+            echo json_encode('Nao Editou');
+            return;
+        }
         $stmt = $pdo->prepare('UPDATE cliente SET nome = :na , sobrenome = :so, telefone = :te WHERE id_cliente = '.$id_cliente);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':so', $sobrenome);
@@ -76,7 +84,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao Editado');
+            echo json_encode('Nao Editou');
         }
     }
 
@@ -87,14 +95,14 @@
 
         $id_cliente = $_POST['id_cliente'];
 
-            if($id_cliente == ('')){
-                echo json_encode('Error');
-                return;
-            }
-            $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
-            $stmt->execute();
-    
-            echo json_encode('Excluido');
+        if($id_cliente == ('')){
+            echo json_encode('Nao Excluido');
             return;
+        }
+        $stmt = $pdo->prepare('DELETE FROM cliente WHERE id_cliente = '.$id_cliente);
+        $stmt->execute();
+
+        echo json_encode('Excluido');
+
     }
 ?>
