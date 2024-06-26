@@ -198,6 +198,6 @@ $('#excluir_cliente').click(function (e) {
             timer: 1500
         });
         getCliente();
-    });
+    })
 
-});
+})

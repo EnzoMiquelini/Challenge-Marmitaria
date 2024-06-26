@@ -6,7 +6,7 @@
         if($_POST['action'] == 'inserir'){
             cadastrarProduto();
         }else if($_POST['action'] == 'ler'){
-            // lerProduto();
+            lerProduto();
         }else if($_POST['action'] == 'lerProdutoCategoria'){
         lerProdutoCategoria();
         }else if($_POST['action'] == 'editar'){
@@ -51,39 +51,34 @@
 
 
 
-    // function lerProduto(){
+    function lerProduto(){
         
-    //     include 'conecta.php';
+        include 'conecta.php';
         
-    //     if(isset($_POST['id_produto'])){
-    //         $id_produto = $_POST['id_produto'];
+        if(isset($_POST['id_produto'])){
+            $id_produto = $_POST['id_produto'];
             
-    //         $stmt = $pdo->prepare('SELECT * FROM produto WHERE id_produto =' . $id_produto);
-    //         $stmt->execute();
-    //     }else{
-    //         $stmt = $pdo->prepare('SELECT * FROM produto');
-    //         $stmt->execute();
-    //     }
+            $stmt = $pdo->prepare('SELECT * FROM produto WHERE id_produto =' . $id_produto);
+            $stmt->execute();
+        }else{
+            $stmt = $pdo->prepare('SELECT * FROM produto');
+            $stmt->execute();
+        }
 
-    //     if ($stmt->rowCount() >= 1){
-    //         // $Jaozin = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    //         // foreach ($Jaozin as $Jaozin){
-    //         //     // var_dump($Jaozin['data_validade']);
-                
-    //         // }
-    //         echo json_encode ($stmt->fetchAll(PDO::FETCH_ASSOC));
-    //     }else{
-    //         echo json_encode('Nao Encontrado');
-    //     }
+        if ($stmt->rowCount() >= 1){
+            echo json_encode ($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrado');
+        }
         
-    // }
+    }
 
 
 
     function lerProdutoCategoria(){
         
         include 'conecta.php';
+
         
         if(isset($_POST['id_produto'])){
             $id_produto = $_POST['id_produto'];
@@ -96,6 +91,13 @@
         }    
 
         if ($stmt->rowCount() >= 1){
+            
+            // $data_certa = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            // foreach ($data_certa as $data_certa){
+            //     $data_certa 
+                
+            // }
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
             echo json_encode('Nao Encontrado');

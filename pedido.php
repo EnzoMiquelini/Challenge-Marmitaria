@@ -29,22 +29,37 @@
         
                     <h1 class="text-center">Pedido</h1>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto">Adicionar Produto +</button>
+                        <button type="button" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
                     </div>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped w-75 mt-5">
                             <thead>
                                 <tr>
                                 <th scope="col">Nome do Produto</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Valor</th>
+                                <th scope="col" class="text-center">Quantidade</th>
+                                <th scope="col" class="text-center">Valor</th>
                                 </tr>
                             </thead>
                             <tbody class="lista_produtos">
+                                <tr>
+                                    <td>Bolo</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">5,00</td>
+                                </tr>
+                                <tr>
+                                    <td>Bolo</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">5,00</td>
+                                </tr>
+                                <tr>
+                                    <td>Bolo</td>
+                                    <td class="text-center">2</td>
+                                    <td class="text-center">5,00</td>
+                                </tr>
                             </tbody>
                             <tfoot>
-                                <th colspan="3">Valor Total:</th>
-                                <th>5</th>
+                                <th colspan="2">Valor Total:</th>
+                                <th class="text-center">R$: 15,00</th>
                             </tfoot>
                         </table>
                     </div>
@@ -53,19 +68,19 @@
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Produto</h1>
+                                    <h1 class="modal-title fs-5">Adicionar Produto</h1>
                                 </div>
                                 <form method="post" id="formClientes">
                                     <div class="modal-body">
                                         <div class="formulario mt-5">
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
-                                                <input type="text" class="form-control" id="nome" required>
+                                                <input type="text" class="form-control" id="nome_produto_pedido" required>
                                             </div>
                                             <div class="mb-3 content-center">
                                                 <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
                                                 <div class="d-flex w-25 justify-content-between">
-                                                    <input type="numb" class="form-control w-50" id="qnt_add" value="1" required>
+                                                    <input type="numb" class="form-control w-50" id="qnt_add_pedido" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +114,11 @@
                     <h1 class="text-center">Cadastro</h1>
 
                     <form method="post" id="formClientes" class="d-flex justify-content-center">
-                            <div class="formulario mt-5 w-75">
+                        <div class="formulario mt-5 w-75">
+                                <div class="mb-3">
+                                    <label for="CPF" class="form-label">CPF</label>
+                                    <input type="numb" class="form-control" id="CPF_pedido" name="cpf" required>
+                                </div>
                                 <div class="mb-3">
                                     <label for="nome" class="form-label">Nome</label>
                                     <input type="text" class="form-control" id="nome" name="nome" required>
@@ -111,10 +130,6 @@
                                 <div class="mb-3">
                                     <label for="telefone" class="form-label">Telefone</label>
                                     <input type="tel" class="form-control" id="telefone" name="tel" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CPF" class="form-label">CPF</label>
-                                    <input type="numb" class="form-control" id="CPF" name="cpf" required>
                                 </div>
                             </div>
                     </form>
@@ -141,26 +156,7 @@
                 <div class="container mt-5">
                     <h1 class="text-center">Confirmar Pedido</h1>
 
-                    <form method="post" id="formClientes" class="d-flex justify-content-center">
-                            <div class="formulario mt-5 w-75">
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="sobrenome" class="form-label">Sobrenome</label>
-                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telefone" class="form-label">Telefone</label>
-                                    <input type="tel" class="form-control" id="telefone" name="tel" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="CPF" class="form-label">CPF</label>
-                                    <input type="numb" class="form-control" id="CPF" name="cpf" required>
-                                </div>
-                            </div>
-                    </form>
+                    
 
                 </div>
             </div>
@@ -179,6 +175,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>

@@ -98,7 +98,14 @@
                     <form method="post">
                         <div class="modal-body">
                             <div class="formulario mt-5 edit_values_produto">
-
+                                <div class="cima_editar"></div>
+                                <div class="mb-3">
+                                    <label for="categoria" class="form-label">Categoria</label>
+                                    <select class="form-select" class="categoria_lista" id="categoria_editar_produto" required>
+                                        <option></option>
+                                    </select>
+                                </div>
+                                <div class="baixo_editar"></div>
                             </div>
                         </div>
                         <div class="modal-footer">
