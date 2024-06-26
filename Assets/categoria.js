@@ -14,7 +14,7 @@ function getCategoria(){
                                                             <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
                                                             <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button></td>
                                                         </tr>
-                                                    `)
+                                                    `);
         $('.lista_categoria').html(lerCategorias.join(''));
     })
 
@@ -89,8 +89,7 @@ function editarCategoria(id_categoria) {
         $('.edit_values_categoria').html(editarNomeCategorias.join(''));
     })
 
-}
-    
+}   
     
 $('#salvar_edicao_categoria').click(function (e) { 
     e.preventDefault();
@@ -150,8 +149,6 @@ function excluirCategoria(id_categoria){
         $('.exluir_values_categoria').html(excluirValuesCategoria.join(''));
     })
 }
-
-
 
 $('#excluir_categoria').click(function (e) { 
     e.preventDefault();

@@ -16,7 +16,7 @@ function getCliente(){
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_cliente" onclick="editarCliente(${item.id_cliente})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button></td>
                                                     </tr>
-                                                    `)
+                                                `);
         $('.lista_clientes').html(lerClientes.join(''));
     })
 
@@ -83,28 +83,25 @@ function editarCliente(id_cliente) {
             },
             dataType: "json",
         }).done(function(result){
-            const editarNomeCliente = result.map(item =>  `
-                                                            <input type="hidden" id="id_cliente" value="${item.id_cliente}"></input>
-                                                            <div class="mb-3">
-                                                                <label for="nome" class="form-label">Nome</label>
-                                                                <input type="text" class="form-control" id="nome_cliente" value="${item.nome}" required>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="sobrenome" class="form-label">Sobrenome</label>
-                                                                <input type="text" class="form-control" class="telefone_cliente" id="sobrenome_cliente" value="${item.sobrenome}" required>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="telefone" class="form-label">Telefone</label>
-                                                                <input type="tel" class="form-control" id="telefone_cliente_editar" value="${item.telefone}" required>
-                                                            </div>
-                                                            
-                                                    `)
+            const editarNomeCliente = result.map(item =>    `
+                                                                <input type="hidden" id="id_cliente" value="${item.id_cliente}"></input>
+                                                                <div class="mb-3">
+                                                                    <label for="nome" class="form-label">Nome</label>
+                                                                    <input type="text" class="form-control" id="nome_cliente" value="${item.nome}" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="sobrenome" class="form-label">Sobrenome</label>
+                                                                    <input type="text" class="form-control" class="telefone_cliente" id="sobrenome_cliente" value="${item.sobrenome}" required>
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="telefone" class="form-label">Telefone</label>
+                                                                    <input type="tel" class="form-control" id="telefone_cliente_editar" value="${item.telefone}" required>
+                                                                </div>
+                                                            `);
         $('.edit_values_cliente').html(editarNomeCliente.join(''));
     })
 
 }
-
-
 
 $('#salvar_edicao_cliente').click(function (e) { 
     e.preventDefault();
@@ -169,7 +166,6 @@ function excluirCliente(id_cliente){
     })
 
 };
-
 
 $('#excluir_cliente').click(function (e) { 
     e.preventDefault();
