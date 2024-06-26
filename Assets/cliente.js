@@ -84,7 +84,6 @@ function editarCliente(id_cliente) {
             dataType: "json",
         }).done(function(result){
             const editarNomeCliente = result.map(item =>  `
-                                                            <form>
                                                             <input type="hidden" id="id_cliente" value="${item.id_cliente}"></input>
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>

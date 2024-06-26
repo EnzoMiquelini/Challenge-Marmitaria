@@ -118,7 +118,6 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    </form>
                                     <button type="submit" id="excluir_cliente" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                                 </div>
                             </div>
