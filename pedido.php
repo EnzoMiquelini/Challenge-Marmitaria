@@ -14,6 +14,9 @@
 <body>
 
     <div class="container">
+
+
+
         <div class="pedido">
             <div class="d-flex justify-content-between">
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
@@ -80,7 +83,7 @@
                                             <div class="mb-3 content-center">
                                                 <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
                                                 <div class="d-flex w-25 justify-content-between">
-                                                    <input type="numb" class="form-control w-50" id="qnt_add_pedido" required>
+                                                    <input type="number" class="form-control w-50" id="qnt_add_pedido" value="1" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -141,7 +144,6 @@
 
 
 
-
         <div class="confirm-pedido">
             <div class="d-flex justify-content-between">
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
@@ -160,8 +162,10 @@
 
                 </div>
             </div>
-
         </div>
+
+
+
     </div>
 
 

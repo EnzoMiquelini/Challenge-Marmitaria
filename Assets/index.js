@@ -34,3 +34,20 @@ function getIndex(){
 }
 
 getIndex();
+
+
+$('#novo_pedido').click(function (e) { 
+    e.preventDefault();
+
+    $.ajax({
+        method: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'inserirNovo',
+        },
+        dataType: "json",
+        }).done (function(result){
+            console.log(result)  
+    })
+
+})

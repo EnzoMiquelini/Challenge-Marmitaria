@@ -2,7 +2,9 @@
     header('Content-Type: application/json');
 
     if(isset($_POST['action'])){
-        if($_POST['action'] == 'inserir'){
+        if($_POST['action'] == 'inserirNovo'){
+            cadastrarNovoPedido();
+        }elseif($_POST['action'] == 'inserir'){
             cadastrarPedido();
         }else if($_POST['action'] == 'ler'){
             lerPedido();
@@ -11,7 +13,50 @@
         }
     };
 
+    
 
+    function cadastrarNovoPedido(){
+
+
+        include 'conecta.php';
+
+        $stmt = $pdo->prepare('SELECT `id_pedido` FROM pedido');
+        $stmt->execute();
+
+        
+        if ($stmt->rowCount() >= 1){
+            $id_pedido[2] = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $id_pedido[1] = 1;
+
+            var_dump($id_pedido[2],$id_pedido[1]);
+            exit;
+
+            $stmt = $pdo->prepare('INSERT INTO pedido (`id_pedido`, `id_cliente`)VALUE(:ca :cl))');
+            $stmt->bindValue(':ca', $id_pedido[1+2]);
+            $stmt->bindValue(':cl', 1);
+            $stmt->execute();
+
+            if ($stmt->rowCount() >= 1){
+                var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
+                exit;
+                echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            }else{
+                echo json_encode('Nao Cadastrou');
+            }
+        }else{
+            $stmt = $pdo->prepare('INSERT INTO pedido (`id_pedido`, `id_cliente`)VALUE(:pe, :cl)');
+            $stmt->bindValue(':pe', 1);
+            $stmt->bindValue(':cl', 1);
+            $stmt->execute();
+
+            if ($stmt->rowCount() >= 1){
+                echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            }else{
+                echo json_encode('Nao Cadastrou');
+            }
+        }
+        
+    }
     
     function cadastrarPedido(){
 
@@ -37,6 +82,7 @@
             echo json_encode('Nao Salvou!');
         }
     }
+    
 
 
 
