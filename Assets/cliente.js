@@ -196,7 +196,7 @@ $('#excluir_cliente').click(function (e) {
             title: "Excluido Com Sucesso",
             showConfirmButton: false,
             timer: 1500
-        });
+        })
         getCliente();
     })
 

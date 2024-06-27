@@ -13,8 +13,8 @@ function getEstoque(){
                                                         <td><p>${item.nome}</p></td>
                                                         <td><p>${item.nome_categoria}<p></td>
                                                         <td><p>${item.qnt_Estoque}</p></td>
-                                                        <td><p>${item.data_validade}</p></td>
                                                         <td><p>${item.data_compra}</p></td>
+                                                        <td><p>${item.data_validade}</p></td>
                                                         <td><button type="button" class="btn btn-primary edit_produto" data-bs-toggle="modal" data-bs-target="#editar_produto" onclick="editarProduto(${item.id_produto})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_produto" onclick="excluirProduto(${item.id_produto})">Excluir</button></td>
                                                     </tr>
@@ -218,7 +218,7 @@ function excluirProduto(id_produto){
                                                             <input type="hidden" id="id_produto" value="${item.id_produto}"></input>
                                                             <p>Deseja realmente excluir o produto ${item.nome}?</p>
                                                         `);
-        $('.exluir_values_produto').html(excluirValuesProduto.join(''))
+        $('.exluir_values_produto').html(excluirValuesProduto.join(''));
     })
     
 }

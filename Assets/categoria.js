@@ -133,6 +133,7 @@ $('#salvar_edicao_categoria').click(function (e) {
 
 
 function excluirCategoria(id_categoria){
+
     $.ajax({
         method: "post",
         url: "config/funcao_categoria.php",
@@ -148,6 +149,7 @@ function excluirCategoria(id_categoria){
                                                             `);
         $('.exluir_values_categoria').html(excluirValuesCategoria.join(''));
     })
+    
 }
 
 $('#excluir_categoria').click(function (e) { 

@@ -12,7 +12,7 @@ function getIndex(){
         <li>${item.nome_categoria}</li>
         `);
         $('#listar_categorias').html(lerCategoriaIndex.join(''));
-    });
+    })
     
     $.ajax({
         method: "post",
@@ -29,7 +29,7 @@ function getIndex(){
         <td>${item.hora}</td>
         `);
         $('#listar_pedidos').html(lerClientesIndex.join(''));
-    });
+    })
     
 }
 
@@ -37,15 +37,15 @@ getIndex();
 
 
 
-$('#novo_pedido').click(function (e) { 
+// $('#novo_pedido').click(function (e) { 
 
-    $.ajax({
-        method: "post",
-        url: "config/funcao_pedido.php",
-        data: {
-            action: 'inserirNovo',
-        },
-        dataType: "json",
-    })
+//     $.ajax({
+//         method: "post",
+//         url: "config/funcao_pedido.php",
+//         data: {
+//             action: 'inserirNovo',
+//         },
+//         dataType: "json",
+//     })
 
-})
+// })

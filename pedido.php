@@ -21,8 +21,8 @@
             <div class="d-flex justify-content-between">
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
                     <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <button onclick="window.history.back()" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="continuar_cadastro" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                        <button id="cadastro_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
+                        <button id="continuar_confirmacao" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
                     <div style="width: 80%;">
                         <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
@@ -43,7 +43,7 @@
                                 <th scope="col" class="text-center">Valor</th>
                                 </tr>
                             </thead>
-                            <tbody class="lista_produtos">
+                            <tbody id="lista_produtos">
                                 <tr>
                                     <td>Bolo</td>
                                     <td class="text-center">2</td>
@@ -106,8 +106,8 @@
             <div class="d-flex justify-content-between">
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
                     <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <button id="pedido_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="confirmar_cadastro" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                        <a href="index.php" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
+                        <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
                     <div style="width: 80%;">
                         <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
@@ -120,20 +120,12 @@
                         <div class="formulario mt-5 w-75">
                                 <div class="mb-3">
                                     <label for="CPF" class="form-label">CPF</label>
-                                    <input type="numb" class="form-control" id="CPF_pedido" name="cpf" required>
+                                    <input type="numb" class="form-control" id="CPF_pedido" name="cpf" >
                                 </div>
-                                <div class="mb-3">
-                                    <label for="nome" class="form-label">Nome</label>
-                                    <input type="text" class="form-control" id="nome" name="nome" required>
+                                <div class="resCadastro">
+
                                 </div>
-                                <div class="mb-3">
-                                    <label for="sobrenome" class="form-label">Sobrenome</label>
-                                    <input type="text" class="form-control" id="sobrenome" name="sobrenome" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="telefone" class="form-label">Telefone</label>
-                                    <input type="tel" class="form-control" id="telefone" name="tel" required>
-                                </div>
+                                
                             </div>
                     </form>
 
@@ -148,8 +140,8 @@
             <div class="d-flex justify-content-between">
                 <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
                     <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <button id="cadastro_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                        <button id="pedido_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
+                        <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Finalizar Pedido</button>
                     </div>
                     <div style="width: 80%;">
                         <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
