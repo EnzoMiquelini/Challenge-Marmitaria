@@ -49,9 +49,10 @@ function getPedido (){
         success: function (response) {
             
         }
-    });
-}
+    })
     
+}
+
 $('#nome_produto_pedido').blur(function (e) { 
     e.preventDefault();
     
@@ -88,5 +89,6 @@ $('#CPF_pedido').blur(function (e) {
             `);
             $('')
         }
-    });
-});
+    })
+
+})

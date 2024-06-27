@@ -68,7 +68,7 @@ $('#cadastrar_cliente').click(function (e) {
         getCliente();
     })
 
-});
+})
 
 
 
@@ -142,7 +142,7 @@ $('#salvar_edicao_cliente').click(function (e) {
         getCliente();
     })
 
-});
+})
 
 
 
@@ -165,7 +165,7 @@ function excluirCliente(id_cliente){
         $('.excluir_values_cliente').html(excluirValuesCliente.join(''));
     })
 
-};
+}
 
 $('#excluir_cliente').click(function (e) { 
     e.preventDefault();
