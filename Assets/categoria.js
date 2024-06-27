@@ -173,4 +173,5 @@ $('#excluir_categoria').click(function (e) {
         })
         getCategoria();
     })
+    
 })
