@@ -36,8 +36,8 @@ function getIndex(){
 getIndex();
 
 
+
 $('#novo_pedido').click(function (e) { 
-    e.preventDefault();
 
     $.ajax({
         method: "post",
@@ -46,8 +46,6 @@ $('#novo_pedido').click(function (e) {
             action: 'inserirNovo',
         },
         dataType: "json",
-        }).done (function(result){
-            console.log(result)  
     })
 
 })

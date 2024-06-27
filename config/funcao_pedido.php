@@ -20,25 +20,19 @@
 
         include 'conecta.php';
 
-        $stmt = $pdo->prepare('SELECT `id_pedido` FROM pedido');
+        $stmt = $pdo->prepare('SELECT `id_pedido` `id_cliente`FROM pedido ORDER BY `id_pedido` DESC');
         $stmt->execute();
 
         
         if ($stmt->rowCount() >= 1){
-            $id_pedido[2] = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $id_pedido[1] = 1;
+            $id_cliente = (int)$stmt->fetchAll(PDO::FETCH_ASSOC) + 1;
 
-            var_dump($id_pedido[2],$id_pedido[1]);
-            exit;
-
-            $stmt = $pdo->prepare('INSERT INTO pedido (`id_pedido`, `id_cliente`)VALUE(:ca :cl))');
-            $stmt->bindValue(':ca', $id_pedido[1+2]);
-            $stmt->bindValue(':cl', 1);
+            $stmt = $pdo->prepare('INSERT INTO pedido (`id_pedido`, `id_cliente`)VALUE(:ca, :cl)');
+            $stmt->bindValue(':ca', $id_pedido);
+            $stmt->bindValue(':cl', $id_pedido);
             $stmt->execute();
 
             if ($stmt->rowCount() >= 1){
-                var_dump($stmt->fetchAll(PDO::FETCH_ASSOC));
-                exit;
                 echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
             }else{
                 echo json_encode('Nao Cadastrou');
@@ -68,7 +62,7 @@
         $validade= $_POST['validade'];
         $compra= $_POST['compra'];
         
-        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`)VALUE(:ca, :na, :es, :va :co)');
+        $stmt = $pdo->prepare('INSERT INTO pedido_has_produto (`id_pedido`, `id_produto`, `valor_produto`)VALUE(:ca, :na, :es, :va :co)');
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
