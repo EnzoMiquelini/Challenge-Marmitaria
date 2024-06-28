@@ -17,7 +17,7 @@
         }else if($_POST['action'] == 'excluir'){
             // excluirPedido();
         }
-    };
+    }
 
 
 
@@ -52,9 +52,11 @@
         include 'conecta.php';
 
         $id_cliente = $_POST['id_cliente'];
+        $data_pedido = new DateTime();
 
-        $stmt = $pdo->prepare('INSERT INTO pedido (`id_cliente`) VALUES (:cl)');
+        $stmt = $pdo->prepare('INSERT INTO pedido (`id_cliente`, `data_pedido`) VALUES (:cl, :da)');
         $stmt->bindValue(':cl', $id_cliente);
+        $stmt->bindValue(':da', $data_pedido->format('Y-m-d H:i:s'));
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
@@ -71,7 +73,7 @@
 
         $id_cliente = $_POST['id_cliente'];
 
-        $stmt = $pdo->prepare('SELECT `id_pedido` FROM pedido WHERE id_cliente = :cl ORDER BY `id_pedido` DESC LIMIT 1;');
+        $stmt = $pdo->prepare('SELECT `id_pedido`, `id_cliente` FROM pedido WHERE id_cliente = :cl ORDER BY `id_pedido` DESC LIMIT 1;');
         $stmt->bindValue(':cl', $id_cliente);
         $stmt->execute();
 
@@ -144,7 +146,7 @@
         $stmt->bindValue(':pe', $id_pedido);
         $stmt->bindValue(':na', $id_produto);
         $stmt->bindValue(':qp', $qnt_produto);
-        $stmt->bindValue(':va', $valor);
+        $stmt->bindValue(':va', $valor_produto);
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){
@@ -157,25 +159,20 @@
 
 
 
-    // function lerPedido(){
+    function lerPedidoProduto(){
         
-    //     include 'conecta.php';
-        
-    //     if(isset($_POST['id_produto'])){
-    //         $id_produto = $_POST['id_produto'];
-    //         $stmt = $pdo->prepare('SELECT * FROM produto WHERE id_produto =' . $id_produto);
-    //         $stmt->execute();
-    //     }else{
-            
-    //     // $stmt = $pdo->prepare('SELECT * FROM produto');
-    //     // $stmt->execute();
-    //     }
-    //     if ($stmt->rowCount() >= 1){
-    //         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-    //     }else{
-    //         echo json_encode('Nao Encontrado!');
-    //     }
-    // }
+        include 'conecta.php';
+
+        $id_pedido = $_POST['id_pedido'];
+       
+        $stmt = $pdo->prepare('SELECT * FROM pedido_produto ORDER BY id_produto ='.$id_pedido);
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrado!');
+        }
+    }
 
 
 

@@ -179,23 +179,34 @@ function criarPedido(id_cliente_ped){
         dataType: "json",
     }).done (function (result) {
         console.log(result);
+        lerIdPedido(id_cliente_ped)
     })
     
 }
 
-// $.ajax({
-//     method: "post",
-//     url: "config/funcao_pedido.php",
-//     data: {
-//         action: lerPedido,
-//         id_cliente: id_cliente_ped
-//     },
-//     dataType: "json",
-// }). done (function (result) {
-//         console.log(result);
-//         return;
-    
-// })
+function lerIdPedido(id_cliente_ped){
+
+    var id_cliente_pedido = id_cliente_ped;
+
+    $.ajax({
+        method: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'lerPedido',
+            id_cliente: id_cliente_pedido
+        },
+        dataType: "json",
+    }). done (function (result) {
+        console.log(result);
+        // return;
+        const lerPedidoId = result.map(item=>   `
+                                                    <input type="hidden" value="${item.id_pedido}" id="id_pedido"></input>
+                                                `);
+        $('#form_pedido').html(lerPedidoId.join(''));
+    })
+
+}
+
 
 
 $('#nome_produto_pedido').focus(function (e) { 
@@ -225,7 +236,7 @@ $('#nome_produto_pedido').focus(function (e) {
 $('#cadastrar_produto_pedido').click(function (e) { 
     e.preventDefault();
     
-    var id_pedido = $('#id_cliente_pedido').val();
+    var id_pedido = $('#id_pedido').val();
     var id_produto = $('#id_produto_pedido').val();
     var qnt_produto = $('#qnt_add_pedido').val();
     var valor_produto = $('#valor_produto_pedido').val();
@@ -242,7 +253,38 @@ $('#cadastrar_produto_pedido').click(function (e) {
         },
         dataType: "json",
     }).done (function(result){
+        console.log(result);
+        lerPedidoProduto(id_pedido);
         
     })
 
 })
+
+
+function lerPedidoProduto(id_pedido){
+
+    var id_pedido = id_pedido
+
+    $.ajax({
+        type: "method",
+        url: "config/funcao_pedido",
+        data: {
+            action: 'lerPedidoProduto',
+            id_pedido: id_pedido
+        },
+        dataType: "json",
+    }).done (function (result) {
+       console.log(result)
+       const lerPedidoProduto = result.map(item=>   `
+                                                        <tr>
+                                                            <td>${item.nome}</td>
+                                                            <td class="text-center">${item.qnt_produto}</td>
+                                                            <td class="text-center">${item.valor}</td>
+                                                        </tr>
+        
+                                                    `);
+        $('#lista_produtos').html(lerPedidoProduto.join(''));
+        
+    })
+
+}
