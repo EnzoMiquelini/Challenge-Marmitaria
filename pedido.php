@@ -77,26 +77,14 @@
                                 <th scope="col" class="text-center">Valor</th>
                                 </tr>
                             </thead>
-                            <tbody id="lista_produtos">
+                            <tbody class="lista_produtos">
                                 <tr>
-                                    <td>Bolo</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">5,00</td>
-                                </tr>
-                                <tr>
-                                    <td>Bolo</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">5,00</td>
-                                </tr>
-                                <tr>
-                                    <td>Bolo</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">5,00</td>
+                                    <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
                                 </tr>
                             </tbody>
-                            <tfoot>
+                            <tfoot class="calc_Pedido">
                                 <th colspan="2">Valor Total:</th>
-                                <th class="text-center">R$: 15,00</th>
+                                <th class="text-center">R$: </th>
                             </tfoot>
                         </table>
                     </div>
@@ -113,10 +101,14 @@
                                             <div id="form_pedido">
 
                                             </div>
+                                            <div id="listar_pedido_produtos">
+
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
                                                 <input type="text" class="form-control" id="nome_produto_pedido" required>
                                             </div>
+                                            
                                             <div class="mb-3 content-center">
                                                 <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
                                                 <div class="d-flex w-25 justify-content-between">
@@ -152,9 +144,26 @@
                 </div>
                 <div class="container mt-5">
                     <h1 class="text-center">Confirmar Pedido</h1>
-
-                    
-
+                    <div class="d-flex justify-content-center">
+                        <table class="table table-striped w-75 mt-5">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nome do Produto</th>
+                                <th scope="col" class="text-center">Quantidade</th>
+                                <th scope="col" class="text-center">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody class="lista_produtos">
+                                <tr>
+                                    <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="calc_Pedido">
+                                <th colspan="2">Valor Total:</th>
+                                <th class="text-center">R$: </th>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

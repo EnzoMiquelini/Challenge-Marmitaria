@@ -46,10 +46,10 @@ $('#CPF_pedido').blur(function (e) {
     }).done (function(result){
         if(result == ('Sem CPF')){
             $('#cadastrar_cliente_pedido').show();
-            var cadClientePedido =    `
+            var cadClientePedido =      `
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
-                                                <input type="text" class="form-control" id="nome_pedido" name="nome" >
+                                                <input type="text" class="form-control nome_produto_pedido" name="nome" >
                                             </div>
                                             <div class="mb-3">
                                                 <label for="sobrenome" class="form-label">Sobrenome</label>
@@ -60,13 +60,13 @@ $('#CPF_pedido').blur(function (e) {
                                                 <input type="tel" class="form-control" id="telefone_pedido" name="tel" >
                                             </div>
                                         `;
-            $('.resCadastro').html(cadClientePedido);
+            $('.resCadastro').html(cadClientePedido.join(''));
             return;
         }
         const lerClientePedido = result.map(item=>  `       
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
-                                                                <input type="text" class="form-control" id="nome_pedido" value="${item.nome}" name="nome" required>
+                                                                <input type="text" class="form-control nome_produto_pedido" value="${item.nome}" name="nome" required>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="sobrenome" class="form-label">Sobrenome</label>
@@ -90,7 +90,7 @@ $('#cadastrar_cliente_pedido').click(function (e) {
     e.preventDefault();
 
     var cpf_pedido = $('#CPF_pedido').val();
-    var nome_pedido = $('#nome_pedido').val();
+    var nome_pedido = $('.nome_produto_pedido').val();
     var sobrenome_pedido = $('#sobrenome_pedido').val();
     var tel_pedido = $('#telefone_pedido').val();
 
@@ -142,8 +142,6 @@ $('#continuar_pedido').click(function (e) {
 
 function lerCliente(cpf_pedido){
 
-    var cpf_pedido = cpf_pedido
-
     $.ajax({
         method: "post",
         url: "config/funcao_pedido.php",
@@ -167,8 +165,6 @@ function lerCliente(cpf_pedido){
 
 function criarPedido(id_cliente_ped){
 
-    var id_cliente_ped = id_cliente_ped;
-
     $.ajax({
         method: "post",
         url: "config/funcao_pedido.php",
@@ -178,7 +174,6 @@ function criarPedido(id_cliente_ped){
         },
         dataType: "json",
     }).done (function (result) {
-        console.log(result);
         lerIdPedido(id_cliente_ped)
     })
     
@@ -186,49 +181,76 @@ function criarPedido(id_cliente_ped){
 
 function lerIdPedido(id_cliente_ped){
 
-    var id_cliente_pedido = id_cliente_ped;
-
     $.ajax({
         method: "post",
         url: "config/funcao_pedido.php",
         data: {
             action: 'lerPedido',
-            id_cliente: id_cliente_pedido
+            id_cliente: id_cliente_ped
         },
         dataType: "json",
     }). done (function (result) {
-        console.log(result);
-        // return;
         const lerPedidoId = result.map(item=>   `
-                                                    <input type="hidden" value="${item.id_pedido}" id="id_pedido"></input>
+                                                    <input type="hidden" value="${item.id_pedido}" id="id_pedido">
                                                 `);
         $('#form_pedido').html(lerPedidoId.join(''));
     })
 
 }
 
-
-
-$('#nome_produto_pedido').focus(function (e) { 
+$('#add_produto_pedido').click(function (e) { 
     e.preventDefault();
+
+    $('#nome_peoduto_pedido').val('');
+    $('#qnt_add_pedido').val('1');
+    
+});
+
+// $('#nome_produto_pedido').focus(function (e) { 
+//     e.preventDefault();
+
+//     $.ajax({
+//         method: "post",
+//         url: "config/funcao_estoque.php",
+//         data: {
+//             action: 'ler',
+//         },
+//         dataType: "json",
+//     }).done (function(result){
+//         console.log(result);
+//         const lerProdutoPedido = result.map(item=>  `   
+//                                                         <select>
+//                                                             <option value="${item.id_produto}">${item.nome}</option>
+//                                                         </select>
+//                                                     `);
+//         $('#').html(lerProdutoPedido.join(''));
+//     })
+    
+// })
+
+
+
+$('#nome_produto_pedido').blur(function (e) { 
+    e.preventDefault();
+    
+    var nome_produto = $('#nome_produto_pedido').val();
 
     $.ajax({
         method: "post",
-        url: "config/funcao_estoque.php",
+        url: "config/funcao_pedido.php",
         data: {
-            action: 'ler',
+            action: 'lerProduto',
+            nome_produto: nome_produto
         },
         dataType: "json",
-    }).done (function(result){
-        console.log(result);
-        const lerProdutoPedido = result.map(item=>  `   
-                                                        <option>${item.id_produto}</option>
-                                                        ${item.nome}
-                                                        ${item.valor}
-                                                    `);
-        $('#nome_produto_pedido').html(lerProdutoPedido.join(''));
+    }).done (function (result) {
+        const lerIdProdutoPedido = result.map(item=>    `  
+                                                            <input type="hidden" value="${item.id_produto}" id="id_pedido_produto">
+                                                            <input type="hidden" value="${item.valor}" id="valor_pedido_produto">
+                                                        `);
+        $('#listar_pedido_produtos').html(lerIdProdutoPedido.join(''));
     })
-    
+
 })
 
 
@@ -237,9 +259,9 @@ $('#cadastrar_produto_pedido').click(function (e) {
     e.preventDefault();
     
     var id_pedido = $('#id_pedido').val();
-    var id_produto = $('#id_produto_pedido').val();
+    var id_produto = $('#id_pedido_produto').val();
     var qnt_produto = $('#qnt_add_pedido').val();
-    var valor_produto = $('#valor_produto_pedido').val();
+    var valor_produto = $('#valor_pedido_produto').val();
 
     $.ajax({
         method: "post",
@@ -253,21 +275,18 @@ $('#cadastrar_produto_pedido').click(function (e) {
         },
         dataType: "json",
     }).done (function(result){
-        console.log(result);
         lerPedidoProduto(id_pedido);
-        
     })
 
 })
 
 
+
 function lerPedidoProduto(id_pedido){
 
-    var id_pedido = id_pedido
-
     $.ajax({
-        type: "method",
-        url: "config/funcao_pedido",
+        type: "post",
+        url: "config/funcao_pedido.php",
         data: {
             action: 'lerPedidoProduto',
             id_pedido: id_pedido
@@ -275,15 +294,18 @@ function lerPedidoProduto(id_pedido){
         dataType: "json",
     }).done (function (result) {
        console.log(result)
-       const lerPedidoProduto = result.map(item=>   `
+       const lerPedidoProduto = result.map(item =>  `
                                                         <tr>
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
-                                                            <td class="text-center">${item.valor}</td>
+                                                            <td class="text-center">${item.valor_produto * item.qnt_produto}</td>
                                                         </tr>
-        
                                                     `);
-        $('#lista_produtos').html(lerPedidoProduto.join(''));
+        $('.lista_produtos').html(lerPedidoProduto.join(''));
+        // const calcProdutosPedido = result.map(item =>   `
+        //                                                     <td>${(item.valor_produto * item.qnt_produto) + }</td>
+        //                                                 `);
+        // $('#calc_Pedido').html(calcProdutosPedido.join(''));
         
     })
 
