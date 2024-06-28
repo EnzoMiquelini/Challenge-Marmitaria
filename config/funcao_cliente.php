@@ -26,6 +26,12 @@
         $telefone = $_POST['telefone'];
         $CPF = $_POST['CPF'];
 
+        $CPF_certo = preg_match("/^[0-a-z9\s]{1,14}$/i",$CPF);
+
+        if(!$CPF_certo){
+            $CPF = str_replace(['.','-'],'',$CPF);
+        }
+
         if($nome == ('') || $sobrenome == ('') || $telefone == ('') || $CPF == ('')){
             echo json_encode('Nao Cadastrou');
             return;

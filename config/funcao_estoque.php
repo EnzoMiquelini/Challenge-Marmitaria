@@ -28,17 +28,19 @@
         $qnt_Estoque= $_POST['qnt_add'];
         $validade= new DateTime(strtotime($_POST['validade']));
         $compra= new DateTime(strtotime($_POST['compra']));
+        $valor= $_POST['valor'];
 
-        if($nome == ('') || $categoria == ('') || $qnt_Estoque == ('') || $validade == ('') || $compra == ('')){
+        if($nome == ('') || $categoria == ('') || $qnt_Estoque == ('') || $validade == ('') || $compra == ('') || $valor == ('')){
             echo json_encode('Nao Cadastrado');
             return;
         }
-        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`) VALUES (:ca, :na, :es, :va, :co)');
+        $stmt = $pdo->prepare('INSERT INTO produto (`id_categoria`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`, `valor`) VALUES (:ca, :na, :es, :va, :co, :vl)');
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
         $stmt->bindValue(':va', $validade->format('Y-m-d'));
         $stmt->bindValue(':co', $compra->format('Y-m-d'));
+        $stmt->bindValue(':vl', $valor);
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){

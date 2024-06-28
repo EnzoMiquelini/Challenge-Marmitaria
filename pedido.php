@@ -1,19 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
+    
     <!-- Required meta tags -->
     <!-- <meta charset="utf-8"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
     <title>Sabores Do Bem</title>
     
 </head>
 <body>
 
     <div class="container">
+
+        <div class="cadastro">
+            <div class="d-flex justify-content-between">
+                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
+                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
+                        <a href="index.php" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
+                        <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
+                    </div>
+                    <div style="width: 80%;">
+                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                    </div>
+                </div>
+                <div class="container mt-5">
+                    <h1 class="text-center">Cadastro</h1>
+        
+                    <form method="post" id="formClientes" class="d-flex justify-content-center">
+                        <div class="formulario mt-5 w-75">
+                            <div class="mb-3">
+                                <label for="CPF" class="form-label">CPF</label>
+                                <input type="numb" class="form-control" id="CPF_pedido" name="cpf" required>
+                            </div>
+                            <div class="resCadastro">
+        
+                            </div>
+                            <div>
+                                <button type="submit" id="cadastrar_cliente_pedido" class="btn btn-primary" data-bs-dismiss="modal">Cadastrar</button>
+                            </div>
+                        </div>
+                    </form>
+        
+                </div>
+            </div>
+        </div>
 
 
 
@@ -32,7 +66,7 @@
         
                     <h1 class="text-center">Pedido</h1>
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
+                        <button type="button" id="add_produto_pedido" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
                     </div>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped w-75 mt-5">
@@ -76,6 +110,9 @@
                                 <form method="post" id="formClientes">
                                     <div class="modal-body">
                                         <div class="formulario mt-5">
+                                            <div id="form_pedido">
+
+                                            </div>
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
                                                 <input type="text" class="form-control" id="nome_produto_pedido" required>
@@ -90,7 +127,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                        <button type="submit" id="cadastrar_produto" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                                        <button type="submit" id="cadastrar_produto_pedido" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
                                     </div>
                                 </form>
                             </div>
@@ -98,40 +135,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-
-
-        <div class="cadastro">
-            <div class="d-flex justify-content-between">
-                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
-                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <a href="index.php" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
-                        <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
-                    </div>
-                    <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
-                    </div>
-                </div>
-                <div class="container mt-5">
-                    <h1 class="text-center">Cadastro</h1>
-
-                    <form method="post" id="formClientes" class="d-flex justify-content-center">
-                        <div class="formulario mt-5 w-75">
-                                <div class="mb-3">
-                                    <label for="CPF" class="form-label">CPF</label>
-                                    <input type="numb" class="form-control" id="CPF_pedido" name="cpf" >
-                                </div>
-                                <div class="resCadastro">
-
-                                </div>
-                                
-                            </div>
-                    </form>
-
-                </div>
-            </div>
-
         </div>
 
 
@@ -176,8 +179,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
       $('#telefone').mask('(00)00000-0000');
-      $('#CPF').mask('000.000.000-00');
+      $('#CPF_pedido').mask('000.000.000-00');
     </script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="Assets/pedido.js"></script>
 </body>
 </html>

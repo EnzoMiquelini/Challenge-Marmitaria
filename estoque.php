@@ -62,9 +62,15 @@
                                             <option></option>
                                         </select>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
-                                        <input type="number" class="form-control" id="qnt_add" required>
+                                    <div class="mb-3 d-flex justify-content-around">
+                                        <div class="w-25">
+                                            <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
+                                            <input type="number" class="form-control" id="qnt_add" required>
+                                        </div>
+                                        <div class="w-25 d-flex flex-column justify-content-end">
+                                            <label for="qnt_Add" class="form-label">Valor do Produto</label>
+                                            <input type="number" class="form-control" id="valor" required>
+                                        </div>
                                     </div> 
                                     <div class="mb-3 d-flex justify-content-around">
                                         <div class="w-25">

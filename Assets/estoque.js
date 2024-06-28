@@ -60,6 +60,7 @@ $('#cadastrar_produto').click(function (e) {
     var qnt_add = $('#qnt_add').val();
     var validade = $('#validade').val();
     var compra = $('#compra').val();
+    var valor = $('#valor').val();
 
     $.ajax({
         method: "post",
@@ -70,7 +71,8 @@ $('#cadastrar_produto').click(function (e) {
             categoria: categoria,
             qnt_add: qnt_add,
             validade: validade,
-            compra: compra
+            compra: compra,
+            valor: valor
         },
         dataType: "json",
     }).done(function(result){
@@ -79,6 +81,7 @@ $('#cadastrar_produto').click(function (e) {
         $('#qnt_add').val('');
         $('#validade').val('');
         $('#compra').val('');
+        $('#valor').val('');
         if(result == ('Nao Cadastrado')){
             Swal.fire({
                 icon: "error",
