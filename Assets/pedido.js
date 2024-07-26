@@ -46,7 +46,7 @@ $('#CPF_pedido').blur(function (e) {
     }).done (function(result){
         if(result == ('Sem CPF')){
             $('#cadastrar_cliente_pedido').show();
-            var cadClientePedido =      `
+            const cadClientePedido =    `
                                             <div class="mb-3">
                                                 <label for="nome" class="form-label">Nome</label>
                                                 <input type="text" class="form-control nome_produto_pedido" name="nome" >
@@ -60,10 +60,10 @@ $('#CPF_pedido').blur(function (e) {
                                                 <input type="tel" class="form-control" id="telefone_pedido" name="tel" >
                                             </div>
                                         `;
-            $('.resCadastro').html(cadClientePedido.join(''));
+            $('.resCadastro').append(cadClientePedido);
             return;
         }
-        const lerClientePedido = result.map(item=>  `       
+        const lerClientePedido = result.map(item=>      `
                                                             <div class="mb-3">
                                                                 <label for="nome" class="form-label">Nome</label>
                                                                 <input type="text" class="form-control nome_produto_pedido" value="${item.nome}" name="nome" required>

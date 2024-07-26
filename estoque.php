@@ -169,6 +169,7 @@
     <script>
       $('#validade').mask('99/99/9999');
       $('#compra').mask('99/99/9999');
+      $('#valor').mask('999.99');
     </script>
     <script src="Assets/estoque.js"></script>
 </body>
