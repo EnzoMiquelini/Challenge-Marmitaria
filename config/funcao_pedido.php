@@ -186,17 +186,31 @@
 
         $id_pedido = $_POST['id_pedido'];
        
-        $stmt = $pdo->prepare('SELECT `nome`, `qnt_produto`, `valor_produto` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = '.$id_pedido);
+        $stmt = $pdo->prepare('SELECT `idPedido_produto`, `nome`, `qnt_produto`, `valor_produto` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = :pe ORDER BY `idPedido_produto` DESC');
+        $stmt->bindValue(':pe', $id_pedido);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
-            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            $calc = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            calculo($calc);
+            exit;
+            // echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
             echo json_encode('Nao Encontrado!');
         }
     }
 
 
+    function calculo($calc){
+        var_dump($calc);
+        $valores = '';
+        foreach($calc as $calc){
+            $valores = `
+                        $calc->valor_produto + $calc->qnt_produto
+            `;
+            var_dump($valores);
+        }
+    }
 
     // function excluirPedido(){
         

@@ -3,7 +3,7 @@
 <head>
     
     <!-- Required meta tags -->
-    <!-- <meta charset="utf-8"> -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Bootstrap CSS -->
@@ -75,6 +75,7 @@
                                 <th scope="col">Nome do Produto</th>
                                 <th scope="col" class="text-center">Quantidade</th>
                                 <th scope="col" class="text-center">Valor</th>
+                                <th></th>
                                 </tr>
                             </thead>
                             <tbody class="lista_produtos">
@@ -85,6 +86,7 @@
                             <tfoot class="calc_Pedido">
                                 <th colspan="2">Valor Total:</th>
                                 <th class="text-center">R$: </th>
+                                <th></th>
                             </tfoot>
                         </table>
                     </div>
@@ -183,7 +185,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/add_produto_pedido/sweetalert2@11"></script>
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
@@ -192,5 +194,7 @@
     </script>
     <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
     <script src="Assets/pedido.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

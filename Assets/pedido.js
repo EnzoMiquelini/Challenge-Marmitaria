@@ -198,13 +198,14 @@ function lerIdPedido(id_cliente_ped){
 
 }
 
-$('#add_produto_pedido').click(function (e) { 
-    e.preventDefault();
+// $('#add_produto_pedido').click(function (e) { 
+//     e.preventDefault();
 
-    $('#nome_peoduto_pedido').val('');
-    $('#qnt_add_pedido').val('1');
+//     $('#nome_produto_pedido').val('');
+//     $('#qnt_add_pedido').val('1');
+
     
-});
+// });
 
 // $('#nome_produto_pedido').focus(function (e) { 
 //     e.preventDefault();
@@ -244,6 +245,15 @@ $('#nome_produto_pedido').blur(function (e) {
         },
         dataType: "json",
     }).done (function (result) {
+        if(result == ('Nao Encontrado')){
+            Swal.fire({
+                icon: "error",
+                title: "Produto Nao Encontrado",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        };
         const lerIdProdutoPedido = result.map(item=>    `  
                                                             <input type="hidden" value="${item.id_produto}" id="id_pedido_produto">
                                                             <input type="hidden" value="${item.valor}" id="valor_pedido_produto">
@@ -275,6 +285,10 @@ $('#cadastrar_produto_pedido').click(function (e) {
         },
         dataType: "json",
     }).done (function(result){
+        $('#nome_produto_pedido').val('');
+        $('#id_pedido_produto').val('');
+        $('#qnt_add_pedido').val(1);
+        $('#valor_pedido_produto').val('');
         lerPedidoProduto(id_pedido);
     })
 
@@ -296,9 +310,11 @@ function lerPedidoProduto(id_pedido){
        console.log(result)
        const lerPedidoProduto = result.map(item =>  `
                                                         <tr>
+                                                            <input type="hidden" id="idPedido_produto" value="${item.idPedido_produto}">
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
                                                             <td class="text-center">${item.valor_produto * item.qnt_produto}</td>
+                                                            <td><button class="btn btn-outline-danger d-flex"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedidoProduto.join(''));
