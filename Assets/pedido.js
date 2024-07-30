@@ -307,21 +307,26 @@ function lerPedidoProduto(id_pedido){
         },
         dataType: "json",
     }).done (function (result) {
-       console.log(result)
-       const lerPedidoProduto = result.map(item =>  `
+        console.log(result)
+        const calculo = result.map(item => item.qnt_produto * item.valor_produto);
+        
+        var valores = Number(calculo).toFixed(2);
+
+        console.log(calculo);
+
+
+        const lerPedidoProduto = result.map(item =>  `
                                                         <tr>
                                                             <input type="hidden" id="idPedido_produto" value="${item.idPedido_produto}">
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
-                                                            <td class="text-center">${item.valor_produto * item.qnt_produto}</td>
+                                                            <td class="text-center">${valores}</td>
                                                             <td><button class="btn btn-outline-danger d-flex"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedidoProduto.join(''));
-        // const calcProdutosPedido = result.map(item =>   `
-        //                                                     <td>${(item.valor_produto * item.qnt_produto) + }</td>
-        //                                                 `);
-        // $('#calc_Pedido').html(calcProdutosPedido.join(''));
+
+        
         
     })
 

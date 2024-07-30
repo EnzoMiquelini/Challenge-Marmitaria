@@ -24,7 +24,7 @@
                         <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
                     <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
                     </div>
                 </div>
                 <div class="container mt-5">
@@ -59,7 +59,7 @@
                         <button id="continuar_confirmacao" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
                     <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
                     </div>
                 </div>
                 <div class="container mt-5 ">
@@ -141,10 +141,10 @@
                         <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Finalizar Pedido</button>
                     </div>
                     <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
                     </div>
                 </div>
-                <div class="container mt-5">
+                <div class="container mt-5 ">
                     <h1 class="text-center">Confirmar Pedido</h1>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped w-75 mt-5">
@@ -165,6 +165,22 @@
                                 <th class="text-center">R$: </th>
                             </tfoot>
                         </table>
+                    </div>
+                    <div class="d-flex justify-content-evenly">
+                        <div class="card w-50">
+                            <div class="card-body">
+                                <h5 class="card-title">Forma de Entrega</h5>
+                                <label for=""></label>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
+                        <div class="card w-50">
+                            <div class="card-body">
+                                <h5 class="card-title">Forma de Pagamento</h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary">Button</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

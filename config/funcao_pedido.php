@@ -191,24 +191,9 @@
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
-            $calc = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            calculo($calc);
-            exit;
-            // echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
             echo json_encode('Nao Encontrado!');
-        }
-    }
-
-
-    function calculo($calc){
-        var_dump($calc);
-        $valores = '';
-        foreach($calc as $calc){
-            $valores = `
-                        $calc->valor_produto + $calc->qnt_produto
-            `;
-            var_dump($valores);
         }
     }
 
