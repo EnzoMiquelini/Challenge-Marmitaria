@@ -145,14 +145,15 @@
                     </div>
                 </div>
                 <div class="container mt-5 ">
-                    <h1 class="text-center">Confirmar Pedido</h1>
+                    <h1 class="text-center">Resumo do Pedido</h1>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped w-75 mt-5">
                             <thead>
+                                <tr></tr>
                                 <tr>
-                                <th scope="col">Nome do Produto</th>
-                                <th scope="col" class="text-center">Quantidade</th>
-                                <th scope="col" class="text-center">Valor</th>
+                                    <th scope="col">Nome do Produto</th>
+                                    <th scope="col" class="text-center">Quantidade</th>
+                                    <th scope="col" class="text-center">Valor</th>
                                 </tr>
                             </thead>
                             <tbody class="lista_produtos">
@@ -166,19 +167,43 @@
                             </tfoot>
                         </table>
                     </div>
-                    <div class="d-flex justify-content-evenly">
-                        <div class="card w-50">
+                    <div class="d-flex justify-content-around mt-5" style="height: 200px;">
+                        <div class="card w-25 m-0 container">
                             <div class="card-body">
                                 <h5 class="card-title">Forma de Entrega</h5>
-                                <label for=""></label>
-                                <a href="#" class="btn btn-primary">Button</a>
+                                <div class=" d-flex flex-column justify-content-around h-75" id="forma_de_entrega">
+                                    <div>
+                                        <input type="radio" name="entrega" id="retirada" value="retirada">
+                                        <label for="retirada">Retirada no Local</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="entrega" id="entrega" value="entrega">
+                                        <label for="entrega">Entrega</label>
+                                    </div>
+                                    <div class="endereco">
+                                        <label for="endereco">Endereço</label>
+                                        <input type="text" name="endereco" id="endereco">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card w-50">
+                        <div class="card w-25 m-0 container">
                             <div class="card-body">
                                 <h5 class="card-title">Forma de Pagamento</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="btn btn-primary">Button</a>
+                                <div class="d-flex flex-column justify-content-around h-75">
+                                    <div>
+                                        <input type="radio" name="pagamento" id="pix" value="pix">
+                                        <label for="pix">Pix</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="pagamento" id="cartao" value="cartao">
+                                        <label for="cartao">Cartão</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" name="pagamento" id="dinheiro" value="dinheiro">
+                                        <label for="dinheiro">Dinheiro</label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

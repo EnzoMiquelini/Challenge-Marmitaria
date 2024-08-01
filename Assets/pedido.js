@@ -3,6 +3,7 @@ $('#continuar_pedido').hide();
 $('#cadastrar_cliente_pedido').hide();
 $('.cadastro').show();
 $('.confirm-pedido').hide();
+$('.endereco').hide();
 
 $('#cadastro_voltar').click(function (e) {
     
@@ -194,40 +195,13 @@ function lerIdPedido(id_cliente_ped){
                                                     <input type="hidden" value="${item.id_pedido}" id="id_pedido">
                                                 `);
         $('#form_pedido').html(lerPedidoId.join(''));
+        const lerPedidoListaId = result.map(item=>   `
+                                                    <input type="hidden" value="${item.id_pedido}" id="id_pedido_confirmar">
+                                                `);
+        $('#lista_produtos').html(lerPedidoId.join(''));
     })
 
 }
-
-// $('#add_produto_pedido').click(function (e) { 
-//     e.preventDefault();
-
-//     $('#nome_produto_pedido').val('');
-//     $('#qnt_add_pedido').val('1');
-
-    
-// });
-
-// $('#nome_produto_pedido').focus(function (e) { 
-//     e.preventDefault();
-
-//     $.ajax({
-//         method: "post",
-//         url: "config/funcao_estoque.php",
-//         data: {
-//             action: 'ler',
-//         },
-//         dataType: "json",
-//     }).done (function(result){
-//         console.log(result);
-//         const lerProdutoPedido = result.map(item=>  `   
-//                                                         <select>
-//                                                             <option value="${item.id_produto}">${item.nome}</option>
-//                                                         </select>
-//                                                     `);
-//         $('#').html(lerProdutoPedido.join(''));
-//     })
-    
-// })
 
 
 
@@ -325,9 +299,47 @@ function lerPedidoProduto(id_pedido){
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedidoProduto.join(''));
-
-        
-        
     })
 
 }
+
+
+
+$('#entrega').click(function (e) { 
+    
+    $('.endereco').show();
+
+});
+$('#retirada').click(function (e) { 
+    
+    $('.endereco').hide();
+
+});
+
+
+$('#confirmar_pedido').click(function (e) { 
+    e.preventDefault();
+
+    var id_pedido = $('#id_pedido_confirmar').val();
+    // var valorTot = $('#valor_total').val('');
+    var entrega = $('input[name="entrega"]:checked').val();
+    var pagamento = $('input[name="pagamento"]:checked').val();
+    var endereco = $('#endereco').val();
+    
+    $.ajax({
+        type: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'confirmarPedido',
+            id_pedido: id_pedido,
+            // valor: valorTot,
+            entrega: entrega,
+            pagamento: pagamento,
+            endereco: endereco
+        },
+        dataType: "json",
+    }).done (function (result){
+        
+    });
+
+});

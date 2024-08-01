@@ -20,6 +20,8 @@
             lerPedidoProduto();
         }else if($_POST['action'] == 'excluir'){
             // excluirPedido();
+        }else if($_POST['action'] == 'confirmarPedido'){
+            confirmarPedido();
         }
     }
 
@@ -137,22 +139,6 @@
     }
 
 
-    // function lerNovoPedido(){
-
-    //     include "conecta.php";
-        
-    //     $stmt= $pdo->prepare('SELECT `id_pedido`, `valor_pedido` FROM pedido');
-    //     $stmt->execute();
-
-    //     if ($stmt->rowCount() >= 1){
-    //         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-    //     }else{
-    //         echo json_encode('Nao Encontrado');
-    //     }
-
-    // }
-
-
     
     function inserirProdutoPedido(){
 
@@ -206,4 +192,27 @@
     //     $stmt = $pdo->prepare('DELETE FROM produto WHERE id_produto = '.$id_produto);
     //     $stmt->execute();
     // }
+
+
+    function confirmarPedido(){
+        
+        include 'conecta.php';
+
+        $id_pedido = $_POST['id_pedido'];
+        // $valor = $_POST['valor'];
+        $entrega = $_POST['entrega'];
+        $pagamento = $_POST['pagamento'];
+        $endereco = $_POST['endereco'];
+
+        var_dump($_POST);
+        exit;
+
+        $stmt = $pdo->prepare('UPDATE pedido SET `tipo_pgto` = :tg, `valor_pedido` = :vp, `entrega` = :en, `endereco` = :ed WHERE `id_pedido` ='.$id_pedido);
+        $stmt->bindValue(':tg', $pagamento);
+        $stmt->bindValue(':vp', $valor);
+        $stmt->bindValue(':en', $entrega);
+        $stmt->bindValue(':ed', $endereco);
+        $stmt->execute();
+
+    }
 ?>
