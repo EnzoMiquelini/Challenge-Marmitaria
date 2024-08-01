@@ -204,9 +204,6 @@
         $pagamento = $_POST['pagamento'];
         $endereco = $_POST['endereco'];
 
-        var_dump($_POST);
-        exit;
-
         $stmt = $pdo->prepare('UPDATE pedido SET `tipo_pgto` = :tg, `valor_pedido` = :vp, `entrega` = :en, `endereco` = :ed WHERE `id_pedido` ='.$id_pedido);
         $stmt->bindValue(':tg', $pagamento);
         $stmt->bindValue(':vp', $valor);

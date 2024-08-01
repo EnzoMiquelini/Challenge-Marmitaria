@@ -75,7 +75,7 @@
                                 <th scope="col">Nome do Produto</th>
                                 <th scope="col" class="text-center">Quantidade</th>
                                 <th scope="col" class="text-center">Valor</th>
-                                <th></th>
+                                <th class="id_pedido_lista"></th>
                                 </tr>
                             </thead>
                             <tbody class="lista_produtos">
@@ -154,6 +154,7 @@
                                     <th scope="col">Nome do Produto</th>
                                     <th scope="col" class="text-center">Quantidade</th>
                                     <th scope="col" class="text-center">Valor</th>
+                                    <th class="id_pedido_lista"></th>
                                 </tr>
                             </thead>
                             <tbody class="lista_produtos">

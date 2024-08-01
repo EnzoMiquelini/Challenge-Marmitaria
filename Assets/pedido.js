@@ -195,10 +195,10 @@ function lerIdPedido(id_cliente_ped){
                                                     <input type="hidden" value="${item.id_pedido}" id="id_pedido">
                                                 `);
         $('#form_pedido').html(lerPedidoId.join(''));
-        const lerPedidoListaId = result.map(item=>   `
-                                                    <input type="hidden" value="${item.id_pedido}" id="id_pedido_confirmar">
-                                                `);
-        $('#lista_produtos').html(lerPedidoId.join(''));
+        const lerPedidoListaId = result.map(item=>  `   
+                                                        <input type="hidden" value="${item.id_pedido}" id="id_pedido_confirmar">
+                                                    `);
+        $('.id_pedido_lista').html(lerPedidoListaId.join(''));
     })
 
 }
