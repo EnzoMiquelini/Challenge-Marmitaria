@@ -12,7 +12,8 @@ function getEstoque(){
                                                     <tr>
                                                         <td><p>${item.nome}</p></td>
                                                         <td><p>${item.nome_categoria}<p></td>
-                                                        <td><p>${item.qnt_Estoque}</p></td>
+                                                        <td><p class="CPF">${item.qnt_Estoque}</p></td>
+                                                        <td><p>${item.valor}</p></td>
                                                         <td><p>${item.data_compra}</p></td>
                                                         <td><p>${item.data_validade}</p></td>
                                                         <td><button type="button" class="btn btn-primary edit_produto" data-bs-toggle="modal" data-bs-target="#editar_produto" onclick="editarProduto(${item.id_produto})">Editar</button>
@@ -139,10 +140,16 @@ function editarProduto(id_produto) {
                                                             `);
         $('.cima_editar').html(editarCimaNomeProduto.join(''));
         const editarBaixoNomeProduto = result.map(item =>   `
-                                                                <div class="mb-3">
-                                                                    <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
-                                                                    <input type="tel" class="form-control" id="qnt_add_edit" value="${item.qnt_Estoque}" required>
-                                                                </div>
+                                                                <div class="mb-3 d-flex justify-content-around">
+                                                                    <div class="w-25">
+                                                                        <label for="qnt_Add" class="form-label">Quantidade a ser adicionada</label>
+                                                                        <input type="number" class="form-control" id="qnt_add" value="${item.qnt_Estoque}" required>
+                                                                    </div>
+                                                                    <div class="w-25 d-flex flex-column justify-content-end">
+                                                                        <label for="valor" class="form-label">Valor do Produto</label>
+                                                                        <input type="number" class="form-control" id="valor" value="${item.valor}" required>
+                                                                    </div>
+                                                                </div> 
                                                                 <div class="mb-3 d-flex justify-content-around">
                                                                     <div class="w-25">
                                                                         <label for="validade" class="form-label">Data de validade</label>

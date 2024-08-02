@@ -4,6 +4,7 @@ $('#cadastrar_cliente_pedido').hide();
 $('.cadastro').show();
 $('.confirm-pedido').hide();
 $('.endereco').hide();
+$('#ir_pagina_inicial').hide();
 
 $('#cadastro_voltar').click(function (e) {
     
@@ -282,6 +283,17 @@ function lerPedidoProduto(id_pedido){
         dataType: "json",
     }).done (function (result) {
         console.log(result)
+        if(result == ('Nao Encontrado!')){
+            console.log('aqui')
+            const semProduto = result.map(item =>   `   
+                                                        <tr>
+                                                            <input type="hidden" value="${item.idPedido_produto}">
+                                                            <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
+                                                        </tr>
+                                                    `);
+            $('.lista_produtos').html(semProduto.join(''));
+            return;
+        }
         const calculo = result.map(item => item.qnt_produto * item.valor_produto);
         
         var valores = Number(calculo).toFixed(2);
@@ -289,21 +301,45 @@ function lerPedidoProduto(id_pedido){
         console.log(calculo);
 
 
-        const lerPedidoProduto = result.map(item =>  `
+        const lerPedido_Produto = result.map(item =>  `
                                                         <tr>
                                                             <input type="hidden" id="idPedido_produto" value="${item.idPedido_produto}">
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
                                                             <td class="text-center">${valores}</td>
-                                                            <td><button class="btn btn-outline-danger d-flex"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
+                                                            <td><button class="btn btn-outline-danger d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido})"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
-        $('.lista_produtos').html(lerPedidoProduto.join(''));
+        $('.lista_produtos').html(lerPedido_Produto.join(''));
     })
 
 }
 
-
+function excluir_produto_pedido(idPedido_produto, id_pedido){
+    
+    $.ajax({
+        type: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'excluir_pedido_produto',
+            id_pedido_produto: idPedido_produto
+        },
+        dataType: "json",
+    }).done (function(result){
+        if(result == ('Nao excluido')){
+            Swal.fire({
+                icon: "error",
+                title: "Produto Nao encontrado",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        }
+        
+        lerPedidoProduto(id_pedido);
+    })      
+        
+}
 
 $('#entrega').click(function (e) { 
     
@@ -321,25 +357,62 @@ $('#confirmar_pedido').click(function (e) {
     e.preventDefault();
 
     var id_pedido = $('#id_pedido_confirmar').val();
-    // var valorTot = $('#valor_total').val('');
+    var valor = $('#valor_total').val();
     var entrega = $('input[name="entrega"]:checked').val();
     var pagamento = $('input[name="pagamento"]:checked').val();
     var endereco = $('#endereco').val();
+
+    if(id_pedido == ('') || valor == ('') || entrega == ('') || pagamento== ('')){
+        Swal.fire({
+            icon: "error",
+            title: "Pedido Não Finalizado",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        return;
+    }
     
+    if(entrega == ('entrega')){
+        if(endereco == ('')){
+            Swal.fire({
+                icon: "error",
+                title: "Pedido Não Finalizado",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        }
+    }
+
     $.ajax({
         type: "post",
         url: "config/funcao_pedido.php",
         data: {
             action: 'confirmarPedido',
             id_pedido: id_pedido,
-            // valor: valorTot,
+            valor: valor,
             entrega: entrega,
             pagamento: pagamento,
             endereco: endereco
         },
         dataType: "json",
     }).done (function (result){
-        
+        if(result == ('Nao Adicionado')){
+            Swal.fire({
+                icon: "error",
+                title: "Pedido Não Finalizado",
+                showConfirmButton: false,
+                timer: 1500
+            })
+            return;
+        }
+        Swal.fire({
+            icon: "success",
+            title: "Pedido Finalizado",
+            showConfirmButton: false,
+            timer: 1500
+        })
+        $('#ir_pagina_inicial').show();
     });
 
 });

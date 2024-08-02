@@ -20,6 +20,8 @@
             lerPedidoProduto();
         }else if($_POST['action'] == 'excluir'){
             // excluirPedido();
+        }else if($_POST['action'] == 'excluir_pedido_produto'){
+            excluirPedidoProduto();
         }else if($_POST['action'] == 'confirmarPedido'){
             confirmarPedido();
         }
@@ -172,7 +174,7 @@
 
         $id_pedido = $_POST['id_pedido'];
        
-        $stmt = $pdo->prepare('SELECT `idPedido_produto`, `nome`, `qnt_produto`, `valor_produto` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = :pe ORDER BY `idPedido_produto` DESC');
+        $stmt = $pdo->prepare('SELECT `idPedido_produto`,`id_pedido`, `nome`, `qnt_produto`, `valor_produto` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = :pe ORDER BY `idPedido_produto` DESC');
         $stmt->bindValue(':pe', $id_pedido);
         $stmt->execute();
 
@@ -193,13 +195,29 @@
     //     $stmt->execute();
     // }
 
+    function excluirPedidoProduto(){
+
+        include 'conecta.php';
+
+        $id_pedido_produto = $_POST['id_pedido_produto'];
+
+        $stmt = $pdo->prepare('DELETE FROM pedido_produto WHERE idPedido_produto ='.$id_pedido_produto);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao excluido');
+        }
+    }
+
 
     function confirmarPedido(){
         
         include 'conecta.php';
 
         $id_pedido = $_POST['id_pedido'];
-        // $valor = $_POST['valor'];
+        $valor = $_POST['valor'];
         $entrega = $_POST['entrega'];
         $pagamento = $_POST['pagamento'];
         $endereco = $_POST['endereco'];
@@ -210,6 +228,12 @@
         $stmt->bindValue(':en', $entrega);
         $stmt->bindValue(':ed', $endereco);
         $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Adicionado');
+        }
 
     }
 ?>

@@ -85,10 +85,10 @@
         if(isset($_POST['id_produto'])){
             $id_produto = $_POST['id_produto'];
 
-            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `nome_categoria`, `qnt_Estoque`, `data_validade`, `data_compra` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria WHERE id_produto =' . $id_produto);
+            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `nome_categoria`, `qnt_Estoque`, `valor`, `data_validade`, `data_compra` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria WHERE id_produto =' . $id_produto);
             $stmt->execute();
         }else{
-            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `nome_categoria`, `qnt_Estoque`, `data_validade`, `data_compra` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria');
+            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `nome_categoria`, `qnt_Estoque`, `valor`, `data_validade`, `data_compra` FROM produto INNER JOIN categorias_alimentos ON produto.id_categoria = categorias_alimentos.id_categoria');
             $stmt->execute();
         }    
 

@@ -31,7 +31,8 @@
                 <tr>
                     <th>Nome</th>
                     <th>Sobrenome</th>
-                    <th colspan="2">telefone</th>
+                    <th>telefone</th>
+                    <th colspan="2">CPF</th>
                 </tr>
             </thead>
             <tbody class="lista_clientes">
@@ -147,6 +148,7 @@
       $('#telefone_cliente_adicionar').mask('(00) 00000-0000');
     //   $('#telefone_cliente_editar').mask('(00) 00000-0000');
       $('#CPF').mask('000.000.000-00');
+      $('.CPF').mask('000.000.000-00');
     </script>
     <script src="Assets/cliente.js"></script>
 </body>

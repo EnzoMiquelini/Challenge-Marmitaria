@@ -139,6 +139,7 @@
                     <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
                         <button id="pedido_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
                         <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Finalizar Pedido</button>
+                        <a href="index.php" id="ir_pagina_inicial" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Ir para a Página Inicial</a>
                     </div>
                     <div style="width: 80%;">
                         <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
@@ -159,12 +160,13 @@
                             </thead>
                             <tbody class="lista_produtos">
                                 <tr>
-                                    <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
+                                    
                                 </tr>
                             </tbody>
                             <tfoot class="calc_Pedido">
+                                <input type="hidden" id="valor_total" value="1">
                                 <th colspan="2">Valor Total:</th>
-                                <th class="text-center">R$: </th>
+                                <th class="text-center" id="valor_total">R$: </th>
                             </tfoot>
                         </table>
                     </div>
@@ -227,7 +229,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     
-    <script src="https://cdn.jsdelivr.net/add_produto_pedido/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="Assets/jQuery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>

@@ -24,7 +24,7 @@
         <table class="table table-striped table-hover col-sm-8 border mt-5">
             <thead>
                 <tr>
-                    <td colspan="6" class="text-center">
+                    <td colspan="7" class="text-center">
                         <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto" onclick="adicionarProduto()">Adicionar Produto +</button>
                     </td>
                 </tr>
@@ -32,6 +32,7 @@
                     <th>Nome Produto</th>
                     <th>Categoria</th>
                     <th>Quantidade</th>
+                    <th>Preço</th>
                     <th>Data da Compra</th>
                     <th colspan="2">Data de Validade</th>
                 </tr>
@@ -68,7 +69,7 @@
                                             <input type="number" class="form-control" id="qnt_add" required>
                                         </div>
                                         <div class="w-25 d-flex flex-column justify-content-end">
-                                            <label for="qnt_Add" class="form-label">Valor do Produto</label>
+                                            <label for="valor" class="form-label">Valor do Produto</label>
                                             <input type="number" class="form-control" id="valor" required>
                                         </div>
                                     </div> 
