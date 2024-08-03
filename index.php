@@ -54,14 +54,10 @@
                     <div class="col-sm">
                         <div class="card">
                             <div class="card-header text-center">
-                                <strong>Produtos a Vencer</strong>
+                                <strong>Produtos Próximos a Validade</strong>
                             </div>
-                            <ul class="list-group list-group-flush" style="padding: 0;">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
+                            <ul class="list-group list-group-flush" id="validade" style="padding: 0;">
+                               
                             </ul>
                         </div>
                     </div>
@@ -70,12 +66,8 @@
                             <div class="card-header text-center">
                                 <Strong>Pedidos em Aberto</Strong>
                             </div>
-                            <ul class="list-group list-group-flush" style="padding: 0;">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
+                            <ul class="list-group list-group-flush" id="emAberto" style="padding: 0;">
+                                
                             </ul>
                         </div>
                     </div>
@@ -90,7 +82,7 @@
                                 <tr>
                                     <th>Nome Cliente</th>
                                     <th>Data</th>
-                                    <th>Hora</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody id="listar_pedidos">
@@ -128,5 +120,8 @@
 
     <script src="Assets/jquery.js"></script>
     <script src="Assets/index.js"></script>
+    <script src="Assets/jQuery.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   </body>
 </html>
