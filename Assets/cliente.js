@@ -17,7 +17,7 @@ function getCliente(){
                                                         <td class="CPF">${item.CPF}</td>
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_cliente" onclick="editarCliente(${item.id_cliente})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button>
-                                                        <button type="button" class="btn btn-warning">Ver Pedido</button></td>
+                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_cliente" onclick="verCliente(${item.CPF})>Ver Mais</button></td>
                                                     </tr>
                                                 `);
         $('.lista_clientes').html(lerClientes.join(''));
@@ -204,3 +204,28 @@ $('#excluir_cliente').click(function (e) {
     })
 
 })
+
+
+function verCliente(CPF){
+
+    $.ajax({
+        type: "post",
+        url: "config/funcao_cliente",
+        data: {
+            action: 'verMaisCliente',
+            CPF: CPF
+        },
+        dataType: "json",    
+    }).done(function(result){
+        console.log(result);
+        const verClienteDados = result.map(item=>   `
+                                                        <li class="list-group-item">${item.nome} ${item.sobrenome}</li>
+                                                        <li class="list-group-item">${item.telefone}</li>
+                                                        <li class="list-group-item">${item.CPF}</li>
+                                                    `);
+        $('#verCliente').html(verClienteDados.join(''));
+        const verClientePedido = result.map(item=>  `
+                                                        <td></td>
+                                                    `)
+    });
+}

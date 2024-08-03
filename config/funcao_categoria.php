@@ -11,6 +11,8 @@
             editarCategoria();
         }else if($_POST['action'] == 'excluir'){
             excluirCategoria();
+        }else if($_POST['action'] == 'verMais'){
+            verMaisCategoria();
         }
 
     }
@@ -110,5 +112,24 @@
 
         echo json_encode('Excluido');
           
+    }
+
+    function verMaisCategoria(){
+
+        include 'conecta.php';
+
+        $nome_categoria = $_POST['nome_categoria'];
+
+        var_dump($_POST);
+
+        $stmt = $pdo->prepare('SELECT `nome_categoria`, `descricao`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`, `valor` FROM produto INNER JOIN categorias_alimentos ON  produto.id_categoria = categorias_alimentos.id_categoria WHERE nome_categoria ='.$nome_categoria);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrou');
+        }
+
     }
 ?>

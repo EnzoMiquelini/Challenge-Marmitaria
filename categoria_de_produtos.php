@@ -115,7 +115,7 @@
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ver Mais</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mais Sobre</h1>
                 </div>
                 <div class="modal-body">
                     <div class="verMais_categoria">

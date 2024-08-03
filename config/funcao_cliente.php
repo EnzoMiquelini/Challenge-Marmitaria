@@ -11,6 +11,8 @@
             editarCliente();
         }else if($_POST['action'] == 'excluir'){
             excluirCliente();
+        }else if($_POST['action'] == 'verMaisCliente'){
+            verMaisCliente();
         }
 
     }
@@ -124,5 +126,21 @@
 
         echo json_encode('Excluido');
 
+    }
+
+    function verMaisCliente(){
+
+        include 'conecta.php';
+
+        $CPF = $_POST['CPF'];
+
+        $stmt = $pdo->prepare('SELECT `nome`, `sobrenome`, `telefone`, `CPF`, `data_pedido`, `tipo_pgto`, `valor_pedido`, `entrega`, `endereco`, `status` FROM cliente INNER JOIN pedido ON  cliente.id_cliente = pedido.id_cliente WHERE CPF ='.$CPF);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrou');
+        }
     }
 ?>

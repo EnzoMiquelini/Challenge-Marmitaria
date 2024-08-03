@@ -13,7 +13,7 @@ function getCategoria(){
                                                             <td><p>${item.nome_categoria}</p></td>
                                                             <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button>
-                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_categoria" onclick="verCategoria(${item.id_categoria})">Ver Mais</button></td>
+                                                            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_categoria" onclick="verCategoria(${item.nome_categoria})">Ver Mais</button></td>
                                                         </tr>
                                                     `);
         $('.lista_categoria').html(lerCategorias.join(''));
@@ -178,3 +178,19 @@ $('#excluir_categoria').click(function (e) {
     })
     
 })
+
+function verCategoria(nome_categoria){
+
+    $.ajax({
+        type: "post",
+        url: "config/funcao_categoria.php",
+        data: {
+            action: 'verMais',
+            nome_categoria: nome_categoria
+        },
+        dataType: "json",
+    }).done (function(result){
+        console.log(result);
+
+    });
+}
