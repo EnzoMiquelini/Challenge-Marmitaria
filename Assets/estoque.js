@@ -45,11 +45,11 @@ function adicionarProduto(){
         $('.categoria_listar').append(lerCategoria);
     })
 
-    const data = new Date();
-    const dia = data.getDate();
-    const mes = data.getMonth();
-    const ano = data.getFullYear();
-    $('.data_Compra_Produto').html('<label for="compra" class="form-label">Data de compra</label> <input type="text" id="compra" nome="data" class="form-control" value="' + dia + '/' + mes + '/' + ano + '" required>');
+    var data = new Date();
+    var dia = data.getDate();
+    var mes = data.getMonth();
+    var ano = data.getFullYear();
+    $('.data_Compra_Produto').html('<label for="compra" class="form-label">Data de compra</label> <input type="text" id="compra" nome="data" class="form-control" value="' + dia + '/' + (mes+1) + '/' + ano + '" required>');
 
 }
 

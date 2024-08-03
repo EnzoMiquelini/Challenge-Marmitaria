@@ -8,7 +8,9 @@ function getIndex(){
         },
         dataType: "json",
     }).done (function (result){
-        const lerCategoriaIndex = result.map(item => `<li>${item.nome_categoria}</li>`);
+        const lerCategoriaIndex = result.map(item =>    `
+                                                            <li><p>${item.nome_categoria}</p></li>
+                                                        `);
         $('#listar_categorias').html(lerCategoriaIndex.join(''));
     })
     
@@ -63,7 +65,7 @@ function getIndex(){
 
     
     $.ajax({
-        type: "method",
+        type: "post",
         url: "url",
         data: "data",
         dataType: "dataType",

@@ -16,7 +16,8 @@ function getCliente(){
                                                         <td>${item.telefone}</td>
                                                         <td class="CPF">${item.CPF}</td>
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_cliente" onclick="editarCliente(${item.id_cliente})">Editar</button>
-                                                        <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button></td>
+                                                        <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button>
+                                                        <button type="button" class="btn btn-warning">Ver Pedido</button></td>
                                                     </tr>
                                                 `);
         $('.lista_clientes').html(lerClientes.join(''));

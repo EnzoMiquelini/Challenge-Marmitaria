@@ -42,7 +42,7 @@
                             <div class="card-header text-center">
                                 <strong>Produtos Acabando</strong>
                             </div>
-                            <ul class="list-group list-group-flush" style="padding: 0;">
+                            <ul class="list-group list-group-flush" id="produtos_acabando" style="padding: 0;">
                                 <li class="list-group-item">An item</li>
                                 <li class="list-group-item">A second item</li>
                                 <li class="list-group-item">A third item</li>

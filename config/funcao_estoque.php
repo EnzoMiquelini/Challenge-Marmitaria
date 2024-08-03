@@ -26,9 +26,10 @@
         $nome = $_POST['nome'];
         $categoria= $_POST['categoria'];
         $qnt_Estoque= $_POST['qnt_add'];
-        $validade= new DateTime(strtotime($_POST['validade']));
-        $compra= new DateTime(strtotime($_POST['compra']));
+        $validade= $_POST['validade'];
+        $compra= $_POST['compra'];
         $valor= $_POST['valor'];
+
 
         if($nome == ('') || $categoria == ('') || $qnt_Estoque == ('') || $validade == ('') || $compra == ('') || $valor == ('')){
             echo json_encode('Nao Cadastrado');
@@ -38,8 +39,8 @@
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
-        $stmt->bindValue(':va', $validade->format('Y-m-d'));
-        $stmt->bindValue(':co', $compra->format('Y-m-d'));
+        $stmt->bindValue(':va', (new \DateTimeImmutable($validade))->format('Y/m/d'));
+        $stmt->bindValue(':co', (new \DateTimeImmutable($compra))->format('Y/m/d'));
         $stmt->bindValue(':vl', $valor);
         $stmt->execute();
         

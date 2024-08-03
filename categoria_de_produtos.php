@@ -103,7 +103,6 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
                 </div>
                 </div>
             </div>
@@ -111,6 +110,25 @@
 
 
 
+        <!-- Modal Ver Mais -->
+        <div class="modal fade" id="VerMais_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ver Mais</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="verMais_categoria">
+                        
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                    <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
+                </div>
+                </div>
+            </div>
+        </div>
 
     
   
