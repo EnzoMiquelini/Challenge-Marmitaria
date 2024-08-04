@@ -128,13 +128,14 @@
 
     }
 
+
     function verMaisCliente(){
 
         include 'conecta.php';
 
-        $CPF = $_POST['CPF'];
+        $id_cliente = $_POST['id_cliente'];
 
-        $stmt = $pdo->prepare('SELECT `nome`, `sobrenome`, `telefone`, `CPF`, `data_pedido`, `tipo_pgto`, `valor_pedido`, `entrega`, `endereco`, `status` FROM cliente INNER JOIN pedido ON  cliente.id_cliente = pedido.id_cliente WHERE CPF ='.$CPF);
+        $stmt = $pdo->prepare('SELECT * FROM cliente WHERE id_cliente ='.$id_cliente);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
@@ -142,5 +143,24 @@
         }else{
             echo json_encode('Nao Encontrou');
         }
+
+    }
+
+
+    function verMaisPedido(){
+
+        include 'conecta.php';
+
+        $id_cliente = $_POST['id_cliente'];
+
+        $stmt = $pdo->prepare('SELECT * FROM pedido WHERE id_cliente ='.$td_cliente);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Encontrou');
+        }
+
     }
 ?>

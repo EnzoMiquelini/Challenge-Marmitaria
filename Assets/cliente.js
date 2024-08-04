@@ -17,7 +17,7 @@ function getCliente(){
                                                         <td class="CPF">${item.CPF}</td>
                                                         <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_cliente" onclick="editarCliente(${item.id_cliente})">Editar</button>
                                                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#excluir_cliente" onclick="excluirCliente(${item.id_cliente})">Excluir</button>
-                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_cliente" onclick="verCliente(${item.CPF})>Ver Mais</button></td>
+                                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_cliente" onclick="verCliente(${item.id_cliente})">Ver Mais</button></td>
                                                     </tr>
                                                 `);
         $('.lista_clientes').html(lerClientes.join(''));
@@ -206,26 +206,38 @@ $('#excluir_cliente').click(function (e) {
 })
 
 
-function verCliente(CPF){
+function verCliente(id_cliente){
 
     $.ajax({
         type: "post",
-        url: "config/funcao_cliente",
+        url: "config/funcao_cliente.php",
         data: {
             action: 'verMaisCliente',
-            CPF: CPF
+            id_cliente: id_cliente
         },
-        dataType: "json",    
+        dataType: "json",
     }).done(function(result){
-        console.log(result);
-        const verClienteDados = result.map(item=>   `
-                                                        <li class="list-group-item">${item.nome} ${item.sobrenome}</li>
-                                                        <li class="list-group-item">${item.telefone}</li>
-                                                        <li class="list-group-item">${item.CPF}</li>
-                                                    `);
+        const verClienteDados = result.map(item=>   `       <input type="hidden" value="${item.id_cliente}"></input>
+                                                            <li class="list-group-item"><h6>Nome:</h6>${item.nome} ${item.sobrenome}</li>
+                                                            <li class="list-group-item"><h6>Telefone:</h6>${item.telefone}</li>
+                                                            <li class="list-group-item"><h6>CPF:</h6>${item.CPF}</li>
+                                                        `);
         $('#verCliente').html(verClienteDados.join(''));
-        const verClientePedido = result.map(item=>  `
-                                                        <td></td>
-                                                    `)
-    });
+    })
+
+
+    // $.ajax({
+    //     type: "post",
+    //     url: "config/funcao_cliente.php",
+    //     data: {
+    //         action: 'verMaisPedido',
+    //         CPF: CPF
+    //     },
+    //     dataType: "json",    
+    // }).done(function(result){
+    //     console.log(result);
+    //     const verClientePedido = result.map(item=>  `
+    //                                                     <td></td>
+    //                                                 `)
+    // });
 }
