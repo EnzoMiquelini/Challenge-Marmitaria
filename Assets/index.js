@@ -42,7 +42,7 @@ function getIndex(){
     }).done (function(result){
         console.log(result);
         const lerEmAberto = result.map(item=>   `
-                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}<button type="button" class="btn btn-outline-success h-50">Ok</button></li>
+                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}<button type="button" class="btn btn-outline-success onclick="AlterarStatus(${item.id_pedido})" h-50">Ok</button></li>
                                                 `);
         $('#emAberto').html(lerEmAberto.join(''));
     });
@@ -64,15 +64,34 @@ function getIndex(){
 
 
     
+    // $.ajax({
+    //     type: "post",
+    //     url: "url",
+    //     data: "data",
+    //     dataType: "dataType",
+    //     success: function (response) {
+            
+    //     }
+    // });
+}   
+ 
+getIndex();
+
+
+function AlterarStatus(id_pedido){
+
+    var status = 'Entregue';
+
     $.ajax({
         type: "post",
-        url: "url",
-        data: "data",
-        dataType: "dataType",
-        success: function (response) {
-            
-        }
+        url: "config/funcao_index.php",
+        data: {
+            action: 'editarStatus',
+            id_pedido: id_pedido,
+            status: status
+        },
+        dataType: "json",
+    }).done(function(result){
+        console.log(result);
     });
-}   
-
-getIndex();
+}

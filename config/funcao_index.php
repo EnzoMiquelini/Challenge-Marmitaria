@@ -58,5 +58,23 @@
 
     }
 
+    function editarStatus(){
+
+        include 'conecta.php';
+
+        $id_pedido = $_POST['id_pedido'];
+        $status = $_POST['status'];
+
+        $stmt = $pdo->prepare('UPDATE pedido SET `status` = (:st) WHERE id_pedido ='.$id_pedido);
+        $stmt->bindValue(':st', $status);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Alterado');
+        }
+
+    }
 
 ?>
