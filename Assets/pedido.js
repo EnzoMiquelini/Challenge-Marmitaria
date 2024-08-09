@@ -416,3 +416,20 @@ $('#confirmar_pedido').click(function (e) {
     });
 
 });
+
+
+
+// function estoque(qnt_Estoque){
+
+//     $.ajax({
+//         type: "post",
+//         url: "url",
+//         data: "data",
+//         dataType: "dataType",
+//         success: function (response) {
+            
+//         }
+//     });
+
+
+// }

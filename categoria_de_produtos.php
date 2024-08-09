@@ -124,7 +124,6 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
                 </div>
                 </div>
             </div>

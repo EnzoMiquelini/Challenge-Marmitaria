@@ -134,34 +134,34 @@
         <div class="modal fade" id="VerMais_cliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Mais Sobre</h1>
-                </div>
-                <div class="modal-body">
-                    <div class="verMais_cliente">
-                        <ul class="list-group list-group-flush" id="verCliente">
-
-                        </ul>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Data</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Pagamento</th>
-                                <th scope="col">Entrega</th>
-                                <th scope="col">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="verMais_pedidoCliente">
-
-                            </tbody>
-                        </table>
+                    <div class="modal-header d-flex justify-content-between">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Mais Sobre</h1>
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    <button type="button" id="excluir_categoria" data-bs-dismiss="modal" class="btn btn-danger">Excluir</button>
-                </div>
+                    <div class="modal-body">
+                        <div class="verMais_cliente">
+                            <ul class="list-group list-group-flush" id="verCliente">
+
+                            </ul>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Pagamento</th>
+                                    <th scope="col">Entrega</th>
+                                    <th scope="col">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="verMais_pedidoCliente">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        
+                    </div>
                 </div>
             </div>
         </div>

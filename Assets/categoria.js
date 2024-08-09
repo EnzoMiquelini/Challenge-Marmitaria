@@ -10,7 +10,7 @@ function getCategoria(){
     }).done(function(result){
         const lerCategorias = result.map(item =>    `
                                                         <tr>
-                                                            <td w-75><p>${item.nome_categoria}</p></td>
+                                                            <td class="w-75"><p>${item.nome_categoria}</p></td>
                                                             <td><button type="button" class="btn btn-primary edit_categoria" data-bs-toggle="modal" data-bs-target="#editar_categoria" onclick="editarCategoria(${item.id_categoria})">Editar</button>
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#excluir_categoria" onclick="excluirCategoria(${item.id_categoria})">Excluir</button>
                                                             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#VerMais_categoria" onclick="verCategoria(${item.nome_categoria})">Ver Mais</button></td>
@@ -181,6 +181,9 @@ $('#excluir_categoria').click(function (e) {
 
 function verCategoria(nome_categoria){
 
+    console.log(nome_categoria);
+    return;
+
     $.ajax({
         type: "post",
         url: "config/funcao_categoria.php",
@@ -193,4 +196,5 @@ function verCategoria(nome_categoria){
         console.log(result);
 
     });
+
 }

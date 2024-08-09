@@ -13,6 +13,8 @@
             excluirCliente();
         }else if($_POST['action'] == 'verMaisCliente'){
             verMaisCliente();
+        }else if($_POST['action'] == 'verMaisPedido'){
+            verMaisPedido();
         }
 
     }
@@ -153,7 +155,8 @@
 
         $id_cliente = $_POST['id_cliente'];
 
-        $stmt = $pdo->prepare('SELECT * FROM pedido WHERE id_cliente ='.$td_cliente);
+        $stmt = $pdo->prepare('SELECT * FROM pedido WHERE id_cliente = :cl ORDER BY data_pedido DESC;');
+        $stmt->bindValue(':cl', $id_cliente);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){

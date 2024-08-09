@@ -42,7 +42,7 @@ function adicionarProduto(){
         const lerCategoria = result.map(item => `
                                                     <option value="${item.id_categoria}">${item.nome_categoria}</option>
                                                 `);
-        $('.categoria_listar').append(lerCategoria);
+        $('.categoria_listar').html(lerCategoria);
     })
 
     var data = new Date();

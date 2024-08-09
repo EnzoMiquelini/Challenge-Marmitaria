@@ -226,18 +226,30 @@ function verCliente(id_cliente){
     })
 
 
-    // $.ajax({
-    //     type: "post",
-    //     url: "config/funcao_cliente.php",
-    //     data: {
-    //         action: 'verMaisPedido',
-    //         CPF: CPF
-    //     },
-    //     dataType: "json",    
-    // }).done(function(result){
-    //     console.log(result);
-    //     const verClientePedido = result.map(item=>  `
-    //                                                     <td></td>
-    //                                                 `)
-    // });
+    $.ajax({
+        type: "post",
+        url: "config/funcao_cliente.php",
+        data: {
+            action: 'verMaisPedido',
+            id_cliente: id_cliente
+        },
+        dataType: "json",    
+    }).done(function(result){
+        console.log(result);
+        if(result == 'Nao Encontrou'){
+            $('#verMais_pedidoCliente').html('<tr><td colspan="5" class="text-center">Não Há Pedidos</td></tr>');
+            return;
+        }
+        const verClientePedido = result.map(item=>  `
+                                                        <tr>
+                                                            <td>${item.data_pedido}</td>
+                                                            <td>${item.valor_pedido}</td>
+                                                            <td>${item.tipo_pgto}</td>
+                                                            <td>${item.entrega}</td>
+                                                            <td>${item.status}</td>
+                                                        <tr>
+                                                    `);
+        $('#verMais_pedidoCliente').html(verClientePedido.join(''));
+
+    });
 }

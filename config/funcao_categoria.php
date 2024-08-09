@@ -121,6 +121,7 @@
         $nome_categoria = $_POST['nome_categoria'];
 
         var_dump($_POST);
+        exit;
 
         $stmt = $pdo->prepare('SELECT `nome_categoria`, `descricao`, `nome`, `qnt_Estoque`, `data_validade`, `data_compra`, `valor` FROM produto INNER JOIN categorias_alimentos ON  produto.id_categoria = categorias_alimentos.id_categoria WHERE nome_categoria ='.$nome_categoria);
         $stmt->execute();

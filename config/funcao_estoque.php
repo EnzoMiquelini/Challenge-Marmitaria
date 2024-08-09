@@ -30,6 +30,12 @@
         $compra= $_POST['compra'];
         $valor= $_POST['valor'];
 
+        $date = explode('/',$validade);
+        $validade = $date[2].'-'.$date[1].'-'.$date[0];
+
+        $date = explode('/',$compra);
+        $compra = $date[2].'-'.$date[1].'-'.$date[0];
+
 
         if($nome == ('') || $categoria == ('') || $qnt_Estoque == ('') || $validade == ('') || $compra == ('') || $valor == ('')){
             echo json_encode('Nao Cadastrado');
@@ -39,8 +45,8 @@
         $stmt->bindValue(':ca', $categoria);
         $stmt->bindValue(':na', $nome);
         $stmt->bindValue(':es', $qnt_Estoque);
-        $stmt->bindValue(':va', (new \DateTimeImmutable($validade))->format('Y/m/d'));
-        $stmt->bindValue(':co', (new \DateTimeImmutable($compra))->format('Y/m/d'));
+        $stmt->bindValue(':va', $validade);
+        $stmt->bindValue(':co', $compra);
         $stmt->bindValue(':vl', $valor);
         $stmt->execute();
         
