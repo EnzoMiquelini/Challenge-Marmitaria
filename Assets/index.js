@@ -27,7 +27,6 @@ function pedido(){
         },
         dataType: "json",
     }).done (function (result){
-    
         const lerClientesIndex = result.map(item => `
                                                         <tr>
                                                         <td>${item.nome}</td>
@@ -41,21 +40,26 @@ function pedido(){
 
 function EmAberto(){
 
+    var entregue = 'Não Entregue';
+
     $.ajax({
         type: "post",
         url: "config/funcao_index.php",
         data: {
-            action: 'lerEmAberto'
+            action: 'lerEmAberto',
+            entregue: entregue
         },
         dataType: "json",
     }).done (function(result){
         console.log(result);
-        const lerEmAberto = result.map(item=>   `
+            const lerEmAberto = result.map(item=>   `
                                                     <li class="list-group-item d-flex justify-content-between">${item.nome}
-                                                        <button type="button" class="btn btn-outline-success h-50" onclick="AlterarStatus(${item.id_pedido})" >Entregue</button>
+                                                        <button type="button" class="btn btn-outline-success h-50" onclick="AlterarStatus(${item.id_pedido})">Entregue</button>
+                                                        <input type="hidden" value="${item.status}">
                                                     </li>
                                                 `);
         $('#emAberto').html(lerEmAberto.join(''));
+        
     });
 
 }
@@ -71,9 +75,8 @@ function validade(){
         },
         dataType: "json",
     }).done(function(result){  
-        console.log(result);
         const lerValidade = result.map(item=>   `
-                                                    <li class="list-group-item"><p>produto: ${item.nome} - Validade: ${item.data_validade}</p></li>
+                                                    <li class="list-group-item"><p>${item.nome} - Validade: ${item.data_validade}</p></li>
                                                 `);
         $('#validade').html(lerValidade.join(''));
     });
@@ -91,7 +94,7 @@ function acabando(){
         dataType: "json",
     }).done(function(result){
         const verAcabando = result.map(item=>   `
-                                                    <li class="list-group-item"><p>Produto: ${item.nome} - Quantidade: ${item.qnt_Estoque}</p></li>
+                                                    <li class="list-group-item"><p>${item.nome} - Quantidade: ${item.qnt_Estoque}</p></li>
                                                 `);
         $('#produtos_acabando').html(verAcabando.join(''));
     })
@@ -119,6 +122,7 @@ function AlterarStatus(id_pedido){
         dataType: "json",
     }).done(function(result){
         pedido();
+        EmAberto()
     });
     
 }

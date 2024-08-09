@@ -35,7 +35,10 @@
 
         include 'conecta.php';
 
-        $stmt = $pdo->prepare('SELECT `nome`, `status`, `id_pedido` FROM pedido INNER JOIN cliente ON pedido.id_cliente = cliente.id_cliente ORDER BY `data_pedido` DESC LIMIT 5;');
+        $status = $_POST['entregue'];
+
+        $stmt = $pdo->prepare('SELECT `nome`, `status`, `id_pedido` FROM pedido INNER JOIN cliente ON pedido.id_cliente = cliente.id_cliente WHERE `status` = :st ORDER BY `data_pedido` DESC LIMIT 5;');
+        $stmt->bindValue(':st', $status);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){

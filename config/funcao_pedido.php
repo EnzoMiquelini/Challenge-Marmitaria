@@ -60,6 +60,7 @@
         include 'conecta.php';
 
         $id_cliente = $_POST['id_cliente'];
+        date_default_timezone_set('America/Sao_Paulo');
         $data_pedido = new DateTime();
 
         $stmt = $pdo->prepare('INSERT INTO pedido (`id_cliente`, `data_pedido`) VALUES (:id, :da)');
@@ -163,6 +164,7 @@
         }else{
             echo json_encode('Nao Salvou!');
         }
+        
     }
     
 
@@ -183,6 +185,7 @@
         }else{
             echo json_encode('Nao Encontrado!');
         }
+
     }
 
     function excluirPedido(){
@@ -193,6 +196,7 @@
         
         $stmt = $pdo->prepare('DELETE FROM produto WHERE id_pedido = '.$id_produto);
         $stmt->execute();
+
     }
 
 
@@ -211,6 +215,7 @@
         }else{
             echo json_encode('Nao excluido');
         }
+
     }
 
 
