@@ -43,11 +43,6 @@
                                 <strong>Produtos Acabando</strong>
                             </div>
                             <ul class="list-group list-group-flush" id="produtos_acabando" style="padding: 0;">
-                                <li class="list-group-item">An item</li>
-                                <li class="list-group-item">A second item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
-                                <li class="list-group-item">A third item</li>
                             </ul>
                         </div>
                     </div>
@@ -81,7 +76,7 @@
                                 </tr>
                                 <tr>
                                     <th>Nome Cliente</th>
-                                    <th>Data</th>
+                                    <th>Data / Hora</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>

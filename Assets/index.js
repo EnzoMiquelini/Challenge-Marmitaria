@@ -9,7 +9,7 @@ function categoria(){
         dataType: "json",
     }).done (function (result){
         const lerCategoriaIndex = result.map(item =>    `
-                                                            <li><p>${item.nome_categoria}</p></li>
+                                                            <li class="list-group-item">${item.nome_categoria}</li>
                                                         `);
         $('#listar_categorias').html(lerCategoriaIndex.join(''));
     });
@@ -51,7 +51,9 @@ function EmAberto(){
     }).done (function(result){
         console.log(result);
         const lerEmAberto = result.map(item=>   `
-                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}<button type="button" class="btn btn-outline-success onclick="AlterarStatus(${item.id_pedido})" h-50">Entregue</button></li>
+                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}
+                                                        <button type="button" class="btn btn-outline-success h-50" onclick="AlterarStatus(${item.id_pedido})" >Entregue</button>
+                                                    </li>
                                                 `);
         $('#emAberto').html(lerEmAberto.join(''));
     });
@@ -71,24 +73,28 @@ function validade(){
     }).done(function(result){  
         console.log(result);
         const lerValidade = result.map(item=>   `
-                                                    <li class="list-group-item"><p>${item.nome}</p><p>${item.data_validade}</p></li>
+                                                    <li class="list-group-item"><p>produto: ${item.nome} - Validade: ${item.data_validade}</p></li>
                                                 `);
         $('#validade').html(lerValidade.join(''));
     });
 
 }
 
-function acabendo(){  
+function acabando(){  
 
-    // $.ajax({
-    //     type: "post",
-    //     url: "url",
-    //     data: "data",
-    //     dataType: "dataType",
-    //     success: function (response) {
-            
-    //     }
-    // });
+    $.ajax({
+        type: "post",
+        url: "config/funcao_index.php",
+        data: {
+            action: 'acabando'
+        },
+        dataType: "json",
+    }).done(function(result){
+        const verAcabando = result.map(item=>   `
+                                                    <li class="list-group-item"><p>Produto: ${item.nome} - Quantidade: ${item.qnt_Estoque}</p></li>
+                                                `);
+        $('#produtos_acabando').html(verAcabando.join(''));
+    })
 
 }   
  
@@ -96,6 +102,7 @@ categoria();
 pedido();
 EmAberto();
 validade();
+acabando();
 
 function AlterarStatus(id_pedido){
 
@@ -111,7 +118,7 @@ function AlterarStatus(id_pedido){
         },
         dataType: "json",
     }).done(function(result){
-        console.log(result);
+        pedido();
     });
     
 }

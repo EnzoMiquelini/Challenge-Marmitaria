@@ -18,8 +18,8 @@
             lerProduto();
         }else if($_POST['action'] == 'lerPedidoProduto'){
             lerPedidoProduto();
-        }else if($_POST['action'] == 'excluir'){
-            // excluirPedido();
+        }else if($_POST['action'] == 'excluirPedido'){
+            excluirPedido();
         }else if($_POST['action'] == 'excluir_pedido_produto'){
             excluirPedidoProduto();
         }else if($_POST['action'] == 'confirmarPedido'){
@@ -185,15 +185,17 @@
         }
     }
 
-    // function excluirPedido(){
+    function excluirPedido(){
         
-    //     include 'conecta.php'; 
+        include 'conecta.php'; 
 
-    //     $id_produto = $_POST['id_produto'];
+        $id_produto = $_POST['id_produto'];
         
-    //     $stmt = $pdo->prepare('DELETE FROM produto WHERE id_produto = '.$id_produto);
-    //     $stmt->execute();
-    // }
+        $stmt = $pdo->prepare('DELETE FROM produto WHERE id_pedido = '.$id_produto);
+        $stmt->execute();
+    }
+
+
 
     function excluirPedidoProduto(){
 
@@ -210,6 +212,7 @@
             echo json_encode('Nao excluido');
         }
     }
+
 
 
     function confirmarPedido(){
@@ -234,6 +237,13 @@
         }else{
             echo json_encode('Nao Adicionado');
         }
+
+    }
+
+
+    function Qnt_produto(){
+
+        
 
     }
 ?>

@@ -200,6 +200,12 @@ function lerIdPedido(id_cliente_ped){
                                                         <input type="hidden" value="${item.id_pedido}" id="id_pedido_confirmar">
                                                     `);
         $('.id_pedido_lista').html(lerPedidoListaId.join(''));
+        const lerPedidoExlcuir = result.map(item=>  `
+                                                        <input type="hidden" value="${item.id_pedido}" id="id_pedido_excluir">
+                                                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true" onclick="exlcuirPedido(${item.id_pedido})">Cancelar Pedido</a>
+                                                    `);
+        $('.exlcuir_pedido').append(lerPedidoExlcuir);
+        
     })
 
 }
@@ -418,18 +424,17 @@ $('#confirmar_pedido').click(function (e) {
 });
 
 
+function exlcuirPedido(id_pedido){
 
-// function estoque(qnt_Estoque){
-
-//     $.ajax({
-//         type: "post",
-//         url: "url",
-//         data: "data",
-//         dataType: "dataType",
-//         success: function (response) {
-            
-//         }
-//     });
-
-
-// }
+    $.ajax({
+        type: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'excluirPedido',
+            id_pedido: id_pedido
+        },
+        dataType: "json",
+    }).done(function(result){
+        console.log(result);
+    });
+}

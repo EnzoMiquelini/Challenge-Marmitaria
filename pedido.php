@@ -23,9 +23,6 @@
                         <a href="index.php" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
                         <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
-                    <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
-                    </div>
                 </div>
                 <div class="container mt-5">
                     <h1 class="text-center">Cadastro</h1>
@@ -58,8 +55,7 @@
                         <button id="cadastro_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
                         <button id="continuar_confirmacao" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
                     </div>
-                    <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                    <div style="width: 80%;" class="exlcuir_pedido">
                     </div>
                 </div>
                 <div class="container mt-5 ">
@@ -141,8 +137,7 @@
                         <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Finalizar Pedido</button>
                         <a href="index.php" id="ir_pagina_inicial" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Ir para a Página Inicial</a>
                     </div>
-                    <div style="width: 80%;">
-                        <a href="index.php" class="btn btn-secondary mb-3 cancelar_pedido" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Cancelar Pedido</a>
+                    <div style="width: 80%;" class="exlcuir_pedido">
                     </div>
                 </div>
                 <div class="container mt-5 ">
