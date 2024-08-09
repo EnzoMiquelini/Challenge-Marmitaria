@@ -1,4 +1,4 @@
-function getIndex(){
+function categoria(){
     
     $.ajax({
         method: "post",
@@ -12,8 +12,13 @@ function getIndex(){
                                                             <li><p>${item.nome_categoria}</p></li>
                                                         `);
         $('#listar_categorias').html(lerCategoriaIndex.join(''));
-    })
-    
+    });
+
+}
+
+
+function pedido(){
+
     $.ajax({
         method: "post",
         url: "config/funcao_index.php",
@@ -30,8 +35,12 @@ function getIndex(){
                                                         <td>${item.status}</td>
                                                     `);
         $('#listar_pedidos').html(lerClientesIndex.join(''));
-    })
-    
+    });
+
+}    
+
+function EmAberto(){
+
     $.ajax({
         type: "post",
         url: "config/funcao_index.php",
@@ -42,10 +51,15 @@ function getIndex(){
     }).done (function(result){
         console.log(result);
         const lerEmAberto = result.map(item=>   `
-                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}<button type="button" class="btn btn-outline-success onclick="AlterarStatus(${item.id_pedido})" h-50">Ok</button></li>
+                                                    <li class="list-group-item d-flex justify-content-between">${item.nome}<button type="button" class="btn btn-outline-success onclick="AlterarStatus(${item.id_pedido})" h-50">Entregue</button></li>
                                                 `);
         $('#emAberto').html(lerEmAberto.join(''));
     });
+
+}
+
+
+function validade(){
 
     $.ajax({
         type: "post",
@@ -62,8 +76,10 @@ function getIndex(){
         $('#validade').html(lerValidade.join(''));
     });
 
+}
 
-    
+function acabendo(){  
+
     // $.ajax({
     //     type: "post",
     //     url: "url",
@@ -73,10 +89,13 @@ function getIndex(){
             
     //     }
     // });
+
 }   
  
-getIndex();
-
+categoria();
+pedido();
+EmAberto();
+validade();
 
 function AlterarStatus(id_pedido){
 
@@ -94,4 +113,5 @@ function AlterarStatus(id_pedido){
     }).done(function(result){
         console.log(result);
     });
+    
 }
