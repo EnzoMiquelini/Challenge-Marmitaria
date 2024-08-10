@@ -108,7 +108,6 @@ $('#cadastrar_cliente_pedido').click(function (e) {
         },
         dataType: "json",
     }).done (function(result) {
-        console.log(result)
         if(result == ('Nao Cadastrou')){
             Swal.fire({
                 icon: "error",
@@ -288,16 +287,8 @@ function lerPedidoProduto(id_pedido){
         },
         dataType: "json",
     }).done (function (result) {
-        console.log(result)
         if(result == ('Nao Encontrado!')){
-            console.log('aqui')
-            const semProduto = result.map(item =>   `   
-                                                        <tr>
-                                                            <input type="hidden" value="${item.idPedido_produto}">
-                                                            <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
-                                                        </tr>
-                                                    `);
-            $('.lista_produtos').html(semProduto.join(''));
+            $('.lista_produtos').html('<tr> <td colspan="3" class="text-center">Não há nenhum produto adicionado</td> </tr>');
             return;
         }
         const calculo = result.map(item => item.qnt_produto * item.valor_produto);
@@ -313,7 +304,7 @@ function lerPedidoProduto(id_pedido){
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
                                                             <td class="text-center">${valores}</td>
-                                                            <td><button class="btn btn-outline-danger d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido})"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
+                                                            <td><button class="btn btn btn-link d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido})"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedido_Produto.join(''));
@@ -341,7 +332,6 @@ function excluir_produto_pedido(idPedido_produto, id_pedido){
             })
             return;
         }
-        
         lerPedidoProduto(id_pedido);
     })      
         

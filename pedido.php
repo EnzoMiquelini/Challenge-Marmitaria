@@ -62,7 +62,7 @@
         
                     <h1 class="text-center">Pedido</h1>
                     <div class="text-center">
-                        <button type="button" id="add_produto_pedido" class="btn btn-primary w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
+                        <button type="button" id="add_produto_pedido" class="btn btn-outline-success w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
                     </div>
                     <div class="d-flex justify-content-center">
                         <table class="table table-striped w-75 mt-5">

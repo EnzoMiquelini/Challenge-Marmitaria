@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <td colspan="7" class="text-center">
-                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto" onclick="adicionarProduto()">Adicionar Produto +</button>
+                        <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto" onclick="adicionarProduto()">Adicionar Produto +</button>
                     </td>
                 </tr>
                 <tr>

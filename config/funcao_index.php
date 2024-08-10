@@ -53,7 +53,7 @@
         
         include 'conecta.php';
 
-        $stmt = $pdo->prepare('SELECT `nome`, `id_produto`, `data_validade` FROM `produto` ORDER BY `data_validade` DESC LIMIT 5;');
+        $stmt = $pdo->prepare('SELECT `nome`, `id_produto`, `data_validade` FROM `produto` ORDER BY `data_validade` ASC LIMIT 5;');
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){

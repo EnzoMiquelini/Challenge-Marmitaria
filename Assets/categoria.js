@@ -167,7 +167,6 @@ $('#excluir_categoria').click(function (e) {
         },
         dataType: "json",  
     }).done (function(result){
-        console.log(result)
         Swal.fire({
             icon: "success",
             title: "Excluido Com Sucesso",

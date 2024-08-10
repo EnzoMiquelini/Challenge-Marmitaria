@@ -23,7 +23,7 @@
             <thead>
                 <tr>
                     <td colspan="3" class="text-center">
-                        <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
+                        <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#criar_categoria">Criar Categoria +</button>
                     </td>
                 </tr>
                 <tr>

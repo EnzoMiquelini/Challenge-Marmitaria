@@ -51,8 +51,7 @@ function EmAberto(){
         },
         dataType: "json",
     }).done (function(result){
-        console.log(result);
-            const lerEmAberto = result.map(item=>   `
+        const lerEmAberto = result.map(item=>   `
                                                     <li class="list-group-item d-flex justify-content-between">${item.nome}
                                                         <button type="button" class="btn btn-outline-success h-50" onclick="AlterarStatus(${item.id_pedido})">Entregue</button>
                                                         <input type="hidden" value="${item.status}">
@@ -76,7 +75,7 @@ function validade(){
         dataType: "json",
     }).done(function(result){  
         const lerValidade = result.map(item=>   `
-                                                    <li class="list-group-item"><p>${item.nome} - Validade: ${item.data_validade}</p></li>
+                                                    <li class="list-group-item"><p>${item.nome} - ${item.data_validade}</p></li>
                                                 `);
         $('#validade').html(lerValidade.join(''));
     });
@@ -94,7 +93,7 @@ function acabando(){
         dataType: "json",
     }).done(function(result){
         const verAcabando = result.map(item=>   `
-                                                    <li class="list-group-item"><p>${item.nome} - Quantidade: ${item.qnt_Estoque}</p></li>
+                                                    <li class="list-group-item"><p>${item.nome} - ${item.qnt_Estoque}</p></li>
                                                 `);
         $('#produtos_acabando').html(verAcabando.join(''));
     })

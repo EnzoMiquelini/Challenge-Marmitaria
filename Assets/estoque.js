@@ -130,7 +130,6 @@ function editarProduto(id_produto) {
         },
         dataType: "json",
     }).done (function(result){
-        console.log(result)
         const editarCimaNomeProduto = result.map(item =>    `
                                                                 <input id="produto_editar" type="hidden" value="${item.id_produto}"></input>
                                                                 <div class="mb-3">

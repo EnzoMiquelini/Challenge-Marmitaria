@@ -25,7 +25,7 @@
             <thead>
                 <tr>
                     <td colspan="5" class="text-center">
-                    <button type="button" class="btn btn-outline-primary w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Cadastrar Cliente +</button>
+                    <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Cadastrar Cliente +</button>
                     </td>
                 </tr>
                 <tr>

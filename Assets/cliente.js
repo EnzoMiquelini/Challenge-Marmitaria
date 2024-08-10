@@ -8,7 +8,6 @@ function getCliente(){
         },
         dataType: "json",
     }).done(function(result){
-        console.log(result)
         const lerClientes = result.map(item =>  `
                                                     <tr>
                                                         <td>${item.nome}</td>
@@ -126,7 +125,6 @@ $('#salvar_edicao_cliente').click(function (e) {
             },
             dataType: "json",
     }).done(function(result){
-        console.log(result);
         if(result == ('Nao Editou')){
             Swal.fire({
                 icon: "error",
@@ -184,7 +182,6 @@ $('#excluir_cliente').click(function (e) {
         },
         dataType: "json",  
     }).done (function(result){
-        console.log(result)
         if(result == ('Nao Excluido')){
             Swal.fire({
                 icon: "error",
@@ -235,7 +232,6 @@ function verCliente(id_cliente){
         },
         dataType: "json",    
     }).done(function(result){
-        console.log(result);
         if(result == 'Nao Encontrou'){
             $('#verMais_pedidoCliente').html('<tr><td colspan="5" class="text-center">Não Há Pedidos</td></tr>');
             return;
