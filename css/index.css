@@ -1,0 +1,26 @@
+body{
+    background-color: #EFF2F3;
+}
+
+
+.aside{
+    width: 15%;
+}
+
+
+.text-aside{
+    height: 10%;
+}
+
+
+.btn-nav{
+    color: white;
+}
+.btn-nav:hover{
+    background-color: lightgray;
+    color: black;
+    .icon-Nav{
+        color: black;
+    }
+}
+    

@@ -7,79 +7,86 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" integrity="sha384-dpuaG1suU0eT09tx5plTaGMLBsfDLzUCCUXOY2j/LSvXYuG6Bqs43ALlhIqAJVRb" crossorigin="anonymous">
-    <link rel="shortcut icon" href="img/food(1).png" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="img/food.png" type="image/x-icon">
     <title>Sabores Do Bem</title>
     
 </head>
 <body>
-    <div class="container d-flex">
-        <aside class="row bg-black text-white align-items-center w-25 rounded-3 mt-3" style=" height: 96vh; ">
-            <div class="col d-flex flex-column gap-3" >
-                <a href="pedido.php" class="btn btn-secondary w-100" id="novo_pedido">Novo Pedido</a>
-                <a href="Categoria_de_produtos.php" class="btn btn-secondary w-100 ">Produtos</a>
-                <!-- <a href="" class="btn btn-secondary w-100 ">Histórico Pedidos</a> -->
-                <a href="clientes.php" class="btn btn-secondary w-100 ">Clientes</a>
+    <div class="background d-flex">
+
+        <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4">
+            <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
+                <ion-icon name="grid-outline"></ion-icon> Menu
+            </div>
+            <div class="hrAside d-flex justify-content-center">
+                <hr class="mt-0 w-75 border border-white border-2 opacity-50">
             </div>
             <div>
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item">
+                        <a href="pedido.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="add-outline"></ion-icon>Novo Pedido</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="Categoria_de_produtos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="bag-outline"></ion-icon> Produtos</a>
+                    </li>
+                    <!-- <a href="" class="btn btn-secondary w-100 ">Histórico Pedidos</a> -->
+                    <li class="nav-item">
+                        <a href="clientes.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="people-outline"></ion-icon> Clientes</a>
+                    </li>
+                </ul>
             </div>
         </aside>
         
-        <div class="container px-5" >
-            <div class="row text-center mt-5 gap-3" >
-                <div class="h1 mb-5">
-                    Sabores do Bem
+        <div class="p-0 mx-5 justify-content-center w-75" >
+            <div class="row text-center mt-5" >
+                <div class="mb-5">
+                    <h1>Sabores do Bem</h1>
                 </div>
-                    <!-- <form class="col gap-3" role="search">
-                        <div class="d-flex gap-3 justify-content-center">
-                            <input class="form-control w-50" type="search" placeholder="Pesquisar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Enviar</button>
-                        </div>
-                    </form> -->
             </div>
             <div class="mt-5">
                 <div class="row">
                     <div class="col-sm">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <strong>Produtos Acabando</strong>
+                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                            <div class="text-center mb-3">
+                                <h4><strong>Produtos Acabando</strong></h4>
                             </div>
-                            <ul class="list-group list-group-flush" id="produtos_acabando" style="padding: 0;">
+                            <hr class="mb-0">
+                            <ul class="list-group list-group-flush p-0" id="produtos_acabando">
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <strong>Produtos Próximos a Validade</strong>
+                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                            <div class="text-center mb-3">
+                                <h4><strong>Produtos Próximos a Validade</strong></h4>
                             </div>
-                            <ul class="list-group list-group-flush" id="validade" style="padding: 0;">
+                            <hr class="mb-0">
+                            <ul class="list-group list-group-flush p-0" id="validade">
                                
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="card">
-                            <div class="card-header text-center">
-                                <Strong>Pedidos em Aberto</Strong>
+                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                            <div class="text-center mb-3">
+                                <h4><strong>Pedidos em Aberto</strong></h4>
                             </div>
-                            <ul class="list-group list-group-flush" id="emAberto" style="padding: 0;">
+                            <hr class="mb-0">
+                            <ul class="list-group list-group-flush p-0" id="emAberto">
                                 
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 mt-4">
-                        <table class="table table-striped table-hover col-sm-8 border">
+                    <div class="col-sm-8 mt-4 shadow p-3 mb-5 bg-white rounded-4">
+                        <table class="table table-striped table-hover">
                             <thead>
-                                <tr class="text-center">
-                                    <th colspan="3">Pedidos</th>
-                                </tr>
-                                <tr>
-                                    <th>Nome Cliente</th>
-                                    <th>Data / Hora</th>
-                                    <th>Status</th>
-                                </tr>
+                            <div class="text-center mb-3">
+                                <h4><strong>Pedidos</strong></h4>
+                            </div>
+                                <hr class="mb-0">
                             </thead>
                             <tbody id="listar_pedidos">
 
@@ -87,10 +94,11 @@
                         </table>
                     </div>
                     <div class="col-sm-4 mt-4">
-                        <div class="card" >
-                            <div class="card-header text-center">
-                                <strong>Categorias</strong>
+                        <div class="shadow p-3 mb-5 bg-white rounded-4" >
+                            <div class="text-center mb-3">
+                                <h4><strong>Categorias</strong></h4>
                             </div>
+                            <hr class="mb-0">
                             <ul class="list-group list-group-flush text-center overflow-y-auto p-0" id="listar_categorias">
                                
                             </ul>
