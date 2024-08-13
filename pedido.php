@@ -78,13 +78,13 @@
                             </thead>
                             <tbody class="lista_produtos">
                                 <tr>
-                                    <td colspan="3" class="text-center">Não há nenhum produto adicionado</td>
+                                    <td colspan="4" class="text-center">Não há nenhum produto adicionado</td>
                                 </tr>
                             </tbody>
                             <tfoot class="calc_Pedido">
-                                <th colspan="2">Valor Total:</th>
-                                <th class="text-center">R$: </th>
-                                <th></th>
+                                <th colspan="2">Valor Total</th>
+                                <th colspan="2">R$: 00,00</th>
+                                <input type="hidden" id="valorTotal" value="0">
                             </tfoot>
                         </table>
                     </div>
@@ -162,8 +162,9 @@
                             </tbody>
                             <tfoot class="calc_Pedido">
                                 <input type="hidden" id="valor_total" value="1">
-                                <th colspan="2">Valor Total:</th>
+                                <th colspan="2">Valor Total</th>
                                 <th class="text-center" id="valor_total">R$: </th>
+                                <input type="hidden" id="valorTotal" value="0">
                             </tfoot>
                         </table>
                     </div>

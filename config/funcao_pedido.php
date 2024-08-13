@@ -153,12 +153,14 @@
         $id_produto = $_POST['id_produto'];
         $qnt_produto= $_POST['qnt_produto'];
         $valor_produto= $_POST['valor_produto'];
+        $valor_total_produto = $_POST['valor_produto_total'];
         
-        $stmt = $pdo->prepare('INSERT INTO pedido_produto (`id_pedido`, `id_produto`, `qnt_produto`, `valor_produto`)VALUE(:pe, :po, :qe, :vr)');
+        $stmt = $pdo->prepare('INSERT INTO pedido_produto (`id_pedido`, `id_produto`, `qnt_produto`, `valor_produto`, `valor_produto_total`)VALUE(:pe, :po, :qe, :vr, :vp)');
         $stmt->bindValue(':pe', $id_pedido);
         $stmt->bindValue(':po', $id_produto);
         $stmt->bindValue(':qe', $qnt_produto);
         $stmt->bindValue(':vr', $valor_produto);
+        $stmt->bindValue(':vp', $valor_total_produto);
         $stmt->execute();
         
         if ($stmt->rowCount() >= 1){
@@ -216,7 +218,7 @@
 
         $id_pedido = $_POST['id_pedido'];
        
-        $stmt = $pdo->prepare('SELECT `idPedido_produto`,`id_pedido`, `nome`, `qnt_produto`, `valor_produto` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = :pe ORDER BY `idPedido_produto` DESC');
+        $stmt = $pdo->prepare('SELECT `idPedido_produto`,`id_pedido`, `nome`, `qnt_produto`, `valor_produto`, `valor_produto_total` FROM pedido_produto INNER JOIN produto ON pedido_produto.id_produto = produto.id_produto WHERE id_pedido = :pe ORDER BY `idPedido_produto` DESC');
         $stmt->bindValue(':pe', $id_pedido);
         $stmt->execute();
 
@@ -274,7 +276,7 @@
         $stmt->bindValue(':tg', $pagamento);
         $stmt->bindValue(':vp', $valor);
         $stmt->bindValue(':en', $entrega);
-        $stmt->bindValue(':ed', $endereco);
+        $stmt->bindValue(':ed', $endereco ?? null);
         $stmt->execute();
 
         if ($stmt->rowCount() >= 1){
@@ -285,10 +287,4 @@
 
     }
 
-
-    function Qnt_produto(){
-
-        
-
-    }
 ?>

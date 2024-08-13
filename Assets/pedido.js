@@ -15,6 +15,13 @@ $('#cadastro_voltar').click(function (e) {
 })
 
 $('#continuar_confirmacao').click(function (e) { 
+
+    var valorContinuar = $('#valorTotal').val();
+
+    if(valorContinuar <= 0){
+
+        return;
+    }
     
     $('.pedido').hide();
     $('.cadastro').hide();
@@ -247,11 +254,14 @@ $('#nome_produto_pedido').blur(function (e) {
 
 $('#cadastrar_produto_pedido').click(function (e) { 
     e.preventDefault();
+
+    var valorTotal = parseFloat($('#valorTotal').val())
     
     var id_pedido = $('#id_pedido').val();
     var id_produto = $('#id_pedido_produto').val();
     var qnt_produto = $('#qnt_add_pedido').val();
     var valor_produto = $('#valor_pedido_produto').val();
+    var valor_produto_total = valor_produto * qnt_produto;
 
     $.ajax({
         method: "post",
@@ -261,7 +271,8 @@ $('#cadastrar_produto_pedido').click(function (e) {
             id_pedido: id_pedido,
             id_produto: id_produto,
             qnt_produto: qnt_produto,
-            valor_produto: valor_produto
+            valor_produto: valor_produto,
+            valor_produto_total: valor_produto_total
         },
         dataType: "json",
     }).done (function(result){
@@ -272,6 +283,17 @@ $('#cadastrar_produto_pedido').click(function (e) {
         lerPedidoProduto(id_pedido, id_produto);
     })
 
+    valorTotal = valorTotal + parseFloat(valor_produto_total)
+    
+    console.log(valorTotal)
+    var msm = `<tr>
+                    <th colspan="2">Valor Total</th>
+                    <th colspan="2">R$:`+Number(valorTotal).toFixed(2)+`</th>
+[                    <input type="hidden" id="valorTotal" value="${valorTotal}">]
+                </tr>`
+    console.log(msm)
+    $('.calc_Pedido').html(msm)
+    // $('#valorTotal').val(valorTotal)
 })
 
 
@@ -291,12 +313,6 @@ function lerPedidoProduto(id_pedido, id_produto){
             $('.lista_produtos').html('<tr> <td colspan="3" class="text-center">Não há nenhum produto adicionado</td> </tr>');
             return;
         }
-        const calculo = result.map(item => item.qnt_produto * item.valor_produto);
-        
-        var valores = Number(calculo).toFixed(2);
-
-        // console.log(calculo);
-
 
         const lerPedido_Produto = result.map(item =>  `
                                                         <tr>
@@ -304,15 +320,18 @@ function lerPedidoProduto(id_pedido, id_produto){
                                                             <input type="hidden" value="${item.qnt_produto}" id="qnt_pedido_produto">
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
-                                                            <td class="text-center">${valores}</td>
+                                                            <td class="text-center">`+ Number(item.valor_produto_total).toFixed(2) +`</td>
                                                             <td><button class="btn btn btn-link d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido}, ${item.qnt_produto},` + id_produto + `)"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedido_Produto.join(''));
         retirarProdutoBanco(id_produto);
+        
     })
 
+
 }
+
 
 
 function retirarProdutoBanco(id_produto){
@@ -330,7 +349,7 @@ function retirarProdutoBanco(id_produto){
         dataType: "json",
     }).done(function(result){
         const produtoBanco = result.map(item => `${item.qnt_Estoque}`);
-        var produtoCerto = produtoBanco - qnt_produto;
+        var produtoCerto = parseInt(produtoBanco) - parseInt(qnt_produto);
 
         $.ajax({
             type: "post",
@@ -425,10 +444,12 @@ $('#confirmar_pedido').click(function (e) {
     e.preventDefault();
 
     var id_pedido = $('#id_pedido_confirmar').val();
-    var valor = $('#valor_total').val();
+    var valor = $('#valorTotal').val();
     var entrega = $('input[name="entrega"]:checked').val();
     var pagamento = $('input[name="pagamento"]:checked').val();
     var endereco = $('#endereco').val();
+
+    console.log(id_pedido, valor, entrega, pagamento, endereco)
 
     if(id_pedido == ('') || valor == ('') || entrega == ('') || pagamento== ('')){
         Swal.fire({
@@ -465,6 +486,7 @@ $('#confirmar_pedido').click(function (e) {
         },
         dataType: "json",
     }).done (function (result){
+        console.log(result)
         if(result == ('Nao Adicionado')){
             Swal.fire({
                 icon: "error",
