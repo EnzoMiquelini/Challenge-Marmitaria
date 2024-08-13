@@ -2,10 +2,8 @@
     header('Content-Type: application/json');
 
     if(isset($_POST['action'])){
-        if($_POST['action'] == 'inserirNovo'){
-            // cadastrarNovoPedido();
-        }else if($_POST['action'] == 'inputProduto'){
-            inputProduto();
+        if($_POST['action'] == 'inputProduto'){
+            // inputProduto();
         }else if($_POST['action'] == 'lerClientePedido'){
             lerClientePedido();
         }else if($_POST['action'] == 'inserirProdutoPedido'){
@@ -24,6 +22,10 @@
             excluirPedidoProduto();
         }else if($_POST['action'] == 'confirmarPedido'){
             confirmarPedido();
+        }else if($_POST['action'] == 'lerProdutoBanco'){
+            lerProdutoBanco();
+        }else if($_POST['action'] == 'editarProdutoBanco'){
+            editarProdutoBanco();
         }
     }
 
@@ -97,28 +99,28 @@
 
 
 
-    function inputProduto(){
+    // function inputProduto(){
 
-        include 'conecta.php';
+    //     include 'conecta.php';
         
-        $nome_produto = $_POST['nome_produto'];
+    //     $nome_produto = $_POST['nome_produto'];
 
-        if($nome_produto == ('')){
-            $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `data_validade` FROM `produto` ORDER BY `data_validade` ASC LIMIT 1;');
-            $stmt->execute();
-            return;
-        }
-        $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `data_validade` FROM `produto` WHERE `nome` = :na ORDER BY `data_validade` ASC LIMIT 1;');
-        $stmt->bindValue(':na', $nome_produto);
-        $stmt->execute();
+    //     if($nome_produto == ('')){
+    //         $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `data_validade` FROM `produto` ORDER BY `data_validade` ASC LIMIT 1;');
+    //         $stmt->execute();
+    //         return;
+    //     }
+    //     $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `qnt_Estoque`, `data_validade` FROM `produto` WHERE `nome` = :na ORDER BY `data_validade` ASC LIMIT 1;');
+    //     $stmt->bindValue(':na', $nome_produto);
+    //     $stmt->execute();
 
-        if ($stmt->rowCount() >= 1){
-            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-        }else{
-            echo json_encode('Nao Encontrado');
-        }
+    //     if ($stmt->rowCount() >= 1){
+    //         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+    //     }else{
+    //         echo json_encode('Nao Encontrado');
+    //     }
 
-    }
+    // }
 
 
 
@@ -129,7 +131,7 @@
 
         $nome_produto = $_POST['nome_produto'];
 
-        $stmt = $pdo->prepare("SELECT `id_produto`, `nome`, `valor`, `data_validade` FROM produto WHERE `nome` = :pr ORDER BY `data_validade` ASC LIMIT 1" );
+        $stmt = $pdo->prepare("SELECT `id_produto`, `nome`, `valor`, `qnt_Estoque` `data_validade` FROM produto WHERE `nome` = :pr ORDER BY `data_validade` ASC LIMIT 1" );
         $stmt->bindValue(':pr', $nome_produto);
         $stmt->execute();
 
@@ -165,6 +167,46 @@
             echo json_encode('Nao Salvou!');
         }
         
+    }
+
+    function lerProdutoBanco(){
+
+        include 'conecta.php';
+
+        $id_produto = $_POST['id_produto'];
+
+        $stmt = $pdo->prepare('SELECT `qnt_Estoque` FROM produto  WHERE id_produto ='.$id_produto);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Tem!');
+        }
+    }
+
+
+
+
+    function editarProdutoBanco(){
+
+        include 'conecta.php';
+
+        var_dump ($_POST);
+
+        $id_produto = $_POST['id_produto'];
+        $qnt_produto = $_POST['qnt_produto'];
+
+        $stmt = $pdo->prepare('UPDATE produto SET `qnt_Estoque` = :qe WHERE id_produto ='.$id_produto);
+        $stmt->bindValue(':qe', $qnt_produto);
+        $stmt->execute();
+
+        if ($stmt->rowCount() >= 1){
+            echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+        }else{
+            echo json_encode('Nao Tem!');
+        }
+
     }
     
 

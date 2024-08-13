@@ -269,14 +269,14 @@ $('#cadastrar_produto_pedido').click(function (e) {
         $('#id_pedido_produto').val('');
         $('#qnt_add_pedido').val(1);
         $('#valor_pedido_produto').val('');
-        lerPedidoProduto(id_pedido);
+        lerPedidoProduto(id_pedido, id_produto);
     })
 
 })
 
 
 
-function lerPedidoProduto(id_pedido){
+function lerPedidoProduto(id_pedido, id_produto){
 
     $.ajax({
         type: "post",
@@ -295,24 +295,62 @@ function lerPedidoProduto(id_pedido){
         
         var valores = Number(calculo).toFixed(2);
 
-        console.log(calculo);
+        // console.log(calculo);
 
 
         const lerPedido_Produto = result.map(item =>  `
                                                         <tr>
                                                             <input type="hidden" id="idPedido_produto" value="${item.idPedido_produto}">
+                                                            <input type="hidden" value="${item.qnt_produto}" id="qnt_pedido_produto">
                                                             <td>${item.nome}</td>
                                                             <td class="text-center">${item.qnt_produto}</td>
                                                             <td class="text-center">${valores}</td>
-                                                            <td><button class="btn btn btn-link d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido})"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
+                                                            <td><button class="btn btn btn-link d-flex" onclick="excluir_produto_pedido(${item.idPedido_produto},${item.id_pedido}, ${item.qnt_produto},` + id_produto + `)"><ion-icon name="trash-outline" style="color:red;"></ion-icon></button></td>
                                                         </tr>
                                                     `);
         $('.lista_produtos').html(lerPedido_Produto.join(''));
+        retirarProdutoBanco(id_produto);
     })
 
 }
 
-function excluir_produto_pedido(idPedido_produto, id_pedido){
+
+function retirarProdutoBanco(id_produto){
+
+    var qnt_produto = $('#qnt_pedido_produto').val();
+
+    $.ajax({
+        type: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'lerProdutoBanco',
+            id_produto: id_produto,
+            qnt_produto: qnt_produto
+        },
+        dataType: "json",
+    }).done(function(result){
+        const produtoBanco = result.map(item => `${item.qnt_Estoque}`);
+        var produtoCerto = produtoBanco - qnt_produto;
+
+        $.ajax({
+            type: "post",
+            url: "config/funcao_pedido.php",
+            data: {
+                action: 'editarProdutoBanco',
+                id_produto: id_produto,
+                qnt_produto: produtoCerto
+            },
+            dataType: "json",
+        }).done(function(result){
+            // console.log(result);
+        });
+    });
+    
+}
+
+
+
+function excluir_produto_pedido(idPedido_produto, id_pedido, qnt_produto, id_produto){
     
     $.ajax({
         type: "post",
@@ -333,9 +371,43 @@ function excluir_produto_pedido(idPedido_produto, id_pedido){
             return;
         }
         lerPedidoProduto(id_pedido);
+        adicionarProdutoBanco(id_produto, qnt_produto);
     })      
         
 }
+
+function adicionarProdutoBanco(id_produto, qnt_produto){
+
+    $.ajax({
+        type: "post",
+        url: "config/funcao_pedido.php",
+        data: {
+            action: 'lerProdutoBanco',
+            id_produto: id_produto,
+            qnt_produto: qnt_produto
+        },
+        dataType: "json",
+    }).done(function(result){
+        const produtoBancoAdd = result.map(item => `${item.qnt_Estoque}`);
+        var produtoCerto = parseInt(produtoBancoAdd[0]) + parseInt(qnt_produto);
+
+        $.ajax({
+            type: "post",
+            url: "config/funcao_pedido.php",
+            data: {
+                action: 'editarProdutoBanco',
+                id_produto: id_produto,
+                qnt_produto: produtoCerto
+            },
+            dataType: "json",
+        }).done(function(result){
+            // console.log(result);
+        });
+    });
+
+}
+
+
 
 $('#entrega').click(function (e) { 
     
