@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    <div class="d-flex">
+    <div class="container">
 
         <div class="cadastro">
             <div class="d-flex justify-content-between">
