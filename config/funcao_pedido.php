@@ -192,8 +192,6 @@
 
         include 'conecta.php';
 
-        var_dump ($_POST);
-
         $id_produto = $_POST['id_produto'];
         $qnt_produto = $_POST['qnt_produto'];
 

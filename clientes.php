@@ -23,24 +23,22 @@
         <div class="botoes">
             <a href="index.php" class="btn btn-primary w-25">Voltar</a>
         </div>
-        <table class="table table-striped table-hover col border mt-5 rounded-3">
-            <thead>
-                <tr>
-                    <td colspan="5" class="text-center">
-                    <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Cadastrar Cliente +</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>telefone</th>
-                    <th colspan="2">CPF</th>
-                </tr>
-            </thead>
-            <tbody class="lista_clientes">
-
-            </tbody>
-        </table>
+        <div class="shadow p-3 mb-5 bg-white rounded-4 mt-5 d-flex flex-column justify-content-center">
+            <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#adicionar_cliente">Cadastrar Cliente +</button>
+            </td>
+            <table class="table table-striped table-hover col mt-3 rounded-3">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>telefone</th>
+                        <th colspan="2">CPF</th>
+                    </tr>
+                </thead>
+                <tbody class="lista_clientes">
+                </tbody>
+            </table>
+        </div>
 
 
         <!-- Modal Adicionar -->
