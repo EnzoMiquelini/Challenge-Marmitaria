@@ -51,6 +51,9 @@ function EmAberto(){
         },
         dataType: "json",
     }).done (function(result){
+        if(result == 'Nao Em Aberto'){
+            $('#emAberto').html('<li class="list-group-item text-center fs-5">Não há Pedidos</li>');
+        }
         const lerEmAberto = result.map(item=>   `
                                                     <li class="list-group-item d-flex justify-content-between align-items-center fs-5">${item.nome}
                                                         <button type="button" class="btn btn-outline-success" onclick="AlterarStatus(${item.id_pedido})">Entregue</button>

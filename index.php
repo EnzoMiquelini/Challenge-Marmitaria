@@ -30,9 +30,11 @@
                     <li class="nav-item">
                         <a href="Categoria_de_produtos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="bag-outline"></ion-icon> Produtos</a>
                     </li>
-                    <!-- <a href="" class="btn btn-secondary w-100 ">Histórico Pedidos</a> -->
                     <li class="nav-item">
                         <a href="clientes.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="people-outline"></ion-icon> Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="historico_de_pedidos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="clipboard-outline"></ion-icon> Histórico de Pedidos</a>
                     </li>
                 </ul>
             </div>

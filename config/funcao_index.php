@@ -44,7 +44,7 @@
         if ($stmt->rowCount() >= 1){
             echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
         }else{
-            echo json_encode('Nao EmAberto');
+            echo json_encode('Nao Em Aberto');
         }
 
     }
