@@ -1,42 +1,13 @@
+$('.voltar_comeco_pedido').hide();
+$('.voltar_lista_pedido').hide();
+$('.continuar_pedido').hide();
+$('.finalizar_pedido').hide();
+$('.finaizar_voltar_inicio').hide();
+$('.cancelar_pedido').hide();
 $('.pedido').hide();
-$('#continuar_pedido').hide();
 $('#cadastrar_cliente_pedido').hide();
-$('.cadastro').show();
 $('.confirm-pedido').hide();
 $('.endereco').hide();
-$('#ir_pagina_inicial').hide();
-
-$('#cadastro_voltar').click(function (e) {
-    
-    $('.pedido').hide();
-    $('.cadastro').show();
-    $('.confirm-pedido').hide();
-
-})
-
-$('#continuar_confirmacao').click(function (e) { 
-
-    var valorContinuar = $('#valorTotal').val();
-
-    if(valorContinuar <= 0){
-
-        return;
-    }
-    
-    $('.pedido').hide();
-    $('.cadastro').hide();
-    $('.confirm-pedido').show();
-
-})
-
-$('#pedido_voltar').click(function (e) { 
-    
-    $('.pedido').show();
-    $('.cadastro').hide();
-    $('.confirm-pedido').hide();
-
-})
-
 
 
 $('#CPF_pedido').blur(function (e) { 
@@ -88,11 +59,66 @@ $('#CPF_pedido').blur(function (e) {
                                                         `);
         $('.resCadastro').html(lerClientePedido.join(''));
         lerCliente(cpf_pedido);
-        $('#continuar_pedido').show();
+        $('.continuar_pedido').show();
     })
     
 })
 
+
+$('.continuar_pedido').click(function (e) { 
+    e.preventDefault();
+
+    $('.voltar_comeco_pedido').show();
+    $('.voltar_inicio').hide();
+    $('.cadastro').hide();
+    $('.pedido').show();
+    $('.confirm-pedido').hide();
+
+})
+
+
+
+$('.voltar_comeco_pedido').click(function (e) {
+    
+    $('.voltar_comeco_pedido').hide();
+    $('.voltar_inicio').show();
+    $('.cadastro').show();
+    $('.pedido').hide();
+    $('.confirm-pedido').hide();
+
+})
+
+
+$('.continuar_pedido').click(function (e) { 
+
+    var valorContinuar = $('#valorTotal').val();
+
+    if(valorContinuar <= 0){
+
+        return;
+    }
+
+    $('.voltar_comeco_pedido').hide();
+    $('.voltar_lista_pedido').show();
+    $('.continuar_pedido').hide();
+    $('.finalizar_pedido').show();
+    $('.pedido').hide();
+    $('.cadastro').hide();
+    $('.confirm-pedido').show();
+
+})
+
+$('.voltar_lista_pedido').click(function (e) { 
+    
+    $('.voltar_comeco_pedido').show();
+    $('.voltar_lista_pedido').hide();
+    $('.finalizar_pedido').hide();
+    $('.continuar_pedido').show();
+    $('.pedido').show();
+    $('.cadastro').hide();
+    $('.confirm-pedido').hide();
+
+})
 
 
 $('#cadastrar_cliente_pedido').click(function (e) { 
@@ -138,14 +164,6 @@ $('#cadastrar_cliente_pedido').click(function (e) {
 
 
 
-$('#continuar_pedido').click(function (e) { 
-    e.preventDefault();
-
-    $('.pedido').show();
-    $('.cadastro').hide();
-    $('.confirm-pedido').hide();
-
-})
         
 
 function lerCliente(cpf_pedido){
@@ -223,6 +241,10 @@ $('#nome_produto_pedido').blur(function (e) {
     
     var nome_produto = $('#nome_produto_pedido').val();
 
+    if(nome_produto == ''){
+        return;
+    }
+
     $.ajax({
         method: "post",
         url: "config/funcao_pedido.php",
@@ -239,6 +261,7 @@ $('#nome_produto_pedido').blur(function (e) {
                 showConfirmButton: false,
                 timer: 1500
             })
+            var nome_produto = $('#nome_produto_pedido').val('');
             return;
         };
         const lerIdProdutoPedido = result.map(item=>    `  
@@ -286,14 +309,12 @@ $('#cadastrar_produto_pedido').click(function (e) {
     valorTotal = valorTotal + parseFloat(valor_produto_total)
     
     console.log(valorTotal)
-    var msm = `<tr>
+    var valorTot = `<tr>
                     <th colspan="2">Valor Total</th>
                     <th colspan="2">R$:`+Number(valorTotal).toFixed(2)+`</th>
 [                    <input type="hidden" id="valorTotal" value="${valorTotal}">]
                 </tr>`
-    console.log(msm)
-    $('.calc_Pedido').html(msm)
-    // $('#valorTotal').val(valorTotal)
+    $('.calc_Pedido').html(valorTot)
 })
 
 
@@ -440,17 +461,17 @@ $('#retirada').click(function (e) {
 });
 
 
-$('#confirmar_pedido').click(function (e) { 
+$('.finalizar_pedido').click(function (e) { 
     e.preventDefault();
 
+    
     var id_pedido = $('#id_pedido_confirmar').val();
     var valor = $('#valorTotal').val();
     var entrega = $('input[name="entrega"]:checked').val();
     var pagamento = $('input[name="pagamento"]:checked').val();
     var endereco = $('#endereco').val();
-
-    console.log(id_pedido, valor, entrega, pagamento, endereco)
-
+    
+    
     if(id_pedido == ('') || valor == ('') || entrega == ('') || pagamento== ('')){
         Swal.fire({
             icon: "error",
@@ -502,7 +523,9 @@ $('#confirmar_pedido').click(function (e) {
             showConfirmButton: false,
             timer: 1500
         })
-        $('#ir_pagina_inicial').show();
+        $('.voltar_lista_pedido').hide();
+        $('.finalizar_pedido').hide();
+        $('.finaizar_voltar_inicio').show();
     });
 
 });

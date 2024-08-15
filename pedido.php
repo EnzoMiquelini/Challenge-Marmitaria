@@ -16,193 +16,209 @@
 </head>
 <body>
 
-    <div class="container">
+    <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4 position-fixed">
 
-        <div class="cadastro">
-            <div class="d-flex justify-content-between">
-                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
-                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <a href="index.php" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</a>
-                        <button id="continuar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
-                    </div>
-                </div>
-                <div class="container mt-5">
-                    <h1 class="text-center">Cadastro</h1>
-        
-                    <form method="post" id="formClientes" class="d-flex justify-content-center">
-                        <div class="formulario mt-5 w-75">
-                            <div class="mb-3">
-                                <label for="CPF" class="form-label">CPF</label>
-                                <input type="numb" class="form-control" id="CPF_pedido" name="cpf" required>
-                            </div>
-                            <div class="resCadastro">
-        
-                            </div>
-                            <div>
-                                <button type="submit" id="cadastrar_cliente_pedido" class="btn btn-primary" data-bs-dismiss="modal">Cadastrar</button>
-                            </div>
-                        </div>
-                    </form>
-        
-                </div>
-            </div>
+        <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
+            <ion-icon name="grid-outline"></ion-icon> Menu
+        </div>
+        <div class="hrAside d-flex justify-content-center">
+            <hr class="mt-0 w-75 border border-white border-2 opacity-50">
+        </div>
+        <div>
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item voltar_inicio">
+                    <a href="index.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="voltar_inicio"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</a>
+                </li>
+                <li class="nav-item voltar_comeco_pedido">
+                    <button class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="voltar_comeco_pedido"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</button>
+                </li>
+                <li class="nav-item voltar_lista_pedido">
+                    <button class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="voltar_lista_pedido"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</button>
+                </li>
+                <li class="nav-item continuar_pedido">
+                    <button class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="continuar_pedido"><ion-icon></ion-icon>Continuar<ion-icon class="icon-Nav" name="arrow-forward-outline"></ion-icon></button>
+                </li>
+                <li class="nav-item finalizar_pedido">
+                    <button class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="finalizar_pedido"><ion-icon></ion-icon>Finalizar Pedido</button>
+                </li>
+                <li class="nav-item finaizar_voltar_inicio">
+                    <a href="index.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="finaizar_voltar_inicio"><ion-icon></ion-icon>Ir Para o Início</a>
+                </li>
+                <li class="nav-item cancelar_pedido">
+                    <a href="index.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" class="cancelar_pedido"><ion-icon></ion-icon>Cancelar Pedido</a>
+                </li>
+            </ul>
         </div>
 
+    </aside>
 
 
-        <div class="pedido">
-            <div class="d-flex justify-content-between">
-                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
-                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <button id="cadastro_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="continuar_confirmacao" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Continuar</button>
-                    </div>
-                    <div style="width: 80%;" class="exlcuir_pedido">
-                    </div>
-                </div>
-                <div class="container mt-5 ">
-        
-                    <h1 class="text-center">Pedido</h1>
-                    <div class="text-center">
-                        <button type="button" id="add_produto_pedido" class="btn btn-outline-success w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <table class="table table-striped w-75 mt-5">
-                            <thead>
-                                <tr>
-                                <th scope="col">Nome do Produto</th>
-                                <th scope="col" class="text-center">Quantidade</th>
-                                <th scope="col" class="text-center">Valor</th>
-                                <th class="id_pedido_lista"></th>
-                                </tr>
-                            </thead>
-                            <tbody class="lista_produtos">
-                                <tr>
-                                    <td colspan="4" class="text-center">Não há nenhum produto adicionado</td>
-                                </tr>
-                            </tbody>
-                            <tfoot class="calc_Pedido">
-                                <th colspan="2">Valor Total</th>
-                                <th colspan="2">R$: 00,00</th>
-                                <input type="hidden" id="valorTotal" value="0">
-                            </tfoot>
-                        </table>
-                    </div>
-                    <!-- Modal Adicionar -->
-                    <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5">Adicionar Produto</h1>
+    <div class="d-flex justify-content-end w-100">
+
+        <div class="p-0 mx-5 w-75">
+
+            <div class="cadastro">
+
+                <div class="d-flex justify-content-between">
+                   
+                    <div class="container mt-5">
+                        <h1 class="text-center">Cadastro</h1>
+            
+                        <form method="post" id="formClientes" class="d-flex justify-content-center">
+                            <div class="formulario mt-5 w-75">
+                                <div class="mb-3">
+                                    <label for="CPF" class="form-label">CPF</label>
+                                    <input type="numb" class="form-control" id="CPF_pedido" name="cpf" required>
                                 </div>
-                                <form method="post" id="formClientes">
-                                    <div class="modal-body">
-                                        <div class="formulario mt-5">
-                                            <div id="form_pedido">
-
-                                            </div>
-                                            <div id="listar_pedido_produtos">
-
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="nome" class="form-label">Nome</label>
-                                                <input type="text" class="form-control" id="nome_produto_pedido" required>
-                                            </div>
-                                            
-                                            <div class="mb-3 content-center">
-                                                <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
-                                                <div class="d-flex w-25 justify-content-between">
-                                                    <input type="number" class="form-control w-50" id="qnt_add_pedido" value="1" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                        <button type="submit" id="cadastrar_produto_pedido" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
-                                    </div>
-                                </form>
+                                <div class="resCadastro">
+            
+                                </div>
+                                <div>
+                                    <button type="submit" id="cadastrar_cliente_pedido" class="btn btn-primary" data-bs-dismiss="modal">Cadastrar</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+            
                     </div>
                 </div>
             </div>
-        </div>
 
-
-
-        <div class="confirm-pedido">
-            <div class="d-flex justify-content-between">
-                <div class="card bg-black text-white align-items-center justify-content-between mt-3 w-25 rounded" style=" height: 96vh;">
-                    <div class="d-flex flex-column gap-3 mt-3" style="width: 85%;">
-                        <button id="pedido_voltar" class="btn btn-secondary mt-3" tabindex="-1" role="button" aria-disabled="true">Voltar</button>
-                        <button id="confirmar_pedido" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Finalizar Pedido</button>
-                        <a href="index.php" id="ir_pagina_inicial" class="btn btn-secondary" style="width: 100%;" tabindex="-1" role="button" aria-disabled="true">Ir para a Página Inicial</a>
-                    </div>
-                    <div style="width: 80%;" class="exlcuir_pedido">
-                    </div>
-                </div>
-                <div class="container mt-5 ">
-                    <h1 class="text-center">Resumo do Pedido</h1>
-                    <div class="d-flex justify-content-center">
-                        <table class="table table-striped w-75 mt-5">
-                            <thead>
-                                <tr></tr>
-                                <tr>
+            <div class="pedido">
+                <div class="d-flex justify-content-between">
+                    
+                    <div class="container mt-5 ">
+            
+                        <h1 class="text-center">Pedido</h1>
+                        <div class="text-center">
+                            <button type="button" id="add_produto_pedido" class="btn btn-outline-success w-50 mt-5" data-bs-toggle="modal" data-bs-target="#adicionar_produto" >Adicionar Produto +</button>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <table class="table table-striped w-75 mt-5">
+                                <thead>
+                                    <tr>
                                     <th scope="col">Nome do Produto</th>
                                     <th scope="col" class="text-center">Quantidade</th>
                                     <th scope="col" class="text-center">Valor</th>
                                     <th class="id_pedido_lista"></th>
-                                </tr>
-                            </thead>
-                            <tbody class="lista_produtos">
-                                <tr>
-                                    
-                                </tr>
-                            </tbody>
-                            <tfoot class="calc_Pedido">
-                                <input type="hidden" id="valor_total" value="1">
-                                <th colspan="2">Valor Total</th>
-                                <th class="text-center" id="valor_total">R$: </th>
-                                <input type="hidden" id="valorTotal" value="0">
-                            </tfoot>
-                        </table>
-                    </div>
-                    <div class="d-flex justify-content-around mt-5" style="height: 200px;">
-                        <div class="card w-25 m-0 container">
-                            <div class="card-body">
-                                <h5 class="card-title">Forma de Entrega</h5>
-                                <div class=" d-flex flex-column justify-content-around h-75" id="forma_de_entrega">
-                                    <div>
-                                        <input type="radio" name="entrega" id="retirada" value="retirada">
-                                        <label for="retirada">Retirada no Local</label>
+                                    </tr>
+                                </thead>
+                                <tbody class="lista_produtos">
+                                    <tr>
+                                        <td colspan="4" class="text-center">Não há nenhum produto adicionado</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot class="calc_Pedido">
+                                    <th colspan="2">Valor Total</th>
+                                    <th colspan="2">R$: 00,00</th>
+                                    <input type="hidden" id="valorTotal" value="0">
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- Modal Adicionar -->
+                        <div class="modal fade w-15" id="adicionar_produto" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5">Adicionar Produto</h1>
                                     </div>
-                                    <div>
-                                        <input type="radio" name="entrega" id="entrega" value="entrega">
-                                        <label for="entrega">Entrega</label>
-                                    </div>
-                                    <div class="endereco">
-                                        <label for="endereco">Endereço</label>
-                                        <input type="text" name="endereco" id="endereco">
-                                    </div>
+                                    <form method="post" id="formClientes">
+                                        <div class="modal-body">
+                                            <div class="formulario mt-5">
+                                                <div id="form_pedido">
+                                                </div>
+                                                <div id="listar_pedido_produtos">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="nome" class="form-label">Nome</label>
+                                                    <input type="text" class="form-control" id="nome_produto_pedido" required>
+                                                </div>
+            
+                                                <div class="mb-3 content-center">
+                                                    <label for="qnt_add" class="form-label">Quantidade a ser adicionada</label>
+                                                    <div class="d-flex w-25 justify-content-between">
+                                                        <input type="number" class="form-control w-50" id="qnt_add_pedido" value="1" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                                            <button type="submit" id="cadastrar_produto_pedido" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
-                        <div class="card w-25 m-0 container">
-                            <div class="card-body">
-                                <h5 class="card-title">Forma de Pagamento</h5>
-                                <div class="d-flex flex-column justify-content-around h-75">
-                                    <div>
-                                        <input type="radio" name="pagamento" id="pix" value="pix">
-                                        <label for="pix">Pix</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirm-pedido">
+
+                <div class="d-flex justify-content-between">
+                    
+                    <div class="container mt-5">
+                        <h1 class="text-center">Resumo do Pedido</h1>
+                        <div class="d-flex justify-content-center">
+                            <table class="table table-striped w-75 mt-5">
+                                <thead>
+                                    <tr></tr>
+                                    <tr>
+                                        <th scope="col">Nome do Produto</th>
+                                        <th scope="col" class="text-center">Quantidade</th>
+                                        <th scope="col" class="text-center">Valor</th>
+                                        <th class="id_pedido_lista"></th>
+                                    </tr>
+                                </thead>
+                                <tbody class="lista_produtos">
+                                    <tr>
+            
+                                    </tr>
+                                </tbody>
+                                <tfoot class="calc_Pedido">
+                                    <input type="hidden" id="valor_total" value="1">
+                                    <th colspan="2">Valor Total</th>
+                                    <th class="text-center" id="valor_total">R$: </th>
+                                    <input type="hidden" id="valorTotal" value="0">
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-around mt-5" style="height: 200px;">
+                            <div class="card w-25 m-0 container">
+                                <div class="card-body">
+                                    <h5 class="card-title">Forma de Entrega</h5>
+                                    <div class=" d-flex flex-column justify-content-around h-75" id="forma_de_entrega">
+                                        <div>
+                                            <input type="radio" name="entrega" id="retirada" value="retirada">
+                                            <label for="retirada">Retirada no Local</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="entrega" id="entrega" value="entrega">
+                                            <label for="entrega">Entrega</label>
+                                        </div>
+                                        <div class="endereco">
+                                            <label for="endereco">Endereço</label>
+                                            <input type="text" name="endereco" id="endereco">
+                                        </div>
                                     </div>
-                                    <div>
-                                        <input type="radio" name="pagamento" id="cartao" value="cartao">
-                                        <label for="cartao">Cartão</label>
-                                    </div>
-                                    <div>
-                                        <input type="radio" name="pagamento" id="dinheiro" value="dinheiro">
-                                        <label for="dinheiro">Dinheiro</label>
+                                </div>
+                            </div>
+                            <div class="card w-25 m-0 container">
+                                <div class="card-body">
+                                    <h5 class="card-title">Forma de Pagamento</h5>
+                                    <div class="d-flex flex-column justify-content-around h-75">
+                                        <div>
+                                            <input type="radio" name="pagamento" id="pix" value="pix">
+                                            <label for="pix">Pix</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="pagamento" id="cartao" value="cartao">
+                                            <label for="cartao">Cartão</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="pagamento" id="dinheiro" value="dinheiro">
+                                            <label for="dinheiro">Dinheiro</label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -210,6 +226,9 @@
                     </div>
                 </div>
             </div>
+
+
+
         </div>
 
 

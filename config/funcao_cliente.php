@@ -19,8 +19,6 @@
 
     }
 
-
-
     function cadastrarCliente(){
 
         include 'conecta.php';
@@ -56,8 +54,6 @@
 
     }
 
-
-
     function lerCliente(){
         
         include 'conecta.php';
@@ -79,8 +75,6 @@
         }
 
     }
-
-
 
     function editarCliente(){
         
@@ -110,8 +104,6 @@
 
     }
 
-
-
     function excluirCliente(){
         
         include 'conecta.php'; 
@@ -130,7 +122,6 @@
 
     }
 
-
     function verMaisCliente(){
 
         include 'conecta.php';
@@ -147,7 +138,6 @@
         }
 
     }
-
 
     function verMaisPedido(){
 
@@ -166,4 +156,5 @@
         }
 
     }
+    
 ?>

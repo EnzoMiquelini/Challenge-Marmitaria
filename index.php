@@ -13,34 +13,37 @@
     
 </head>
 <body>
-    <div class="d-flex">
 
-        <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4">
-            <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
-                <ion-icon name="grid-outline"></ion-icon> Menu
-            </div>
-            <div class="hrAside d-flex justify-content-center">
-                <hr class="mt-0 w-75 border border-white border-2 opacity-50">
-            </div>
-            <div>
-                <ul class="navbar-nav gap-3">
-                    <li class="nav-item">
-                        <a href="pedido.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="add-outline"></ion-icon>Novo Pedido</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="Categoria_de_produtos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="bag-outline"></ion-icon> Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="clientes.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="people-outline"></ion-icon> Clientes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="historico_de_pedidos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="clipboard-outline"></ion-icon> Histórico de Pedidos</a>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-        
-        <div class="p-0 mx-5 justify-content-center w-75" >
+    <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4 position-fixed">
+        <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
+            <ion-icon name="grid-outline"></ion-icon> Menu
+        </div>
+        <div class="hrAside d-flex justify-content-center">
+            <hr class="mt-0 w-75 border border-white border-2 opacity-50">
+        </div>
+        <div>
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item">
+                    <a href="pedido.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="add-outline"></ion-icon>Novo Pedido</a>
+                </li>
+                <li class="nav-item">
+                    <a href="Categoria_de_produtos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="bag-outline"></ion-icon> Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="clientes.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="people-outline"></ion-icon> Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a href="historico_de_pedidos.php" class="btn btn-nav w-75 d-flex align-items-center gap-2 fs-5"><ion-icon class="icon-Nav" name="clipboard-outline"></ion-icon> Histórico de Pedidos</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+
+    <div class="d-flex justify-content-end w-100">
+
+        <div class="p-0 mx-5 w-75">
+            
             <div class="row text-center mt-5" >
                 <div class="mb-5">
                     <h1>Sabores do Bem</h1>
@@ -65,7 +68,7 @@
                             </div>
                             <hr class="mb-0">
                             <ul class="list-group list-group-flush p-0" id="validade">
-                               
+        
                             </ul>
                         </div>
                     </div>
@@ -76,7 +79,7 @@
                             </div>
                             <hr class="mb-0">
                             <ul class="list-group list-group-flush p-0" id="emAberto">
-                                
+        
                             </ul>
                         </div>
                     </div>
@@ -85,13 +88,12 @@
                     <div class="col-sm-8 mt-4 shadow p-3 mb-5 bg-white rounded-4">
                         <table class="table table-striped table-hover">
                             <thead>
-                            <div class="text-center mb-3">
-                                <h4><strong>Pedidos</strong></h4>
-                            </div>
+                                <div class="text-center mb-3">
+                                    <h4><strong>Pedidos</strong></h4>
+                                </div>
                                 <hr class="mb-0">
                             </thead>
                             <tbody id="listar_pedidos">
-
                             </tbody>
                         </table>
                     </div>
@@ -102,13 +104,15 @@
                             </div>
                             <hr class="mb-0">
                             <ul class="list-group list-group-flush text-center overflow-y-auto p-0" id="listar_categorias">
-                               
+        
                             </ul>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
+
     </div>
 
 

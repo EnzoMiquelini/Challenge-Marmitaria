@@ -2,9 +2,7 @@
     header('Content-Type: application/json');
 
     if(isset($_POST['action'])){
-        if($_POST['action'] == 'inputProduto'){
-            // inputProduto();
-        }else if($_POST['action'] == 'lerClientePedido'){
+        if($_POST['action'] == 'lerClientePedido'){
             lerClientePedido();
         }else if($_POST['action'] == 'inserirProdutoPedido'){
             inserirProdutoPedido();
@@ -29,8 +27,6 @@
         }
     }
 
-
-
     function lerClientePedido(){
 
         include 'conecta.php';
@@ -54,8 +50,6 @@
 
 
     }
-
-
 
     function criarPedido(){
 
@@ -95,35 +89,6 @@
         }
 
     }
-        
-
-
-
-    // function inputProduto(){
-
-    //     include 'conecta.php';
-        
-    //     $nome_produto = $_POST['nome_produto'];
-
-    //     if($nome_produto == ('')){
-    //         $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `data_validade` FROM `produto` ORDER BY `data_validade` ASC LIMIT 1;');
-    //         $stmt->execute();
-    //         return;
-    //     }
-    //     $stmt = $pdo->prepare('SELECT `id_produto`, `nome`, `valor`, `qnt_Estoque`, `data_validade` FROM `produto` WHERE `nome` = :na ORDER BY `data_validade` ASC LIMIT 1;');
-    //     $stmt->bindValue(':na', $nome_produto);
-    //     $stmt->execute();
-
-    //     if ($stmt->rowCount() >= 1){
-    //         echo json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
-    //     }else{
-    //         echo json_encode('Nao Encontrado');
-    //     }
-
-    // }
-
-
-
 
     function lerProduto(){
 
@@ -143,8 +108,6 @@
 
     }
 
-
-    
     function inserirProdutoPedido(){
 
         include 'conecta.php';
@@ -185,10 +148,8 @@
         }else{
             echo json_encode('Nao Tem!');
         }
+
     }
-
-
-
 
     function editarProdutoBanco(){
 
@@ -209,9 +170,6 @@
 
     }
     
-
-
-
     function lerPedidoProduto(){
         
         include 'conecta.php';
@@ -241,8 +199,6 @@
 
     }
 
-
-
     function excluirPedidoProduto(){
 
         include 'conecta.php';
@@ -259,8 +215,6 @@
         }
 
     }
-
-
 
     function confirmarPedido(){
         

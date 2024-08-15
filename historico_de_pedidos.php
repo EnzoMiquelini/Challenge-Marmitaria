@@ -13,25 +13,25 @@
     
 </head>
 <body>
-    <div class="d-flex" style="height: 950px;">
 
-        <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4">
-            <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
-                <ion-icon name="grid-outline"></ion-icon> Menu
-            </div>
-            <div class="hrAside d-flex justify-content-center">
-                <hr class="mt-0 w-75 border border-white border-2 opacity-50">
-            </div>
-            <div>
-                <ul class="navbar-nav gap-3">
-                    <li class="nav-item">
-                        <a href="index.php" class="btn btn-nav d-flex w-75 align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</a>
-                    </li>
-                </ul>
-            </div>
-        </aside>
+    <aside class="aside bg-black text-white align-items-center rounded-4 mx-4 my-4 position-fixed">
+        <div class="text-aside d-flex justify-content-center align-items-center gap-2 fs-5">
+            <ion-icon name="grid-outline"></ion-icon> Menu
+        </div>
+        <div class="hrAside d-flex justify-content-center">
+            <hr class="mt-0 w-75 border border-white border-2 opacity-50">
+        </div>
+        <div>
+            <ul class="navbar-nav gap-3">
+                <li class="nav-item">
+                    <a href="index.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</a>
+                </li>
+            </ul>
+        </div>
+    </aside>
 
-        <div class="p-0 mx-5 justify-content-center w-75" >
+    <div class="d-flex justify-content-end w-100">
+        <div class="p-0 mx-5 w-75">
             <div class="mt-5">
                 <div class="col-sm-8 mt-4 shadow p-3 mb-5 bg-white rounded-4 w-100">
                     <table class="table table-striped table-hover">
@@ -42,7 +42,6 @@
                             <hr class="mb-0">
                         </thead>
                         <tbody id="historico_pedidos">
-
                         </tbody>
                     </table>
                 </div>

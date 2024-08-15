@@ -42,8 +42,6 @@
         
     }
 
-
-
     function lerCategoria(){
        
         include 'conecta.php';
@@ -65,8 +63,6 @@
         }
 
     }
-
-
 
     function editarCategoria(){
         
@@ -93,8 +89,6 @@
         }
 
     }
-
-
 
     function excluirCategoria(){
         
@@ -133,4 +127,5 @@
         }
 
     }
+    
 ?>

@@ -4,7 +4,8 @@ body{
 
 
 .aside{
-    width: 15%;
+    width: 19%;
+    height: 93vh;
 }
 
 
@@ -12,7 +13,9 @@ body{
     height: 10%;
 }
 
-
+.bnt_aside{
+    width: 83%;
+}
 .btn-nav{
     color: white;
 }

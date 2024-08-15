@@ -17,8 +17,6 @@
 
     }
 
-
-
     function cadastrarProduto(){
 
         include 'conecta.php';
@@ -58,8 +56,6 @@
 
     }
 
-
-
     function lerProduto(){
         
         include 'conecta.php';
@@ -81,8 +77,6 @@
         }
         
     }
-
-
 
     function lerProdutoCategoria(){
         
@@ -113,8 +107,6 @@
         }
 
     }
-
-
 
     function editarProduto(){
         
@@ -148,8 +140,6 @@
 
     }
 
-
-
     function excluirProduto(){
         
         include 'conecta.php'; 
@@ -167,4 +157,5 @@
         echo json_encode('Excluido');
 
     }
+    
 ?>
