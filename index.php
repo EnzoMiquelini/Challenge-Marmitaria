@@ -52,7 +52,7 @@
             <div class="mt-5">
                 <div class="row">
                     <div class="col-sm">
-                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                        <div class="shadow p-3 mb-4 bg-white rounded-4">
                             <div class="text-center mb-3">
                                 <h4><strong>Produtos Acabando</strong></h4>
                             </div>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                        <div class="shadow p-3 mb-4 bg-white rounded-4">
                             <div class="text-center mb-3">
                                 <h4><strong>Produtos Próximos a Validade</strong></h4>
                             </div>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                     <div class="col-sm">
-                        <div class="shadow p-3 mb-5 bg-white rounded-4">
+                        <div class="shadow p-3 mb-4 bg-white rounded-4">
                             <div class="text-center mb-3">
                                 <h4><strong>Pedidos em Aberto</strong></h4>
                             </div>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-8 mt-4 shadow p-3 mb-5 bg-white rounded-4">
+                    <div class="col-sm-8 shadow p-3 mb-5 bg-white rounded-4">
                         <table class="table table-striped table-hover">
                             <thead>
                                 <div class="text-center mb-3">
@@ -97,7 +97,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-sm-4 mt-4">
+                    <div class="col-sm-4">
                         <div class="shadow p-3 mb-5 bg-white rounded-4" >
                             <div class="text-center mb-3">
                                 <h4><strong>Categorias</strong></h4>

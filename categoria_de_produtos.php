@@ -27,7 +27,7 @@
                     <a href="index.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5" id="novo_pedido"><ion-icon class="icon-Nav" name="arrow-back-outline"></ion-icon>Voltar</a>
                 </li>
                 <li class="nav-item">
-                    <a href="estoque.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5">Lista de Produtos</a>
+                    <a href="estoque.php" class="bnt_aside btn btn-nav d-flex align-items-center gap-2 fs-5"><ion-icon></ion-icon> Lista de Produtos</a>
                 </li>
             </ul>
         </div>
@@ -70,9 +70,9 @@
                                     <textarea class="form-control" id="descricao" style="height: 100px" name="descricao" required></textarea>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer d-flex justify-content-between">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="button" id="cadastrar_categoria" class="btn btn-primary" data-bs-dismiss="modal">Criar</button>
+                                <button type="button" id="cadastrar_categoria" class="btn btn-success" data-bs-dismiss="modal">Criar</button>
                             </div>
                         </form>
                     </div>
@@ -91,9 +91,9 @@
                                 <div class="edit_values_categoria">
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="button" id="salvar_edicao_categoria" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a class="btn btn-secondary" data-bs-dismiss="modal">Voltar</a>
+                                <button type="button" id="salvar_edicao_categoria" class="btn btn-success" data-bs-dismiss="modal">Editar</button>
                             </div>
                         </form>
                     </div>
@@ -103,17 +103,18 @@
             <div class="modal fade" id="excluir_categoria" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Categoria</h1>
-                    </div>
-                    <div class="modal-body">
-                        <div class="exluir_values_categoria">
-        
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Excluir Categoria</h1>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                    </div>
+                        <div class="modal-body">
+                            <div class="exluir_values_categoria">
+            
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <a class="btn btn-secondary" data-bs-dismiss="modal">Voltar</a>
+                            <button id="excluir_categoria" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
+                        </div>
                     </div>
                 </div>
             </div>

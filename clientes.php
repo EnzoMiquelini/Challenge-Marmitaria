@@ -82,9 +82,9 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer d-flex justify-content-between">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="submit" id="cadastrar_cliente" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                                <button type="submit" id="cadastrar_cliente" class="btn btn-success" data-bs-dismiss="modal">Adicionar</button>
                             </div>
                         </form>
                     </div>
@@ -102,9 +102,9 @@
                                 <div class="formulario mt-5 edit_values_cliente">
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="submit" id="salvar_edicao_cliente" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <button type="submit" id="salvar_edicao_cliente" class="btn btn-success" data-bs-dismiss="modal">Editar</button>
                             </div>
                         </form>
                     </div>
@@ -124,8 +124,8 @@
                                         <div class="excluir_values_cliente">
                                         </div>
                                     </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                    <div class="modal-footer d-flex justify-content-between">
+                                        <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
                                         <button type="submit" id="excluir_cliente" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                                     </div>
                                 </div>
@@ -146,14 +146,14 @@
                             <div class="verMais_cliente">
                                 <ul class="list-group list-group-flush" id="verCliente">
                                 </ul>
-                                <table class="table">
+                                <table class="table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Data</th>
-                                        <th scope="col">Valor</th>
-                                        <th scope="col">Pagamento</th>
-                                        <th scope="col">Entrega</th>
-                                        <th scope="col">Status</th>
+                                            <th scope="col">Data</th>
+                                            <th scope="col">Valor</th>
+                                            <th scope="col">Pagamento</th>
+                                            <th scope="col">Entrega</th>
+                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="verMais_pedidoCliente">

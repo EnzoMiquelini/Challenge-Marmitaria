@@ -243,7 +243,7 @@ function verCliente(id_cliente){
                                                             <td>${item.tipo_pgto}</td>
                                                             <td>${item.entrega}</td>
                                                             <td>${item.status}</td>
-                                                        <tr>
+                                                        </tr>
                                                     `);
         $('#verMais_pedidoCliente').html(verClientePedido.join(''));
 

@@ -118,7 +118,7 @@ function editarProduto(id_produto) {
         const lerCategoriaEditar = result.map(item =>   `
                                                             <option value="${item.id_categoria}">${item.nome_categoria}</option>
                                                         `);
-        $('#categoria_editar_produto').append(lerCategoriaEditar);
+        $('#categoria_editar_produto').html(lerCategoriaEditar);
     })
 
     $.ajax({

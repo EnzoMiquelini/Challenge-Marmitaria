@@ -308,7 +308,6 @@ $('#cadastrar_produto_pedido').click(function (e) {
 
     valorTotal = valorTotal + parseFloat(valor_produto_total)
     
-    console.log(valorTotal)
     var valorTot = `<tr>
                     <th colspan="2">Valor Total</th>
                     <th colspan="2">R$:`+Number(valorTotal).toFixed(2)+`</th>
@@ -321,6 +320,8 @@ $('#cadastrar_produto_pedido').click(function (e) {
 
 function lerPedidoProduto(id_pedido, id_produto){
 
+    console.log( id_pedido)
+
     $.ajax({
         type: "post",
         url: "config/funcao_pedido.php",
@@ -331,6 +332,10 @@ function lerPedidoProduto(id_pedido, id_produto){
         dataType: "json",
     }).done (function (result) {
         if(result == ('Nao Encontrado!')){
+            lerSemProduto =     `   <tr> 
+                                        <td colspan="3" class="text-center">Não há nenhum produto adicionado</td> 
+                                    </tr>
+                                `;
             $('.lista_produtos').html('<tr> <td colspan="3" class="text-center">Não há nenhum produto adicionado</td> </tr>');
             return;
         }
@@ -352,7 +357,6 @@ function lerPedidoProduto(id_pedido, id_produto){
 
 
 }
-
 
 
 function retirarProdutoBanco(id_produto){

@@ -45,7 +45,7 @@
                     <button type="button" class="btn btn-outline-success w-25" data-bs-toggle="modal" data-bs-target="#adicionar_produto" onclick="adicionarProduto()">Adicionar Produto +</button>
                 </div>
                 <hr class="mb-0">
-                <table class="table table-striped table-hover col-sm-8 border mt-3 ">
+                <table class="table table-striped table-hover col-sm-8 mt-3 ">
                     <thead>
                         <tr>
                             <th>Nome Produto</th>
@@ -103,9 +103,9 @@
                                         </div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
+                            <div class="modal-footer d-flex justify-content-between">
                                 <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="submit" id="cadastrar_produto" class="btn btn-primary" data-bs-dismiss="modal">Adicionar</button>
+                                <button type="submit" id="cadastrar_produto" class="btn btn-success" data-bs-dismiss="modal">Adicionar</button>
                             </div>
                         </form>
                     </div>
@@ -125,15 +125,14 @@
                                     <div class="mb-3">
                                         <label for="categoria" class="form-label">Categoria</label>
                                         <select class="form-select" class="categoria_lista" id="categoria_editar_produto" required>
-                                            <option></option>
                                         </select>
                                     </div>
                                     <div class="baixo_editar"></div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                                <button type="submit" id="salvar_edicao_produto" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a class="btn btn-secondary" data-bs-dismiss="modal">Voltar</a>
+                                <button type="submit" id="salvar_edicao_produto" class="btn btn-success" data-bs-dismiss="modal">Editar</button>
                             </div>
                         </form>
                     </div>
@@ -145,17 +144,17 @@
                     <div class="modal-content">
                         <div id="confirmar_exclusao">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar Produto</h1>
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Excluir Produto</h1>
                             </div>
                             <div class="modal-body">
-                                <div class="formulario mt-5">
+                                <div class="formulario">
                                     <div class="exluir_values_produto">
                                     </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" id="excluir_produto" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
-                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</a>
+                                <button type="submit" id="excluir_produto" class="btn btn-danger" data-bs-dismiss="modal">Excluir</button>
                             </div>
                         </div>
                     </div>
